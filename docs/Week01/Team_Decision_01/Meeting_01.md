@@ -39,6 +39,7 @@ status: "Đã hoàn thành"
 2. Lựa chọn phương pháp luận phát triển phần mềm và phần mềm quản lý tiến độ.
 3. Thống nhất mô hình ứng dụng và khung công nghệ (Tech Stack) cốt lõi.
 4. Lập kế hoạch và thời hạn chốt ý tưởng đề tài đồ án môn học.
+5. Thống nhất khung thời gian triển khai đồ án (dự kiến trong 8 tuần).
 
 ---
 
@@ -71,6 +72,12 @@ Nhóm đã xem xét các phương án quản lý mã nguồn và thống nhất 
 - **Tình trạng:** Tại buổi họp ngày 12/10/2026, nhóm đã thảo luận một số định hướng nhưng **chưa chốt đề tài chính thức**.
 - **Kế hoạch:** Mỗi thành viên chủ động nghiên cứu và chuẩn bị tối thiểu 1 đề xuất ý tưởng bài toán thực tế phù hợp với mô hình Web App và yêu cầu môn học.
 - **Hạn chót thống nhất (Deadline):** Chậm nhất trước **20:00 - Thứ Tư, ngày 14/10/2026**.
+
+### 3.5. Kế hoạch thời gian thực hiện đồ án
+- **Tổng thời gian dự kiến:** Đồ án có thời lượng thực hiện dự kiến trong **8 tuần** (tính từ thời điểm công bố đề bài đến khi hoàn thiện sản phẩm).
+- **Định hướng phân bổ theo Scrum:**
+  - Nhóm sẽ tổ chức các chu kỳ Sprint từ 1 - 2 tuần bám sát các đợt nộp thành phẩm của môn học (Proposal $\rightarrow$ SRS $\rightarrow$ Design $\rightarrow$ Implementation $\rightarrow$ Testing & Final Deliverable).
+  - Khung thời gian 8 tuần đòi hỏi nhóm phải kiểm soát chặt chẽ phạm vi tính năng ($\le 5$ tính năng chính) để đảm bảo hoàn thành việc lập trình và kiểm thử đúng tiến độ.
 
 ---
 

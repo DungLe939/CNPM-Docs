@@ -42,12 +42,15 @@
 
 ---
 
-## 📅 Lộ trình các Tuần tiếp theo (Dự kiến)
+## 📅 Lộ trình Đồ án 8 tuần (Dự kiến theo Biên bản họp 01)
 
 | Tuần | Giai đoạn | Nội dung trọng tâm | Thành phẩm dự kiến |
 | :---: | :--- | :--- | :--- |
-| **Week 03 - 04** | Phân tích yêu cầu (Analysis) | Đặc tả ca sử dụng chi tiết (Use Case Specs), Activity / Sequence Diagrams | `Software_Requirements_Specification.md` (.html) |
-| **Week 05 - 06** | Thiết kế (Design) | Thiết kế kiến trúc, thiết kế UI/UX (Figma), thiết kế CSDL (ERD, Relational Schema) | `Software_Design_Document.md` (.html) |
-| **Week 07 - 09** | Cài đặt & Lập trình (Implementation) | Xây dựng mã nguồn Frontend + Backend, kết nối Database, API | Source code trên GitHub, demo tính năng |
-| **Week 10** | Kiểm thử (Testing) | Lập Test Plan, viết Unit Test, Integration Test, kiểm thử giao diện | `Test_Report.md` (.html) |
-| **Week 11+** | Triển khai & Báo cáo cuối kỳ | Deploy hệ thống lên cloud/server, làm slide thuyết trình và video demo | Sản phẩm hoàn chỉnh & Slide báo cáo |
+| **Week 01** | Khởi động & Chọn đề tài | Lập team, thống nhất quy trình Scrum/Jira, tech stack, chốt đề tài | `Meeting_01.md` |
+| **Week 02** | Đề xuất dự án (Proposal) | Soạn thảo & hoàn thiện đề xuất dự án 5 phần theo mẫu bộ môn | `Project_Proposal.md` (.html) |
+| **Week 03** | Phân tích yêu cầu (Analysis) | Khảo sát nghiệp vụ, phân tích Use Cases, Activity/Sequence Diagrams | `Software_Requirements_Specification.md` |
+| **Week 04** | Thiết kế (Design) | Thiết kế kiến trúc hệ thống, UI/UX (Figma), thiết kế CSDL (ERD/Schema) | `Software_Design_Document.md` |
+| **Week 05 - 06** | Cài đặt & Lập trình (Sprint 1 & 2) | Lập trình Frontend (Next.js), Backend (NestJS), kết nối PostgreSQL | Mã nguồn trên GitHub (FE, BE) |
+| **Week 07** | Kiểm thử (Testing & QA) | Lập Test Plan, viết Unit/Integration Tests, kiểm thử giao diện & API | `Test_Report.md` |
+| **Week 08** | Triển khai & Báo cáo cuối kỳ | Deploy Web App lên Cloud, quay video demo và slide thuyết trình | Sản phẩm chạy thực tế & Slide báo cáo |
+
