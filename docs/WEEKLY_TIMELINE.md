@@ -10,16 +10,17 @@
 - **Trạng thái:** 🟡 Đang thực hiện
 
 ### Mục tiêu tuần 1:
-- [x] Tiếp nhận thông báo đồ án và các quy định bắt buộc từ GVTH Thầy nndkhoa ([text1.md](./Week01/text1.md)).
+- [x] Tiếp nhận thông báo đồ án và các quy định bắt buộc từ GVTH Thầy nndkhoa ([Thông_báo_1.md](./Week01/Material/Thông_báo_1.md)).
 - [x] Nghiên cứu biểu mẫu `Template#0 - Project Proposal` ([PDF](../Template#0-ProjectProposal-2022.pdf)).
 - [x] Đọc hiểu 2 bài toán mẫu của bộ môn:
   - [Problem_example_01: Sàn đấu giá trực tuyến](./Week01/Problem_example/Problem_example_01.md)
   - [Problem_example_02: Ứng dụng theo dõi sức khỏe](./Week01/Problem_example/Problem_example_02.md)
-- [ ] Họp nhóm phân công vai trò (Leader, Frontend, Backend, QA) và chốt đề tài phần mềm.
-- [ ] Ghi lại quyết định trong thư mục `docs/Week01/Team_Decision_01/`.
+- [x] Họp nhóm lần 1 (12/10/2026): thống nhất cấu trúc repo, quy trình Scrum/Jira, tech stack Next.js/NestJS/PostgreSQL.
+- [x] Ghi lại quyết định trong biên bản họp: [Meeting_01.md](./Week01/Team_Decision_01/Meeting_01.md).
+- [ ] Họp nhóm lần 2: chốt ý tưởng đề tài chính thức & phân công vai trò (Deadline: 14/10/2026).
 
 ### Thành phẩm Tuần 01:
-- Biên bản họp nhóm & Ý tưởng đề tài được duyệt.
+- Biên bản họp nhóm & Ý tưởng đề tài được duyệt ([Meeting_01.md](./Week01/Team_Decision_01/Meeting_01.md)).
 
 ---
 

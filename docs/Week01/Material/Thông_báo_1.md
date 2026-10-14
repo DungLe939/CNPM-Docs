@@ -46,3 +46,23 @@ status: "Đang tiến hành"
   - Bài làm phải trả lời đúng trọng tâm các nội dung được yêu cầu theo từng giai đoạn.
   - Nhóm cần chủ động, vững vàng, tránh bị AI "dắt mũi" dẫn đến nộp báo cáo khổng lồ, dàn trải, vượt xa yêu cầu của từng đợt nộp.
 - **Chế tài xử phạt:** Vi phạm định dạng (`.md`, `.html`) hoặc lan man không đúng trọng tâm sẽ bị **TRỪ ĐIỂM RẤT NẶNG**.
+
+---
+## 4. RAW
+	
+Chào các em,
+
+Học kỳ này, các em sẽ làm việc theo nhóm, thực hiện một software tương đối hoàn thiện, theo quy trình bài bản (Waterfall hoặc Scrum), và nộp lại các thành phẩm của từng khâu trong quá trình xây dựng sản phẩm phần mềm.
+
+Thầy sẽ đăng tải yêu cầu của từng đợt nộp (gần nhất là Proposal) cùng template tham khảo để các nhóm thực hiện. Thời gian thực hiện cho từng đợt nộp là 1-2 tuần, tính từ ngày thầy đăng yêu cầu.
+
+Môn này yêu cầu các bài nộp ở dạng markdown (md) kèm html (visualization của chính file md, có style và layout phù hợp), các em lưu ý để thực hiện cho đúng nhé.
+
+GVTH nndkhoa
+
+Lưu ý:
+
+Bài làm khuyến khích các nhóm sinh bằng AI và kiểm tra lại kết quả
+Các dấu hiệu của AI Writing cần được loại bỏ trước khi nộp
+Các bài làm trả lời đúng trọng tâm các nội dung được yêu cầu, nhóm cần vững vàng, tránh bị AI dắt mũi và nộp một báo cáo khổng lồ vượt xa yêu cầu của từng đợt nộp
+Vi phạm bị TRỪ ĐIỂM RẤT NẶNG

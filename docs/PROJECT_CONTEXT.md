@@ -45,7 +45,7 @@
 | :--- | :--- | :--- |
 | `Template#0-ProjectProposal-2022.docx` & `.pdf` | Template gốc | Biểu mẫu Proposal chuẩn của bộ môn do giảng viên cung cấp |
 | `docs/WEEKLY_TIMELINE.md` | Quản trị tiến độ | Nhật ký theo dõi hoạt động và nhiệm vụ của nhóm theo từng tuần |
-| `docs/Week01/text1.md` | Thông báo | Thông báo và lưu ý chính thức từ thầy nndkhoa |
+| `docs/Week01/Material/Thông_báo_1.md` | Thông báo | Thông báo và lưu ý chính thức từ thầy nndkhoa |
 | `docs/Week01/Problem_example/` | Tài liệu mẫu | Hai bài toán mẫu: Sàn đấu giá trực tuyến và App theo dõi sức khỏe |
-| `docs/Week01/Team_Decision_01/` | Quản lý nhóm | Biên bản họp nhóm tuần 1: Chốt đề tài, vai trò thành viên, quy trình |
+| `docs/Week01/Team_Decision_01/Meeting_01.md` | Quản lý nhóm | Biên bản họp nhóm số 01: Cấu trúc repo, Scrum/Jira, Tech stack |
 | `.agents/skills/` | AI Skills | Bộ kỹ năng chuẩn hóa quy trình làm việc cho AI trong dự án |
