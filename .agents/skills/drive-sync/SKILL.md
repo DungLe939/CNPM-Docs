@@ -65,9 +65,16 @@ graph TD
 5. **Bước 5: Trích Dẫn Nguồn Đúng Chuẩn (Dual-Linking: Local Path + Google Drive Link)**
    - Khi biên soạn hoặc trích dẫn các tài liệu được đồng bộ từ Google Drive:
    - **BẮT BUỘC cung cấp liên kết kép (Dual-linking):**
-     * Link nội bộ tương đối trong repo: `[JobSeeker_Implementation_Plan.md](./JobSeeker_Implementation_Plan.md)` (để xem offline/Git).
+     * Link nội bộ tương đối trong repo: `[JobSeeker_Implementation_Plan.md](./Material/JobSeeker_Implementation_Plan.md)` (để xem offline/Git).
      * Link Google Drive gốc trực tuyến: `[Xem trên Google Drive](https://drive.google.com/file/d/1s8uYv3yBGpx7TyCsTtIVSbNTrC8LbDbY/view)` kèm link folder Drive chung để giảng viên/đồng đội kiểm chứng bản gốc cloud.
    - Tuyệt đối không chỉ ghi tên file suông mà không trích dẫn link nguồn.
+
+6. **Bước 6: Trung Thực Tuyệt Đối Với Dữ Liệu Gốc (Zero-Hallucination & Raw Fidelity)**
+   > ⛔ **Cấm tuyệt đối:** Không tự ý suy diễn, không "bày vẽ" hoặc bịa đặt thêm các thông tin chưa có trong thực tế cuộc họp.
+   - Khi convert biên bản họp từ ghi chép thô của người dùng:
+     * **Giữ nguyên 100% nội dung nguyên bản:** Giữ đúng thời gian, danh sách ý tưởng từng thành viên nêu ra, các mốc deadline và quyết định thực tế.
+     * **Không tự ý gán RACI hay bịa phân hệ kỹ thuật:** Nếu cuộc họp chỉ dừng lại ở việc chốt ý tưởng, không được tự ý gán vai trò RACI chi tiết hay vẽ ra 5 phân hệ nếu nhóm chưa họp bàn về điều đó.
+     * **Chỉ chuẩn hóa hình thức:** Vai trò của AI là định dạng lại văn bản thành Markdown sạch đẹp (bảng biểu, danh sách), hoàn toàn không được bóp méo hay thêm thắt nội dung.
 
 ---
 

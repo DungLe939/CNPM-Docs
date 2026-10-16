@@ -51,13 +51,19 @@ Vì dự án có nhiều thành viên cùng làm việc trên GitHub, AI **BẮT
    - AI **phải đối chiếu tiến độ các buổi họp** (`Meeting_01`, `Meeting_02`, ...) với các cam kết hành động trong biên bản trước.
    - Nếu phát hiện có buổi họp theo lịch (ví dụ họp ngày 14/10 để chốt đề tài) nhưng thiếu file `Meeting_02.md`, AI **bắt buộc phải chủ động nhắc nhở trong chat** và đề xuất hỗ trợ tạo bản thảo chuẩn hóa dựa trên các quyết định thực tế.
 
+5. **Bước 5 (Bắt buộc: Trung Thực Tuyệt Đối Với Dữ Liệu Gốc - Zero Hallucination):**
+   - Khi ghi chép hoặc convert biên bản họp, **AI BẮT BUỘC giữ nguyên 100% nội dung nguyên bản** từ dữ liệu người dùng cung cấp.
+   - **Tuyệt đối không tự suy diễn hay bày vẽ thêm:** Không tự ý tạo ma trận RACI, không tự bịa thêm 5 phân hệ kỹ thuật hoặc quyết định chưa diễn ra.
+   - Chỉ được chuẩn hóa hình thức Markdown (bảng biểu, danh sách), đảm bảo nội dung phản ánh trung thực 100% thực tế cuộc họp.
+
 ---
 
 ## 3. Quy tắc Phân loại Thư mục Tự động (Auto-Classification)
 
 Khi đồng bộ tài liệu, **tuyệt đối không lưu file lộn xộn ở thư mục gốc tuần (`docs/WeekXX/`)**. Hệ thống phải tự động phân loại:
-- **Kế hoạch, Biên bản họp, Quyết định nhóm** (`Meeting_*.md`, `JobSeeker_Implementation_Plan.*`, `*Decision*`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Team_Decision_XX/`**.
-- **Tài liệu học tập, Thông báo, Hướng dẫn, Biểu mẫu** (`Template*`, `Thông_báo_*`, `Material`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Material/`**.
+- **Biên bản họp nhóm** (`Meeting_*.md`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Team_Decision/`**.
+- **Kế hoạch, Tài liệu nhóm tự làm** (`JobSeeker_Implementation_Plan.*`, `*plan*`, `*proposal*`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Team_Decision/Material/`**.
+- **Tài liệu học tập, Thông báo, Biểu mẫu của Thầy** (`Template*`, `Thông_báo_*`, `Material`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Material/`**.
 - **Bài toán mẫu, Đặc tả mẫu** (`Problem_example_*`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Problem_example/`**.
 
 ---
