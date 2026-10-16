@@ -37,7 +37,6 @@ AI **BẮT BUỘC** phải tự động rà soát và thực hiện quy trình *
 ### Bước 3: Kiểm duyệt Chất lượng Văn bản & Đường dẫn
 - **Đường dẫn tương đối (Relative paths):** Quét qua các file `.md` vừa sửa, đảm bảo KHÔNG chứa đường dẫn tuyệt đối dạng `/Users/...`, `C:\...` hay `C:/...`. Tất cả phải dùng `./` hoặc `../`.
 - **Loại bỏ AI Fluff:** Nếu có tài liệu kỹ thuật/báo cáo đồ án được soạn thảo, kích hoạt skill [anti-ai-fluff](../skills/anti-ai-fluff/SKILL.md) để rà soát từ ngữ sáo rỗng, hoa mỹ trước khi lưu.
-- **Xuất HTML:** Nếu là bài nộp tuần cần nộp file HTML theo quy định giảng viên, đảm bảo đã chạy script chuyển đổi từ Markdown sang HTML.
 
 ### Bước 4: Tạo Commit Thông Minh
 - Sau khi docs và skills đã được đồng bộ đầy đủ, AI mới tiến hành `git add` và `git commit`.
