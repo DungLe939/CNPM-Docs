@@ -15,12 +15,13 @@
 - [x] Đọc hiểu 2 bài toán mẫu của bộ môn:
   - [Problem_example_01: Sàn đấu giá trực tuyến](./Week01/Problem_example/Problem_example_01.md)
   - [Problem_example_02: Ứng dụng theo dõi sức khỏe](./Week01/Problem_example/Problem_example_02.md)
-- [x] Họp nhóm lần 1 (12/10/2026): thống nhất cấu trúc repo, quy trình Scrum/Jira, tech stack Next.js/NestJS/PostgreSQL.
-- [x] Ghi lại quyết định trong biên bản họp: [Meeting_01.md](./Week01/Team_Decision_01/Meeting_01.md).
-- [ ] Họp nhóm lần 2: chốt ý tưởng đề tài chính thức & phân công vai trò (Deadline: 14/10/2026).
+- [x] Họp nhóm lần 1 (12/10/2026): thống nhất cấu trúc repo, quy trình Scrum/Jira, tech stack Next.js/NestJS/PostgreSQL ([Meeting_01.md](./Week01/Team_Decision/Meeting_01.md)).
+- [x] Họp nhóm lần 2 (14/10/2026): chốt ý tưởng đề tài JobSeeker AI & phân chia vai trò 4 thành viên ([Meeting_02.md](./Week01/Team_Decision/Meeting_02.md)).
+- [x] Lập bản Kế hoạch Triển khai Chi tiết ([JobSeeker_Implementation_Plan.md](./Week01/Team_Decision/Material/JobSeeker_Implementation_Plan.md)).
 
 ### Thành phẩm Tuần 01:
-- Biên bản họp nhóm & Ý tưởng đề tài được duyệt ([Meeting_01.md](./Week01/Team_Decision_01/Meeting_01.md)).
+- Biên bản họp nhóm: [Meeting_01.md](./Week01/Team_Decision/Meeting_01.md) & [Meeting_02.md](./Week01/Team_Decision/Meeting_02.md).
+- Kế hoạch triển khai chi tiết: [JobSeeker_Implementation_Plan.md](./Week01/Team_Decision/Material/JobSeeker_Implementation_Plan.md) & [.html](./Week01/Team_Decision/Material/JobSeeker_Implementation_Plan.html).
 
 ---
 

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biên bản Họp nhóm Số 01 (Meeting Minutes 01)</title>
+  <!-- MathJax for formulas -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Mermaid.js for Diagrams -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+  </script>
+  <style>
+
+:root {
+  --color-primary: #0969da;
+  --color-text: #24292f;
+  --color-bg: #ffffff;
+  --color-border: #d0d7de;
+  --color-subtle-bg: #f6f8fa;
+  --color-muted: #57606a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #58a6ff;
+    --color-text: #c9d1d9;
+    --color-bg: #0d1117;
+    --color-border: #30363d;
+    --color-subtle-bg: #161b22;
+    --color-muted: #8b949e;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.65;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+h1, h2, h3, h4 {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.3em;
+}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+p, ul, ol { margin-top: 0.5em; margin-bottom: 1em; }
+li { margin-bottom: 0.3em; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
+th, td {
+  border: 1px solid var(--color-border);
+  padding: 10px 14px;
+  text-align: left;
+}
+th {
+  background-color: var(--color-subtle-bg);
+  font-weight: 600;
+}
+tr:nth-child(even) {
+  background-color: var(--color-subtle-bg);
+}
+blockquote {
+  border-left: 4px solid var(--color-primary);
+  margin: 1em 0;
+  padding: 8px 16px;
+  background-color: var(--color-subtle-bg);
+  color: var(--color-muted);
+  border-radius: 0 4px 4px 0;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  background-color: var(--color-subtle-bg);
+  border: 1px solid var(--color-border);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 85%;
+}
+pre code {
+  display: block;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 90%;
+  border-radius: 6px;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--color-border);
+  margin: 2em 0;
+}
+@media print {
+  body { max-width: 100%; margin: 0; padding: 20mm; background: #fff; color: #000; }
+  h1, h2, h3 { color: #000; }
+  table, tr, td, th { border-color: #999; }
+}
+
+  </style>
+</head>
+<body>
+  <h1>BIÊN BẢN HỌP NHÓM SỐ 01</h1>
+<table><thead><tr>
+<th>Thông tin cuộc họp</th>
+<th>Chi tiết</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Dự án</strong></td>
+<td>Đồ án Nhập môn Công nghệ Phần mềm</td>
+</tr>
+<tr>
+<td><strong>Thời gian</strong></td>
+<td>20:25 – 22:00, Thứ Hai, ngày 12/10/2026</td>
+</tr>
+<tr>
+<td><strong>Hình thức / Địa điểm</strong></td>
+<td>Trực tuyến qua Google Meet</td>
+</tr>
+<tr>
+<td><strong>Chủ trì cuộc họp</strong></td>
+<td>Lê Tấn Dũng</td>
+</tr>
+<tr>
+<td><strong>Thư ký ghi chép</strong></td>
+<td>Lê Tấn Dũng</td>
+</tr>
+<tr>
+<td><strong>Mục đích chính</strong></td>
+<td>Lên kế hoạch chia repository, chọn phương pháp & phần mềm quản lý, thống nhất kiến trúc công nghệ và kế hoạch chốt đề tài</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>1. Thành phần tham dự</h2>
+<table><thead><tr>
+<th>STT</th>
+<th>Họ và tên</th>
+<th>Vai trò dự kiến</th>
+<th>Trạng thái tham dự</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Lê Tấn Dũng</td>
+<td>Thành viên nhóm</td>
+<td>Có mặt</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Võ Nguyễn Việt Hoàng</td>
+<td>Thành viên nhóm</td>
+<td>Có mặt</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Võ Minh Khoa</td>
+<td>Thành viên nhóm</td>
+<td>Có mặt</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Đỗ Chí Cao</td>
+<td>Thành viên nhóm</td>
+<td>Có mặt</td>
+</tr>
+</tbody></table>
+<li><strong>Tổng số thành viên:</strong> 4/4 (Tỷ lệ tham dự: 100%).</li>
+<hr>
+<h2>2. Mục tiêu cuộc họp</h2>
+<p>1. Thống nhất chiến lược tổ chức và phân chia kho lưu trữ mã nguồn (Repository Structure).</p>
+<p>2. Lựa chọn phương pháp luận phát triển phần mềm và phần mềm quản lý tiến độ.</p>
+<p>3. Thống nhất mô hình ứng dụng và khung công nghệ (Tech Stack) cốt lõi.</p>
+<p>4. Lập kế hoạch và thời hạn chốt ý tưởng đề tài đồ án môn học.</p>
+<p>5. Thống nhất khung thời gian triển khai đồ án (dự kiến trong 8 tuần).</p>
+<hr>
+<h2>3. Nội dung thảo luận & Quyết định</h2>
+<h3>3.1. Phân chia cấu trúc Repository</h3>
+<p>Nhóm đã xem xét các phương án quản lý mã nguồn và thống nhất mô hình phân tách theo thành phần (Component-based Repositories) có liên kết qua một Repository cha:</p>
+<li><strong>Các repository con:</strong></li>
+<li><code>FE (Frontend Repo)</code>: Quản lý toàn bộ mã nguồn giao diện người dùng, cấu hình build và assets của phía client.</li>
+<li><code>BE (Backend Repo)</code>: Quản lý mã nguồn API, logic nghiệp vụ, cấu hình kết nối cơ sở dữ liệu và migrations.</li>
+<li><code>Docs (Documentation Repo)</code>: Quản lý toàn bộ tài liệu môn học, báo cáo tiến độ tuần, biên bản họp, tài liệu phân tích thiết kế và file đặc tả.</li>
+<li><strong>Repository cha (Parent / Meta Repo):</strong></li>
+<li>Bao bọc và liên kết cả 3 repo con (<code>FE</code>, <code>BE</code>, <code>Docs</code>) theo cơ chế Git Submodules hoặc cấu trúc lồng nhau (nested repo).</li>
+<li>Đóng vai trò làm đầu mối điều phối, quản lý tổng thể tiến độ và tài liệu chung của đồ án.</li>
+<h3>3.2. Phương pháp luận & Phần mềm quản lý dự án</h3>
+<li><strong>Phương pháp quản lý:</strong> Áp dụng mô hình <strong>Scrum</strong> (Agile). Nhóm sẽ vận hành theo các Sprint ngắn hạn tương ứng với từng mốc báo cáo tuần, duy trì họp định kỳ để rà soát backlog và giao việc.</li>
+<li><strong>Phần mềm quản trị:</strong> Sử dụng <strong>Jira Software</strong> để khởi tạo dự án Scrum, quản lý Product Backlog, lập kế hoạch Sprint, chia nhỏ User Stories thành các Task cụ thể và theo dõi tiến độ từng thành viên.</li>
+<h3>3.3. Phương án thực thi & Khung công nghệ (Tech Stack)</h3>
+<li><strong>Mô hình hệ thống:</strong> Xây dựng ứng dụng web (<strong>Web Application</strong>).</li>
+<li><strong>Quy trình kỹ thuật ban đầu:</strong> Bắt đầu xác định và tổng hợp các yêu cầu kỹ thuật (Requirements Engineering) ngay sau khi chọn đề tài.</li>
+<li><strong>Công nghệ cốt lõi:</strong></li>
+<li><strong>Frontend:</strong> <code>Next.js</code> (React framework hỗ trợ server-side rendering, routing mạnh mẽ, hiệu năng cao).</li>
+<li><strong>Backend:</strong> <code>NestJS</code> (Node.js framework theo kiến trúc module, hỗ trợ TypeScript và Dependency Injection rõ ràng).</li>
+<li><strong>Cơ sở dữ liệu (Database):</strong> <code>PostgreSQL</code> (Hệ quản trị CSDL quan hệ chuẩn mực, đảm bảo tính toàn vẹn và mở rộng dữ liệu).</li>
+<h3>3.4. Kế hoạch chốt ý tưởng đề tài (Project Idea)</h3>
+<li><strong>Tình trạng:</strong> Tại buổi họp ngày 12/10/2026, nhóm đã thảo luận một số định hướng nhưng <strong>chưa chốt đề tài chính thức</strong>.</li>
+<li><strong>Kế hoạch:</strong> Mỗi thành viên chủ động nghiên cứu và chuẩn bị tối thiểu 1 đề xuất ý tưởng bài toán thực tế phù hợp với mô hình Web App và yêu cầu môn học.</li>
+<li><strong>Hạn chót thống nhất (Deadline):</strong> Chậm nhất trước <strong>20:00 - Thứ Tư, ngày 14/10/2026</strong>.</li>
+<h3>3.5. Kế hoạch thời gian thực hiện đồ án</h3>
+<li><strong>Tổng thời gian dự kiến:</strong> Đồ án có thời lượng thực hiện dự kiến trong <strong>8 tuần</strong> (tính từ thời điểm công bố đề bài đến khi hoàn thiện sản phẩm).</li>
+<li><strong>Định hướng phân bổ theo Scrum:</strong></li>
+<li>Nhóm sẽ tổ chức các chu kỳ Sprint từ 1 - 2 tuần bám sát các đợt nộp thành phẩm của môn học (Proposal $\rightarrow$ SRS $\rightarrow$ Design $\rightarrow$ Implementation $\rightarrow$ Testing & Final Deliverable).</li>
+<li>Khung thời gian 8 tuần đòi hỏi nhóm phải kiểm soát chặt chẽ phạm vi tính năng ($\le 5$ tính năng chính) để đảm bảo hoàn thành việc lập trình và kiểm thử đúng tiến độ.</li>
+<hr>
+<h2>4. Kế hoạch hành động tiếp theo (Action Items)</h2>
+<table><thead><tr>
+<th>STT</th>
+<th>Đầu việc</th>
+<th>Người phụ trách</th>
+<th>Hạn chót (Deadline)</th>
+<th>Trạng thái</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Chuẩn bị 1 - 2 ý tưởng đề tài phần mềm cụ thể</td>
+<td>Cả 4 thành viên</td>
+<td>20:00, 14/10/2026</td>
+<td>Đang tiến hành</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Họp nhóm biểu quyết chọn đề tài chính thức & phân chia vai trò (Leader, FE, BE, QA)</td>
+<td>Cả 4 thành viên</td>
+<td>Tối 14/10/2026</td>
+<td>Chờ thực hiện</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Khởi tạo dự án Scrum trên Jira Software và mời các thành viên tham gia</td>
+<td>Lê Tấn Dũng</td>
+<td>15/10/2026</td>
+<td>Chờ thực hiện</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Thiết lập cấu trúc các repository trên GitHub (Parent repo, FE, BE, Docs)</td>
+<td>Cả nhóm</td>
+<td>16/10/2026</td>
+<td>Chờ thực hiện</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. Xác nhận cuộc họp</h2>
+<li><strong>Thời gian kết thúc:</strong> 22:00 cùng ngày (12/10/2026).</li>
+<li><strong>Kết quả biểu quyết:</strong> 4/4 thành viên (100%) tham dự đã thống nhất toàn bộ các nội dung và quyết định trong biên bản này.</li>
+<li><strong>Ghi chú cập nhật:</strong> Nhóm sẽ cập nhật bổ sung vai trò chi tiết và đề tài chính thức sau buổi họp chốt ý tưởng vào ngày 14/10/2026.</li>
+</body>
+</html>

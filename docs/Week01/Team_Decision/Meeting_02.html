@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biên bản Họp nhóm Số 02 (Meeting Minutes 02)</title>
+  <!-- MathJax for formulas -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Mermaid.js for Diagrams -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+  </script>
+  <style>
+
+:root {
+  --color-primary: #0969da;
+  --color-text: #24292f;
+  --color-bg: #ffffff;
+  --color-border: #d0d7de;
+  --color-subtle-bg: #f6f8fa;
+  --color-muted: #57606a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #58a6ff;
+    --color-text: #c9d1d9;
+    --color-bg: #0d1117;
+    --color-border: #30363d;
+    --color-subtle-bg: #161b22;
+    --color-muted: #8b949e;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.65;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+h1, h2, h3, h4 {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.3em;
+}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+p, ul, ol { margin-top: 0.5em; margin-bottom: 1em; }
+li { margin-bottom: 0.3em; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
+th, td {
+  border: 1px solid var(--color-border);
+  padding: 10px 14px;
+  text-align: left;
+}
+th {
+  background-color: var(--color-subtle-bg);
+  font-weight: 600;
+}
+tr:nth-child(even) {
+  background-color: var(--color-subtle-bg);
+}
+blockquote {
+  border-left: 4px solid var(--color-primary);
+  margin: 1em 0;
+  padding: 8px 16px;
+  background-color: var(--color-subtle-bg);
+  color: var(--color-muted);
+  border-radius: 0 4px 4px 0;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  background-color: var(--color-subtle-bg);
+  border: 1px solid var(--color-border);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 85%;
+}
+pre code {
+  display: block;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 90%;
+  border-radius: 6px;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--color-border);
+  margin: 2em 0;
+}
+@media print {
+  body { max-width: 100%; margin: 0; padding: 20mm; background: #fff; color: #000; }
+  h1, h2, h3 { color: #000; }
+  table, tr, td, th { border-color: #999; }
+}
+
+  </style>
+</head>
+<body>
+  <h1>BIÊN BẢN HỌP NHÓM SỐ 02</h1>
+<table><thead><tr>
+<th>Thông tin cuộc họp</th>
+<th>Chi tiết</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Dự án</strong></td>
+<td>Đồ án Nhập môn Công nghệ Phần mềm</td>
+</tr>
+<tr>
+<td><strong>Thời gian</strong></td>
+<td>20:00 – 21:30, Thứ Tư, ngày 14/10/2026</td>
+</tr>
+<tr>
+<td><strong>Hình thức / Địa điểm</strong></td>
+<td>Trực tuyến qua Google Meet</td>
+</tr>
+<tr>
+<td><strong>Chủ trì cuộc họp</strong></td>
+<td>Lê Tấn Dũng</td>
+</tr>
+<tr>
+<td><strong>Thư ký ghi chép</strong></td>
+<td>Lê Tấn Dũng</td>
+</tr>
+<tr>
+<td><strong>Mục đích chính</strong></td>
+<td>Báo cáo ý tưởng đề tài, biểu quyết chọn đề tài chính thức và phân công vai trò trách nhiệm các thành viên</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>1. Thành phần tham dự</h2>
+<table><thead><tr>
+<th>STT</th>
+<th>Họ và tên</th>
+<th>Vai trò phân công chính thức</th>
+<th>Trạng thái tham dự</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Lê Tấn Dũng</td>
+<td>Trưởng nhóm (Leader) / AI Lead</td>
+<td>Có mặt</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Võ Nguyễn Việt Hoàng</td>
+<td>Frontend Developer / UI Lead</td>
+<td>Có mặt</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Võ Minh Khoa</td>
+<td>Backend Developer</td>
+<td>Có mặt</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Đỗ Chí Cao</td>
+<td>Database Administrator & QA/QC Lead</td>
+<td>Có mặt</td>
+</tr>
+</tbody></table>
+<li><strong>Tổng số thành viên:</strong> 4/4 (Tỷ lệ tham dự: 100%).</li>
+<hr>
+<h2>2. Mục tiêu cuộc họp</h2>
+<p>1. Lắng nghe đề xuất ý tưởng đề tài từ các thành viên (theo hạn chót 20:00 ngày 14/10 đã giao tại [Meeting_01.md](./Meeting_01.md)).</p>
+<p>2. Phân tích ưu/nhược điểm, tính khả thi và biểu quyết chọn 01 đề tài chính thức cho đồ án môn học.</p>
+<p>3. Thống nhất phân chia vai trò và trách nhiệm cụ thể của từng thành viên trong nhóm.</p>
+<p>4. Xác định phạm vi 5 phân hệ kỹ thuật ban đầu để phục vụ việc lập Kế hoạch triển khai chi tiết.</p>
+<hr>
+<h2>3. Nội dung thảo luận & Quyết định</h2>
+<h3>3.1. Đánh giá các đề xuất đề tài & Biểu quyết</h3>
+<p>Các thành viên đã trình bày các hướng tiếp cận bài toán:</p>
+<li><em>Ý tưởng 1:</em> Sàn đấu giá nông sản trực tuyến (khó kiểm chứng thực tế và thiếu tính ứng dụng cho sinh viên).</li>
+<li><em>Ý tưởng 2:</em> Hệ thống quản lý và chăm sóc sức khỏe cá nhân (phạm vi rộng, rủi ro về độ chính xác dữ liệu y tế).</li>
+<li><em>Ý tưởng 3:</em> <strong>Nền tảng Tối ưu CV, Mô phỏng Phỏng vấn Kỹ thuật AI & Săn việc làm IT cho Intern/Fresher (JobSeeker AI).</strong></li>
+<p>👉 <strong>Kết quả biểu quyết:</strong> 4/4 thành viên (100% đồng thuận) quyết định chọn đề tài: <strong>JobSeeker AI</strong>.</p>
+<p><em>Lý do:</em> Giải quyết trực tiếp nhu cầu cấp thiết của sinh viên IT khi tìm việc thực tập; kết hợp hài hòa giữa phát triển Web Application chuẩn mực (<code>Next.js</code> + <code>NestJS</code> + <code>PostgreSQL</code>) và ứng dụng công nghệ GenAI (<code>Gemini API</code>) đúng định hướng môn học.</p>
+<h3>3.2. Phân công vai trò & Trách nhiệm nhóm (RACI)</h3>
+<li><strong>Lê Tấn Dũng (Leader / AI Lead):</strong></li>
+<li>Quản trị dự án tổng thể, điều phối Sprint trên Jira Scrum.</li>
+<li>Phụ trách tích hợp Google Gemini API, xây dựng Social Post AI Classifier Service.</li>
+<li>Chủ trì soạn thảo tài liệu kỹ thuật môn học (Proposal, SRS, SDD, Final Report).</li>
+<li><strong>Võ Nguyễn Việt Hoàng (Frontend Dev / UI Lead):</strong></li>
+<li>Thiết kế giao diện Figma cho 5 phân hệ người dùng.</li>
+<li>Lập trình Web Client trên Next.js 14, module CV Builder (PDF text layer) và giao diện Audio Interview.</li>
+<li><strong>Võ Minh Khoa (Backend Dev):</strong></li>
+<li>Xây dựng hệ thống REST API, Authentication JWT trên NestJS.</li>
+<li>Phát triển module Auto Email Dispatcher gửi CV qua SMTP (Nodemailer) kèm Rate Limiting.</li>
+<li><strong>Đỗ Chí Cao (Database & QA/QC Lead):</strong></li>
+<li>Thiết kế và quản trị cơ sở dữ liệu quan hệ PostgreSQL (Schema migrations, Indexing).</li>
+<li>Thiết kế Test Cases, thực hiện kiểm thử tự động (Jest) và kiểm thử chất lượng hệ thống (QA/QC).</li>
+<h3>3.3. Thống nhất 5 Phân hệ Kỹ thuật Cốt lõi</h3>
+<p>Nhóm đã thống nhất phạm vi chức năng của hệ thống gồm 5 phân hệ:</p>
+<p>1. <strong>CV Builder & SeekerBot:</strong> Tạo CV chuẩn ATS layout 1 cột, xuất PDF text layer 100%, chatbot gợi ý viết đạn mô tả dự án theo chuẩn Google XYZ / STAR.</p>
+<p>2. <strong>Real-time Voice AI Technical Mock Interview:</strong> Phỏng vấn kỹ thuật 1:1 bằng giọng nói với AI Tech Lead, chấm 3 tiêu chí: <em>Kiến thức nền tảng, Tư duy giải quyết vấn đề, Diễn đạt kỹ thuật</em>.</p>
+<p>3. <strong>Automated & Assisted Job Application Dispatcher:</strong> Soạn Cover Letter cá nhân hóa bám sát JD và nộp hồ sơ an toàn qua email HR trực tiếp (SMTP).</p>
+<p>4. <strong>Job Aggregator & Market Skills Gap Analysis Dashboard:</strong> Thu thập tin việc làm, đối sánh kỹ năng và phân tích lộ trình bù đắp lỗ hổng kỹ năng cho sinh viên.</p>
+<p>5. <strong>Early Career Radar (Social Job Alert):</strong> Quét bài đăng Fanpage/LinkedIn của các công ty công nghệ (VNG, Bosch, NAB, Maven...), dùng LLM phân loại giữ lại tin Intern/Fresher và trích xuất hạn nộp.</p>
+<blockquote><p>📎 <strong>Tài liệu Kế hoạch Triển khai Chi tiết (Implementation Plan Reference):</strong></p></blockquote>
+<blockquote><p>- <strong>Bản Markdown nội bộ:</strong> [JobSeeker_Implementation_Plan.md](./Material/JobSeeker_Implementation_Plan.md) ⏐ <strong>Bản gốc Google Drive:</strong> [Xem trên Google Drive](https://drive.google.com/file/d/1s8uYv3yBGpx7TyCsTtIVSbNTrC8LbDbY/view)</p></blockquote>
+<blockquote><p>- <strong>Bản HTML Visualization:</strong> [JobSeeker_Implementation_Plan.html](./Material/JobSeeker_Implementation_Plan.html) ⏐ <strong>Bản gốc Google Drive:</strong> [Xem trên Google Drive](https://drive.google.com/file/d/1eLih_N3dm8BvZAxLCbiSyRzQsOIz-I3H/view)</p></blockquote>
+<blockquote><p>- <strong>Thư mục lưu trữ Google Drive của nhóm:</strong> [CNPM Team Drive Folder](https://drive.google.com/drive/folders/12e0__KnGQOQayRmNEWwYPrq-0ErlqGph)</p></blockquote>
+<hr>
+<h2>4. Kế hoạch hành động tiếp theo (Action Items)</h2>
+<table><thead><tr>
+<th>STT</th>
+<th>Đầu việc cụ thể</th>
+<th>Người phụ trách</th>
+<th>Hạn chót (Deadline)</th>
+<th>Trạng thái</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Soạn thảo Kế hoạch Triển khai Chi tiết ([JobSeeker_Implementation_Plan.md](./Material/JobSeeker_Implementation_Plan.md) ⏐ [Bản Drive](https://drive.google.com/file/d/1s8uYv3yBGpx7TyCsTtIVSbNTrC8LbDbY/view))</td>
+<td>Lê Tấn Dũng</td>
+<td>15/10/2026</td>
+<td>Hoàn thành</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Khởi tạo bảng Jira Scrum Board và nhập Backlog ban đầu</td>
+<td>Lê Tấn Dũng</td>
+<td>15/10/2026</td>
+<td>Hoàn thành</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Khởi tạo cấu trúc các repository (<code>FE</code>, <code>BE</code>, <code>Docs</code>) trên GitHub</td>
+<td>Cả 4 thành viên</td>
+<td>16/10/2026</td>
+<td>Đang thực hiện</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Soạn thảo bản Đề xuất đồ án đợt 1 ([Project_Proposal.md](../../Week02/)) chuẩn 5 phần</td>
+<td>Lê Tấn Dũng & Nhóm</td>
+<td>19/10/2026</td>
+<td>Chờ thực hiện</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. Xác nhận cuộc họp</h2>
+<li><strong>Thời gian kết thúc:</strong> 21:30 cùng ngày (14/10/2026).</li>
+<li><strong>Kết quả xác nhận:</strong> Toàn bộ 4 thành viên nhóm đã thống nhất và cam kết thực hiện đúng trách nhiệm được phân công trong biên bản này.</li>
+</body>
+</html>

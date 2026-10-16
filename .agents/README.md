@@ -15,6 +15,7 @@ Hiện tại dự án đã trang bị **5 kỹ năng chuyên biệt** được �
 | **3** | **`anti-ai-fluff`** | [./skills/anti-ai-fluff/SKILL.md](./skills/anti-ai-fluff/SKILL.md) | Khi rà soát, kiểm tra văn phong tài liệu kỹ thuật trước khi nộp. | Cung cấp danh sách từ cấm (Blacklist) và checklist loại bỏ triệt để dấu hiệu AI Writing sáo rỗng để tránh bị trừ điểm nặng. |
 | **4** | **`md-to-html-exporter`** | [./skills/md-to-html-exporter/SKILL.md](./skills/md-to-html-exporter/SKILL.md) | Khi cần chuyển đổi bài nộp từ Markdown sang HTML visualization. | Hướng dẫn chuyển đổi và cung cấp script Python `./skills/md-to-html-exporter/scripts/render_md_to_html.py` để xuất HTML tự động. |
 | **5** | **`project-utility`** | [./skills/project-utility/SKILL.md](./skills/project-utility/SKILL.md) | Khi thao tác với file, tạo liên kết, định dạng bảng biểu hoặc đồng bộ tiến độ. | Thực thi quy tắc vàng: **Ưu tiên đường dẫn tương đối (relative paths)**, chuẩn hóa đặt tên file và cập nhật timeline. |
+| **6** | **`drive-sync`** | [./skills/drive-sync/SKILL.md](./skills/drive-sync/SKILL.md) | Khi cần đồng bộ Drive, kéo biên bản họp hoặc tài liệu nhóm mới. | Tự động hóa luồng 2 bước: `git pull origin` $\rightarrow$ tải file mới từ Google Drive về [docs/Week01/](../docs/Week01/) và tóm tắt, review. |
 
 ---
 
@@ -40,6 +41,7 @@ Mọi tài liệu, liên kết và tham chiếu bên trong thư mục `.agents/`
 
 Thư mục `./rules/` chứa các quy tắc bắt buộc áp dụng trong toàn bộ vòng đời phát triển:
 
+- **[drive-sync-workflow.md](./rules/drive-sync-workflow.md):** Quy định AI **chủ động nhắc nhở đồng bộ Drive** khi bắt đầu làm tài liệu, và **bắt buộc chạy `git pull` trước khi kéo file từ Drive** để tránh xung đột giữa các thành viên.
 - **[pre-commit-workflow.md](./rules/pre-commit-workflow.md):** Quy định AI **phải tự động finalize docs & skills** trước khi thực hiện commit. Các bước bao gồm:
   1. Đồng bộ `docs/WEEKLY_TIMELINE.md`.
   2. Cập nhật `README.md` của `.agents/` nếu có kỹ năng mới.

@@ -79,3 +79,5 @@ yarn-error.log*
 .env.local
 .env.*.local
 *.log
+DungLe
+.sync_manifest.json

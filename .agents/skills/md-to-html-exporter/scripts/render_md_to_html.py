@@ -112,14 +112,42 @@ def simple_markdown_to_html(md_text):
     except ImportError:
         pass
         
+    # Check for fenced code blocks including mermaid
+    # Replace ```mermaid ... ``` with <pre class="mermaid">...</pre>
+    def replace_code_blocks(match):
+        lang = match.group(1).strip().lower() if match.group(1) else ''
+        code = match.group(2)
+        if lang == 'mermaid':
+            return f'<div class="mermaid-container" style="background:#fff;padding:16px;border-radius:8px;border:1px solid var(--color-border);margin:20px 0;text-align:center;"><pre class="mermaid">{code.strip()}</pre></div>'
+        else:
+            escaped_code = code.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+            return f'<pre><code>{escaped_code.strip()}</code></pre>'
+
+    # Process fenced code blocks before splitting lines
+    code_block_pattern = r'```([a-zA-Z0-9_-]*)\n(.*?)```'
+    placeholders = {}
+    
+    def save_block(m):
+        idx = f"__CODE_BLOCK_{len(placeholders)}__"
+        placeholders[idx] = replace_code_blocks(m)
+        return idx
+        
+    md_text = re.sub(code_block_pattern, save_block, md_text, flags=re.DOTALL)
+
     lines = md_text.split('\n')
     html_lines = []
     in_table = False
-    table_headers = []
     
     for line in lines:
         stripped = line.strip()
         
+        if stripped in placeholders:
+            if in_table:
+                html_lines.append("</tbody></table>")
+                in_table = False
+            html_lines.append(placeholders[stripped])
+            continue
+            
         # Headers
         if stripped.startswith('# '):
             html_lines.append(f"<h1>{stripped[2:]}</h1>")
@@ -189,6 +217,11 @@ def render_file(input_path):
   <!-- MathJax for formulas -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Mermaid.js for Diagrams -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({{ startOnLoad: true, theme: 'default', securityLevel: 'loose' }});
+  </script>
   <style>
 {CSS_STYLE}
   </style>

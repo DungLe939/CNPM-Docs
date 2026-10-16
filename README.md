@@ -23,14 +23,34 @@ CNPM-Docs/
 ├── docs/                               # Toàn bộ tài liệu đồ án
 │   ├── PROJECT_CONTEXT.md              # Bối cảnh & quy chế môn học
 │   ├── WEEKLY_TIMELINE.md              # Nhật ký tiến độ từng tuần
-│   ├── Week01/                         # Tài liệu, đề bài mẫu & biên bản tuần 1
+│   ├── Week01/                         # Kế hoạch chi tiết, tài liệu & biên bản tuần 1
 │   └── Week02/                         # Chuẩn bị Project Proposal đợt 1
-└── .agents/                            # Trung tâm vận hành AI
+└── .agents/                            # Trung tâm vận hành AI & Tự động hóa
     ├── README.md                       # Danh mục kỹ năng AI (Skills Catalog)
-    ├── rules/                          # Quy tắc ứng xử (Pre-commit workflow...)
-    ├── scripts/                        # Scripts tự động hóa kiểm tra
+    ├── rules/                          # Quy tắc ứng xử (Drive-sync, Pre-commit workflow...)
+    ├── scripts/                        # Scripts tự động hóa (sync_drive.py, sync.sh...)
     └── skills/                         # Các kỹ năng chuyên biệt cho AI
 ```
+
+---
+
+## 🔄 Hướng dẫn Đồng bộ Tài liệu (Dành cho Thành viên Nhóm)
+
+Thư mục Google Drive chung của nhóm được đồng bộ trực tiếp vào tài liệu tuần hiện tại (mặc định [docs/Week01/](./docs/Week01/)).
+
+### Cách 1: Chạy 1 Lệnh Tắt trong Terminal (Khuyên dùng cho cả nhóm)
+Chỉ cần mở Terminal tại thư mục dự án và chạy:
+```bash
+./.agents/scripts/sync.sh
+```
+Lệnh này sẽ tự động:
+1. Chạy `git pull origin` để lấy các commit mới nhất từ đồng đội trên GitHub.
+2. Quét và tải các biên bản họp/tài liệu mới nhất từ Google Drive về `docs/Week01/` (không tải lại các file đã có).
+
+### Cách 2: Nhờ AI thực hiện
+Nếu làm việc trong IDE cùng AI, chỉ cần nhắn:
+> *"Cập nhật Drive đi"* hoặc *"Sync drive"*
+AI sẽ tự động thực hiện cả 2 bước trên, đọc lướt các tài liệu mới và tự động tóm tắt, review chuyên sâu cho bạn.
 
 ---
 

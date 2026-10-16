@@ -48,3 +48,15 @@ Skill này đóng vai trò là cẩm nang tiện ích và chuẩn mực thao tá
 Khi tạo mới một bài nộp hoặc hoàn thành một mốc công việc:
 1. Kiểm tra và cập nhật trạng thái tương ứng trong file `docs/WEEKLY_TIMELINE.md`.
 2. Đảm bảo file mới được tham chiếu bằng đường dẫn tương đối từ tài liệu tuần hoặc tài liệu tổng quan.
+
+---
+
+## 5. Quy chuẩn Liên kết Kép (Dual-Linking: Local Relative Link + Cloud Source Link)
+
+> **"Tài liệu nội bộ trích dẫn file có nguồn gốc từ đám mây (Google Drive, Notion, Figma...) bắt buộc phải cung cấp song song cả đường dẫn tương đối nội bộ và liên kết nguồn trực tuyến."**
+
+- **Mục đích:** Đảm bảo vừa duyệt được offline trong Git repo, vừa cung cấp nguồn cloud chính thống để đối soát hoặc cho giảng viên chấm điểm trực tiếp.
+- **Cấu trúc chuẩn:**
+  * `[Tên_tài_liệu.md](./đường_dẫn_tương_đối.md) ⏐ [Bản gốc Google Drive](https://drive.google.com/file/d/.../view)`
+  * Ví dụ: `[JobSeeker_Implementation_Plan.md](./JobSeeker_Implementation_Plan.md) ⏐ [Xem trên Google Drive](https://drive.google.com/file/d/1s8uYv3yBGpx7TyCsTtIVSbNTrC8LbDbY/view)`
+- **Áp dụng:** Mọi biên bản họp, tài liệu phân tích hoặc báo cáo tuần khi nhắc đến sản phẩm/tài liệu đồng bộ từ Drive phải tuân thủ định dạng này.

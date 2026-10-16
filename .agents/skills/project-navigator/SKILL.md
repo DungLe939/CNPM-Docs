@@ -24,17 +24,17 @@ Project/
 │   ├── PROJECT_CONTEXT.md      # Tổng quan dự án, môn học & quy định GV
 │   ├── WEEKLY_TIMELINE.md      # Nhật ký tiến độ từng tuần
 │   ├── Week01/                 # Tài liệu & hoạt động tuần 1
-│   │   ├── text1.md            # Thông báo chính thức từ GVTH Thầy nndkhoa
+│   │   ├── Material/           # Thông báo & tài liệu từ GVTH Thầy nndkhoa
 │   │   ├── Problem_example/    # Các bài toán đặc tả mẫu (Sàn đấu giá, Health monitor)
-│   │   │   ├── Problem_example_01.md & _raw.md
-│   │   │   └── Problem_example_02.md & _raw.md
-│   │   └── Team_Decision_01/   # Biên bản họp nhóm, ý tưởng đề tài tuần 1
+│   │   └── Team_Decision/      # Quyết định, biên bản họp & tài liệu nhóm
+│   │       ├── Meeting_01.md & Meeting_02.md
+│   │       └── Material/       # Kế hoạch triển khai (JobSeeker_Implementation_Plan.md & .html)
 │   └── Week02/ (Sắp tới)       # Đợt nộp Proposal đợt 1
 └── .agents/
     ├── README.md               # Mô tả tổng quan & danh mục tất cả skills, rules
-    ├── rules/                  # Quy tắc ứng xử bắt buộc (Pre-commit workflow...)
-    ├── scripts/                # Script tự động hóa (Pre-commit check hook...)
-    └── skills/                 # Hệ thống kỹ năng hỗ trợ đồ án
+    ├── rules/                  # Quy tắc ứng xử bắt buộc (Drive-sync, Pre-commit workflow...)
+    ├── scripts/                # Scripts tự động hóa (sync_drive.py, sync.sh, pre_commit_check.sh)
+    └── skills/                 # Hệ thống kỹ năng hỗ trợ đồ án (drive-sync, project-navigator...)
 ```
 
 ## 3. Quy tắc Định vị & Đặt tên File
