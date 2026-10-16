@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "davidanson.vscode-markdownlint",
+    "bierner.markdown-preview-github-styles",
+    "eamodio.gitlens"
+  ]
+}

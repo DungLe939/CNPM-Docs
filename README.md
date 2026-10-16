@@ -38,16 +38,23 @@ CNPM-Docs/
 
 Thư mục Google Drive chung của nhóm được đồng bộ trực tiếp vào tài liệu tuần hiện tại (mặc định [docs/Week01/](./docs/Week01/)).
 
-### Cách 1: Chạy 1 Lệnh Tắt trong Terminal (Khuyên dùng cho cả nhóm)
+### Cách 1: Tự động 100% khi Mở VS Code / Cursor (Zero-effort)
+Repo đã được cài sẵn tính năng tự động chạy ngầm:
+- **Khi vừa mở thư mục dự án:** Tự động chạy `git pull --rebase --autostash origin main` để cập nhật tài liệu mới nhất từ đồng đội mà không làm gián đoạn hay mất các dòng bạn đang viết dở.
+- **Trong khi làm việc:** Cứ mỗi 2 phút, editor sẽ tự động kiểm tra xem có ai vừa push tài liệu mới lên GitHub không và hiển thị thông báo dưới thanh Status Bar.
+
+> 💡 **Lưu ý lần đầu:** Nếu VS Code hiện thông báo *"Allow Automatic Tasks in Folder"*, hãy bấm **Allow and Run** để kích hoạt.
+
+### Cách 2: Chạy 1 Lệnh Tắt trong Terminal (Đồng bộ cả Git lẫn Google Drive)
 Chỉ cần mở Terminal tại thư mục dự án và chạy:
 ```bash
 ./.agents/scripts/sync.sh
 ```
 Lệnh này sẽ tự động:
 1. Chạy `git pull origin` để lấy các commit mới nhất từ đồng đội trên GitHub.
-2. Quét và tải các biên bản họp/tài liệu mới nhất từ Google Drive về `docs/Week01/` (không tải lại các file đã có).
+2. Quét và tải các biên bản họp/tài liệu mới nhất từ Google Drive về đúng thư mục tuần tương ứng (không tải lại các file đã có).
 
-### Cách 2: Nhờ AI thực hiện
+### Cách 3: Nhờ AI thực hiện
 Nếu làm việc trong IDE cùng AI, chỉ cần nhắn:
 > *"Cập nhật Drive đi"* hoặc *"Sync drive"*
 AI sẽ tự động thực hiện cả 2 bước trên, đọc lướt các tài liệu mới và tự động tóm tắt, review chuyên sâu cho bạn.
