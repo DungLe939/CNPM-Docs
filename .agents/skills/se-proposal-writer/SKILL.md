@@ -68,15 +68,18 @@ Lựa chọn mô hình phát triển rõ ràng (**Scrum (Agile)** theo chu kỳ 
 - Bảng tổng hợp lộ trình phát triển tập trung vào tiến độ các tuần và thành phẩm có thể kiểm chứng được (Deliverables). Ước lượng công số (Man-Hours) không để rải rác trong từng Sprint mà được gom quản lý tập trung ở mục Kế hoạch Nhân sự & Chi phí để tránh làm loãng bức tranh phát triển kỹ thuật.
 
 #### ⚠️ QUY TẮC CỐT LÕI: DIỄN ĐẠT TRỰC QUAN & THÂN THIỆN CHO NGƯỜI NGOÀI NGÀNH (NON-TECH & ONBOARDING-FRIENDLY)
-1. **Không liệt kê tên file cộc lốc (No Raw Filename Drops):**
-   - Tuyệt đối không chỉ ghi tên tệp mã nguồn hoặc tài liệu (ví dụ: `Project_Proposal.md`, `SRS.md`, `Meeting_01.md`, `Test_Report.md`...) như một đầu mục thành phẩm mà không có lời giải thích.
-   - Giảng viên, người chấm điểm hoặc các bên liên quan phi kỹ thuật (non-tech) sẽ không hiểu một tên file viết tắt có ý nghĩa gì và chứa nội dung gì.
-   - **Phải mô tả bản chất thành phẩm:** Nêu rõ tên sản phẩm nghiệp vụ, giải thích tóm tắt nội dung chính và giá trị thực tế của nó (nếu có tên file kỹ thuật thì để trong ngoặc kèm link tham chiếu, nhưng phần mô tả nghiệp vụ phải đứng trước và là trọng tâm).
-   - *Ví dụ sai:* `* Hồ sơ đề xuất đồ án: Project_Proposal.md và Project_Proposal.html.`
-   - *Ví dụ chuẩn:* `* Bộ hồ sơ đề xuất đồ án (Project Proposal): Tài liệu toàn diện trình bày bối cảnh bài toán tuyển dụng, khảo sát khó khăn của sinh viên IT, giải pháp 5 phân hệ công nghệ, kiến trúc kỹ thuật Client - Server và kế hoạch 4 Sprint (8 tuần) kèm phân bổ nhân sự.`
+1. **Không liệt kê tên file cộc lốc & Không lạm dụng từ viết tắt bí hiểm (No Raw Filenames & Cryptic Acronyms like SRS, SDD):**
+   - Tuyệt đối không chỉ ghi tên tệp mã nguồn hoặc tài liệu (ví dụ: `Project_Proposal.md`, `SRS.md`, `Meeting_01.md`, `Test_Report.md`...) như một đầu mục thành phẩm.
+   - **Tuyệt đối không lạm dụng các từ viết tắt kỹ thuật như SRS, SDD:** Người đọc ngoài ngành (non-tech) hoặc thành viên mới nhìn vào sẽ không hiểu "SRS là gì?", "SDD là gì?".
+   - **Phải mô tả bản chất thành phẩm bằng tiếng Việt rõ ràng, tường minh:**
+     - Thay vì viết `SRS` $\rightarrow$ viết rõ là **"Hồ sơ đặc tả yêu cầu phần mềm"**.
+     - Thay vì viết `SDD` $\rightarrow$ viết rõ là **"Hồ sơ thiết kế kiến trúc phần mềm"**.
+     - Thay vì viết `Test_Report.md` $\rightarrow$ viết rõ là **"Bộ hồ sơ kiểm thử chất lượng phần mềm"**.
+     - Thay vì viết `Project_Proposal.md` $\rightarrow$ viết rõ là **"Hồ sơ đề xuất đồ án hoàn chỉnh"**.
+     - Thay vì viết `Meeting_01.md` $\rightarrow$ viết rõ là **"Biên bản làm việc nhóm"**.
 2. **Ngôn từ trực quan, người mới tham gia dự án đọc vào hiểu ngay:**
    - Tránh dùng từ lóng kỹ thuật nội bộ hoặc viết tắt bí hiểm khi mô tả công việc tuần.
-   - Diễn đạt rõ hành động, mục tiêu và kết quả kỳ vọng để bất kỳ thành viên mới nào tham gia vào nhóm cũng có thể nắm bắt được tiến độ và nhiệm vụ.
+   - Diễn đạt rõ hành động, mục tiêu và kết quả kỳ vọng để bất kỳ ai khi đọc vào cũng nắm bắt được ngay giá trị của sản phẩm.
 3. **Tuyệt đối không tự tiện đưa số liệu chưa chốt hoặc cam kết quá sớm (No Unverified Numbers or Premature Commitments):**
    - **Nghiêm cấm tự bịa hoặc đưa vào tài liệu bất kỳ số liệu cụ thể nào mà nhóm chưa chốt:** Tuyệt đối không tự đưa các con số cứng như chi phí chính xác (*0 VNĐ*), thời gian phản hồi cụ thể (*dưới 1.5s, dưới 200ms*), hoặc các chỉ số hiệu năng chưa qua đo lường thực nghiệm.
    - **Lý do:** Bản Proposal là hồ sơ đề xuất sơ bộ đầu kỳ. Việc đưa vào những con số cam kết tuyệt đối khi chưa có số liệu thực tế sẽ tạo ra rủi ro rất lớn khi nghiệm thu (lỡ khi làm thực tế bị chậm hơn hoặc phát sinh chi phí hạ tầng).
@@ -85,13 +88,14 @@ Lựa chọn mô hình phát triển rõ ràng (**Scrum (Agile)** theo chu kỳ 
 ---
 
 ### Mục 4: Kế hoạch Nhân sự & Chi phí
-- **Cấu trúc nhân sự & Trách nhiệm (RACI):** Phân chia trách nhiệm rõ ràng (Ma trận RACI: Responsible, Accountable, Consulted, Informed hoặc mô hình Scrum).
+- **Cấu trúc nhân sự & Phân công vai trò:** Lập bảng phân công rõ ràng vai trò, nhiệm vụ kỹ thuật và phân hệ phụ trách của từng thành viên bằng tiếng Việt đơn giản, trực quan. Tuyệt đối không tự ý đưa ma trận RACI (A, R, C, I) vào nếu nhóm không sử dụng.
 - **Chi phí nhân sự & Phân bổ công số (Man-Hours Allocation):** 
   - Toàn bộ công số (ví dụ 400 người-giờ) được quản lý tập trung tại đây: Bảng tổng hợp công số 4 Sprint theo thành viên và danh mục chi tiết nhiệm vụ/giờ công của từng thành viên.
+  - ⚠️ **Không đưa tỷ lệ % đóng góp tính theo công số (No % Contribution from Man-Hours):** Giờ công (man-hours) chỉ là con số ước tính tương đối để nhóm phân bổ thời gian qua các Sprint, không phải là thước đo hay căn cứ đánh giá điểm số của từng cá nhân. Tuyệt đối không quy đổi công số thành % đóng góp của thành viên. Luôn đính kèm chú thích làm rõ điều này.
   - Giải thích rõ cơ chế quy đổi công số nội bộ của sinh viên (không phát sinh tiền lương thuê ngoài).
 - **Kế hoạch chi phí dịch vụ & hạ tầng dự kiến:** 
-  - Hạ tầng / Hosting: Ưu tiên gói miễn phí (Free Tier như Vercel, Supabase, Neon) hoặc ước tính chi phí dự kiến.
-  - Tên miền, API AI bên thứ ba (Google AI Studio, Resend...).
+  - Hạ tầng / Hosting: Ưu tiên vận hành trên môi trường máy cục bộ (Localhost qua Docker Compose) hoặc các gói đám mây miễn phí để tiết kiệm tối đa ngân sách đồ án.
+  - Tên miền, API AI bên thứ ba (DeepSeek API, Resend...).
 
 ---
 

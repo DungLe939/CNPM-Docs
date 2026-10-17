@@ -15,7 +15,7 @@ status: "Chính thức phê duyệt"
 > **Trường:** Đại học Khoa học Tự nhiên, ĐHQG-HCM  
 > **GVTH:** Thầy Nguyễn Ngô Duy Khoa (`nndkhoa`)  
 > **Mô hình phát triển:** Scrum (Agile) trong 8 tuần  
-> **Công nghệ cốt lõi:** Next.js 14 + NestJS + PostgreSQL + Google Gemini 1.5 Flash API  
+> **Công nghệ cốt lõi:** Next.js + NestJS + PostgreSQL + DeepSeek API & FastAPI trên Kaggle  
 
 ---
 
@@ -41,15 +41,15 @@ Phát triển nền tảng Web Application toàn diện giúp **sinh viên ngàn
   - Xuất bản file **PDF text layer 100%** (sử dụng thư viện `@react-pdf/renderer`).
 - **Xử lý phía máy chủ (Backend - NestJS):**
   - API quản lý hồ sơ ứng viên (CRUD Resume).
-  - Tích hợp Gemini 1.5 Flash API với Structured JSON Output để trả về các phân tích từ khóa kỹ thuật (Technical Keywords) và gợi ý viết lại mục dự án.
+  - Kết nối với dịch vụ Backend FastAPI mở cổng API từ môi trường Kaggle kết hợp DeepSeek API với Structured JSON Output để phân tích từ khóa kỹ thuật và gợi ý viết lại mục dự án theo chuẩn STAR.
 
 ---
 
 ### Phân hệ 2: Real-time Voice AI Technical Mock Interview (Phỏng vấn Giọng nói 1:1)
 - **Luồng xử lý giọng nói thời gian thực (Low-Latency Voice Pipeline):**
-  1. *Ứng viên nói:* Sử dụng `Web Speech API` & `MediaStream Audio` bắt âm thanh qua microphone trên trình duyệt và chuyển thành văn bản tức thời.
-  2. *AI Tech Lead phản xạ:* Backend gửi context (Chuyên ngành, Cấp độ Intern/Fresher, Lịch sử hỏi - đáp) tới Gemini API; AI đóng vai Tech Lead đưa ra câu hỏi mở hoặc hỏi xoáy (Follow-up) bám sát câu trả lời trước đó.
-  3. *Phát giọng nói AI:* Chuyển câu hỏi của AI thành giọng nói tự nhiên và phát trực tiếp qua loa/tai nghe với độ trễ $< 1.5$s.
+  1. *Ứng viên nói:* Sử dụng microphone trên trình duyệt thu âm thanh câu trả lời và chuyển dữ liệu hội thoại về máy chủ.
+  2. *AI Tech Lead phản xạ:* Backend gửi context (Chuyên ngành, Cấp độ Intern/Fresher, Lịch sử hỏi - đáp) tới dịch vụ FastAPI mở cổng API từ Kaggle kết hợp DeepSeek API, AI đóng vai Tech Lead đưa ra câu hỏi mở hoặc hỏi xoáy (Follow-up) bám sát câu trả lời trước đó.
+  3. *Phát giọng nói AI:* Dùng mô hình AI trên Hugging Face (tích hợp trên dịch vụ FastAPI Kaggle) chuyển câu hỏi của AI thành giọng nói tự nhiên và phát trực tiếp qua loa/tai nghe với độ trễ thấp.
 - **Báo cáo Đánh giá Năng lực theo 3 Tiêu chí Kỹ thuật:**
   1. **Kiến thức Kỹ thuật Nền tảng (Technical Foundations & Correctness):** Kiểm tra độ chính xác về lý thuyết, OOP, cấu trúc dữ liệu & giải thuật, SQL/Database, giao thức mạng và vòng đời framework.
   2. **Tư duy Phân tích & Giải quyết Vấn đề (Problem-Solving & Logical Thinking):** Khả năng tiếp cận bài toán từng bước, phân tích ưu/nhược điểm (trade-offs) và xử lý tình huống phát sinh (edge cases).
@@ -61,14 +61,14 @@ sequenceDiagram
     actor Candidate as Sinh viên IT (Intern/Fresher)
     participant Client as Next.js Web Client (Audio & UI)
     participant Server as NestJS Interview Gateway
-    participant AI as Gemini 1.5 Flash / Audio Pipeline
+    participant AI as FastAPI (Kaggle) / DeepSeek & Hugging Face AI
     participant DB as PostgreSQL
 
     Candidate->>Client: Trả lời câu hỏi qua Micro
-    Client->>Client: Web Speech API bắt giọng nói (Speech-to-Text)
+    Client->>Client: Thu âm giọng nói của ứng viên qua Micro
     Client->>Server: Gửi nội dung trả lời (REST / WebSocket)
     Server->>AI: Gửi Context CV + Chuyên ngành + Lịch sử hội thoại
-    AI-->>Server: Trả về câu hỏi phản xạ tiếp theo & đánh giá tức thời
+    AI-->>Server: Trả về câu hỏi phản xạ tiếp theo & âm thanh từ mô hình AI trên Hugging Face
     Server-->>Client: Trả về text câu hỏi + Stream giọng nói AI (TTS)
     Client->>Candidate: Phát âm thanh Tech Lead qua loa/tai nghe (< 1.5s)
     Note over Candidate,Client: Lặp lại từ 5 đến 7 câu hỏi nền tảng & tình huống
@@ -112,7 +112,7 @@ sequenceDiagram
 flowchart TD
     UserConfig["Sinh viên cấu hình Fanpage/LinkedIn\n(VNG, Bosch, NAB, Maven...)"] --> Worker["Social Feed Worker\n(Quét bài đăng mới định kỳ)"]
     Worker --> RawPosts["Danh sách bài đăng thô"]
-    RawPosts --> AI_Classifier{"AI Classifier\n(Phân loại thông minh bằng LLM)"}
+    RawPosts --> AI_Classifier{"AI Classifier\n(Dịch vụ FastAPI trên Kaggle)"}
     
     AI_Classifier -->|Bài truyền thông / Teambuilding / Senior| Ignore["Bỏ qua (Ignore)"]
     AI_Classifier -->|Tin tuyển dụng Intern / Fresher IT| Extractor["AI Entity Extractor\n(Bóc tách: Vị trí, Deadline, Link nộp)"]
@@ -230,28 +230,22 @@ erDiagram
 | **Week 01** | 12/10 - 18/10 | **Khởi động dự án:** Họp nhóm phân công vai trò, thiết lập 3 repo con (`FE`, `BE`, `Docs`) và repo cha, khởi tạo Jira Scrum board, thống nhất 5 phân hệ bài toán. | - Biên bản họp: `Meeting_01.md`<br>- Không gian Jira Scrum & GitHub Repositories. |
 | **Week 02** | 19/10 - 25/10 | **Đề xuất dự án (Proposal):** Hoàn thiện tài liệu Project Proposal chuẩn 5 phần, chuẩn bị bản kế hoạch chi tiết, loại bỏ văn phong AI Writing. | - `Project_Proposal.md`<br>- `Project_Proposal.html`<br>- `HireUS_Implementation_Plan.md`. |
 | **Week 03** | 26/10 - 01/11 | **Phân tích yêu cầu (SRS):** Đặc tả chi tiết Use Cases cho 5 phân hệ, vẽ sơ đồ Use Case tổng thể, xây dựng Activity Diagrams & Sequence Diagrams cho luồng phỏng vấn và lọc tin AI. | - Tài liệu SRS hoàn chỉnh:<br>`Software_Requirements_Specification.md`. |
-| **Week 04** | 02/11 - 08/11 | **Thiết kế phần mềm (SDD):** Thiết kế kiến trúc module NestJS/Next.js, thiết kế giao diện Figma (5 màn hình chính), thiết kế CSDL PostgreSQL (ERD & Migrations). | - Tài liệu SDD hoàn chỉnh:<br>`Software_Design_Document.md`<br>- Bản mẫu Figma & Database Schema script. |
+| **Week 04** | 02/11 - 08/11 | **Thiết kế phần mềm (SDD):** Thiết kế kiến trúc module NestJS/Next.js, thiết kế bố cục giao diện trực quan UI Wireframes (5 màn hình chính), thiết kế CSDL PostgreSQL (ERD & Migrations). | - Tài liệu SDD hoàn chỉnh:<br>`Software_Design_Document.md`<br>- Bộ khung phác thảo UI Wireframes & Database Schema script. |
 | **Week 05** | 09/11 - 15/11 | **Cài đặt - Sprint 1:** Khởi tạo Next.js & NestJS, Auth JWT, lập trình Phân hệ 1 (CV Builder, SeekerBot gợi ý STAR/XYZ, kết xuất PDF text layer). | - Mã nguồn Sprint 1 trên GitHub.<br>- Module CV Builder & SeekerBot hoạt động thực tế. |
 | **Week 06** | 16/11 - 22/11 | **Cài đặt - Sprint 2:** Lập trình Phân hệ 2 (Voice Mock Interview với AI Tech Lead, chấm 3 tiêu chí kỹ thuật) và Phân hệ 4 (Job Match Score & Skill Gap Analysis Dashboard). | - Mã nguồn Sprint 2 trên GitHub.<br>- Bản chạy thử phòng phỏng vấn âm thanh & Dashboard việc làm IT. |
 | **Week 07** | 23/11 - 29/11 | **Cài đặt - Sprint 3 & Kiểm thử:** Lập trình Phân hệ 3 (Auto Email Dispatcher qua SMTP) và Phân hệ 5 (Social Feed Worker & AI Classifier lọc tin VNG/Bosch). Viết Unit Test & QA kiểm thử. | - `Test_Report.md`<br>- Bộ Test Cases (Jest) & Toàn bộ mã nguồn hoàn chỉnh. |
-| **Week 08** | 30/11 - 07/12 | **Đóng gói, Triển khai & Báo cáo:** Đóng gói Docker, triển khai Vercel & Render, quay video demo tính năng, chuẩn bị slide và báo cáo nghiệm thu trước hội đồng bộ môn. | - Ứng dụng Web chạy thực tế (Production URL).<br>- Video demo, slide báo cáo và Báo cáo tổng kết đồ án. |
+| **Week 08** | 30/11 - 07/12 | **Đóng gói Docker & Báo cáo:** Đóng gói Docker Compose chạy trực tiếp trên môi trường cục bộ, quay video demo tính năng, chuẩn bị slide và báo cáo nghiệm thu trước hội đồng bộ môn. | - Ứng dụng Web hoàn chỉnh chạy trên môi trường cục bộ (Localhost).<br>- Video demo, slide báo cáo và Báo cáo tổng kết đồ án. |
 
 ---
 
-## 5. MA TRẬN PHÂN CÔNG TRÁCH NHIỆM (RACI MATRIX)
+## 5. PHÂN CÔNG VAI TRÒ & TRÁCH NHIỆM (TEAM RESPONSIBILITIES)
 
-| Hạng mục công việc trọng tâm | Lê Tấn Dũng<br>*(Leader / AI Lead)* | Võ Nguyễn Việt Hoàng<br>*(Frontend Dev)* | Võ Minh Khoa<br>*(Backend Dev)* | Đỗ Chí Cao<br>*(Database & QA)* |
-| :--- | :---: | :---: | :---: | :---: |
-| **Quản trị dự án, Jira Backlog & Điều phối Sprint** | **A / R** | I | I | I |
-| **Soạn thảo và cập nhật tài liệu kỹ thuật môn học** | **A** | R | R | R |
-| **Thiết kế UI/UX trên Figma (5 phân hệ)** | C | **A / R** | I | C |
-| **Lập trình giao diện CV Builder & Audio Interview** | C | **A / R** | C | I |
-| **Lập trình Dashboard Job Match & Radar Alert UI** | C | **A / R** | I | C |
-| **Xây dựng API Backend & Auto Dispatcher (NestJS)** | C | I | **A / R** | C |
-| **Phát triển Social Feed Worker & AI Classifier Service** | **A / R** | I | R | C |
-| **Thiết kế & Tối ưu hóa Database PostgreSQL** | C | I | C | **A / R** |
-| **Thiết kế Test Cases, Thực thi Kiểm thử hệ thống (QA/QC)** | I | C | C | **A / R** |
-| **Đóng gói Docker, Triển khai Cloud & Tổng duyệt Demo** | **A / R** | R | R | R |
+| STT | Thành viên | Vai trò dự án | Nhiệm vụ kỹ thuật trọng tâm | Phân hệ trực tiếp phụ trách |
+| :---: | :--- | :--- | :--- | :--- |
+| **1** | **Lê Tấn Dũng** | Trưởng nhóm / PM & Kỹ sư AI | Quản trị dự án trên Jira, điều phối tiến độ, lập trình dịch vụ FastAPI trên Kaggle và mở cổng API kết nối hệ thống | Phối hợp toàn diện 5 phân hệ và cổng API FastAPI Kaggle |
+| **2** | **Võ Nguyễn Việt Hoàng** | Kỹ sư AI & Dữ liệu (AI & Data Engineer) | Nghiên cứu tích hợp DeepSeek API, thuật toán so khớp Job Match và mô hình phân loại tin | Phân hệ 2 (AI phỏng vấn), Phân hệ 4 (So khớp JD), Phân hệ 5 (Radar tuyển dụng) |
+| **3** | **Võ Minh Khoa** | Lập trình viên Fullstack (Fullstack Developer) | Phát triển giao diện Next.js, xây dựng hệ thống API máy chủ NestJS và luồng gửi email SMTP | Phân hệ 1 (Tạo CV chuẩn ATS), Phân hệ 3 (Tự động ứng tuyển) và toàn bộ API máy chủ |
+| **4** | **Đỗ Chí Cao** | Kỹ sư CSDL & Kiểm thử (QA) | Thiết kế kiến trúc cơ sở dữ liệu PostgreSQL và kiểm thử chất lượng hệ thống | Cơ sở dữ liệu toàn hệ thống và bộ kịch bản kiểm thử tự động toàn diện |
 
 ---
 
