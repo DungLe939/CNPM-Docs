@@ -90,43 +90,43 @@ Hệ thống **HireUS** được xây dựng theo mô hình Client - Server hi�
 
 ```mermaid
 flowchart TB
-    User["1. Người dùng<br>(Sinh viên IT qua Trình duyệt Web)"]
+    User["Client / End-User<br>(Web Browser)"]
 
-    subgraph Localhost["MÔI TRƯỜNG MÁY CỤC BỘ (LOCALHOST / DOCKER COMPOSE)"]
-        subgraph Frontend["2. Frontend (Next.js / React)"]
-            FE_UI["Giao diện người dùng<br>- Tạo CV & xem trước trực tiếp<br>- Phòng phỏng vấn giọng nói ảo<br>- Bảng việc làm & Radar cảnh báo"]
+    subgraph Localhost["LOCAL HOST ENVIRONMENT (DOCKER COMPOSE)"]
+        subgraph Frontend["Frontend Tier (Next.js / TypeScript)"]
+            FE_UI["Client Interface<br>• ATS CV Builder & Live Preview<br>• Real-time Voice Mock Interview<br>• Job Matching & Skill Gap Analysis<br>• Early Recruitment Radar"]
         end
 
-        subgraph Backend["3. Backend (NestJS Server)"]
-            BE_Core["Trung tâm điều phối & nghiệp vụ<br>- Xác thực bảo mật JWT Token<br>- Xử lý nghiệp vụ 5 phân hệ<br>- Điều phối AI & tiến trình chạy nền"]
+        subgraph Backend["Backend Tier (NestJS / Node.js)"]
+            BE_Core["Application Gateway & Business Logic<br>• JWT Authentication & Guard<br>• Core Subsystem Services<br>• AI Orchestrator & Task Scheduler"]
         end
 
-        subgraph Storage["4. Cơ sở dữ liệu (PostgreSQL)"]
-            DB[("PostgreSQL Database<br>- Tài khoản người dùng<br>- Hồ sơ CV & tệp tin PDF<br>- Lịch sử phỏng vấn & tin việc làm")]
-        end
-    end
-
-    subgraph Kaggle_Env["HẠ TẦNG TÍNH TOÁN AI (KAGGLE GPU CLOUD)"]
-        subgraph AI_Engine["5. Dịch vụ AI (FastAPI Service)"]
-            AI_Core["Máy chủ FastAPI mở cổng API<br>- Tinh chỉnh mô tả dự án chuẩn STAR<br>- Kịch bản câu hỏi phỏng vấn ảo<br>- Xử lý âm thanh với mô hình AI Hugging Face<br>- Phân loại bài đăng tuyển dụng"]
+        subgraph Storage["Data Tier (PostgreSQL / Prisma ORM)"]
+            DB[("PostgreSQL Database<br>• Users & Profiles<br>• Resumes & Text Layers<br>• Interview Logs & Job Feeds")]
         end
     end
 
-    subgraph External_Services["DỊCH VỤ BÊN NGOÀI (EXTERNAL CLOUD SERVICES)"]
-        DeepSeek["DeepSeek Open Platform<br>(DeepSeek API LLM)"]
-        HuggingFace["Hugging Face Hub<br>(Kho mô hình AI)"]
-        SMTP_Server["Máy chủ Gmail SMTP<br>(Gửi email ứng tuyển tự động)"]
-        Social_Sources["Nguồn cấp tin công khai<br>(Fanpage, LinkedIn doanh nghiệp)"]
+    subgraph Kaggle_Env["AI COMPUTING INFRASTRUCTURE (KAGGLE GPU)"]
+        subgraph AI_Engine["AI Microservice (FastAPI / Python)"]
+            AI_Core["FastAPI Inference Engine<br>• STAR Resume Optimization Pipeline<br>• Interview Prompt & Evaluation Logic<br>• Hugging Face Audio & NLP Models<br>• Recruitment Post Classifier"]
+        end
     end
 
-    User <-->|HTTP / HTTPS| Frontend
-    Frontend <-->|REST API / HTTPS| Backend
-    Backend <-->|ORM / SQL| Storage
-    Backend <-->|Tunneling / HTTPS API| AI_Engine
-    Backend -->|Gửi email / SMTP| SMTP_Server
-    Backend -->|Quét bài đăng định kỳ| Social_Sources
-    AI_Engine <-->|Gọi LLM / HTTPS| DeepSeek
-    AI_Engine -.->|Tải mô hình / HTTPS| HuggingFace
+    subgraph External_Services["EXTERNAL CLOUD SERVICES & APIS"]
+        DeepSeek["DeepSeek Open Platform<br>(DeepSeek LLM API)"]
+        HuggingFace["Hugging Face Hub<br>(Pre-trained Models)"]
+        SMTP_Server["Gmail SMTP Server<br>(Automated Job Dispatcher)"]
+        Social_Sources["Public Social Channels<br>(Company Fanpages & LinkedIn)"]
+    end
+
+    User <-->|HTTPS / UI Events| Frontend
+    Frontend <-->|REST API / JSON| Backend
+    Backend <-->|Prisma ORM / TCP| Storage
+    Backend <-->|Reverse Tunnel / HTTPS| AI_Engine
+    Backend -->|SMTP (TLS) / Dispatch| SMTP_Server
+    Backend -->|Scheduled Scraping / HTTP| Social_Sources
+    AI_Engine <-->|LLM Inference / HTTPS| DeepSeek
+    AI_Engine -.->|Model Weights / HTTPS| HuggingFace
 ```
 
 ##### B. Bảng tổng hợp thành phần kiến trúc & Công nghệ sử dụng (Tech Stack)
