@@ -1017,21 +1017,21 @@ flowchart TB
 
     subgraph Localhost["LOCAL HOST ENVIRONMENT (DOCKER COMPOSE)"]
         subgraph Frontend["Frontend Tier (Next.js / TypeScript)"]
-            FE_UI["Client Interface<br>• ATS CV Builder & Live Preview<br>• Real-time Voice Mock Interview<br>• Job Matching & Skill Gap Analysis<br>• Early Recruitment Radar"]
+            FE_UI["Client Interface<br>- ATS CV Builder & Live Preview<br>- Real-time Voice Mock Interview<br>- Job Matching & Skill Gap Analysis<br>- Early Recruitment Radar"]
         end
 
         subgraph Backend["Backend Tier (NestJS / Node.js)"]
-            BE_Core["Application Gateway & Business Logic<br>• JWT Authentication & Guard<br>• Core Subsystem Services<br>• AI Orchestrator & Task Scheduler"]
+            BE_Core["Application Gateway & Business Logic<br>- JWT Authentication & Guard<br>- Core Subsystem Services<br>- AI Orchestrator & Task Scheduler"]
         end
 
         subgraph Storage["Data Tier (PostgreSQL / Prisma ORM)"]
-            DB[("PostgreSQL Database<br>• Users & Profiles<br>• Resumes & Text Layers<br>• Interview Logs & Job Feeds")]
+            DB[("PostgreSQL Database<br>- Users & Profiles<br>- Resumes & Text Layers<br>- Interview Logs & Job Feeds")]
         end
     end
 
     subgraph Kaggle_Env["AI COMPUTING INFRASTRUCTURE (KAGGLE GPU)"]
         subgraph AI_Engine["AI Microservice (FastAPI / Python)"]
-            AI_Core["FastAPI Inference Engine<br>• STAR Resume Optimization Pipeline<br>• Interview Prompt & Evaluation Logic<br>• Hugging Face Audio & NLP Models<br>• Recruitment Post Classifier"]
+            AI_Core["FastAPI Inference Engine<br>- STAR Resume Optimization Pipeline<br>- Interview Prompt & Evaluation Logic<br>- Hugging Face Audio & NLP Models<br>- Recruitment Post Classifier"]
         end
     end
 
@@ -1046,7 +1046,7 @@ flowchart TB
     Frontend <-->|REST API / JSON| Backend
     Backend <-->|Prisma ORM / TCP| Storage
     Backend <-->|Reverse Tunnel / HTTPS| AI_Engine
-    Backend -->|SMTP (TLS) / Dispatch| SMTP_Server
+    Backend -->|SMTP TLS / Dispatch| SMTP_Server
     Backend -->|Scheduled Scraping / HTTP| Social_Sources
     AI_Engine <-->|LLM Inference / HTTPS| DeepSeek
     AI_Engine -.->|Model Weights / HTTPS| HuggingFace
