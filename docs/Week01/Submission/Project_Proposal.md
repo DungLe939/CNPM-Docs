@@ -89,35 +89,44 @@ Hệ thống **HireUS** được xây dựng theo mô hình Client - Server hi�
 ##### A. Sơ đồ kiến trúc tổng thể (Architecture Diagram)
 
 ```mermaid
-flowchart LR
-    User["1. Người dùng<br>(Sinh viên IT / Máy tính cá nhân)"]
+flowchart TB
+    User["1. Người dùng<br>(Sinh viên IT qua Trình duyệt Web)"]
 
-    subgraph Frontend["2. Frontend (Next.js / React)"]
-        FE_UI["Giao diện người dùng<br>- Tạo CV & xem trước trực tiếp<br>- Phòng phỏng vấn giọng nói ảo<br>- Bảng việc làm & Radar cảnh báo"]
+    subgraph Localhost["MÔI TRƯỜNG MÁY CỤC BỘ (LOCALHOST / DOCKER COMPOSE)"]
+        subgraph Frontend["2. Frontend (Next.js / React)"]
+            FE_UI["Giao diện người dùng<br>- Tạo CV & xem trước trực tiếp<br>- Phòng phỏng vấn giọng nói ảo<br>- Bảng việc làm & Radar cảnh báo"]
+        end
+
+        subgraph Backend["3. Backend (NestJS Server)"]
+            BE_Core["Trung tâm điều phối & nghiệp vụ<br>- Xác thực bảo mật JWT Token<br>- Xử lý nghiệp vụ 5 phân hệ<br>- Điều phối AI & tiến trình chạy nền"]
+        end
+
+        subgraph Storage["4. Cơ sở dữ liệu (PostgreSQL)"]
+            DB[("PostgreSQL Database<br>- Tài khoản người dùng<br>- Hồ sơ CV & tệp tin PDF<br>- Lịch sử phỏng vấn & tin việc làm")]
+        end
     end
 
-    subgraph Backend["3. Backend (NestJS Server)"]
-        BE_Core["Trung tâm điều phối & nghiệp vụ<br>- Xác thực bảo mật JWT Token<br>- Xử lý nghiệp vụ 5 phân hệ<br>- Điều phối AI & tiến trình chạy nền"]
+    subgraph Kaggle_Env["HẠ TẦNG TÍNH TOÁN AI (KAGGLE GPU CLOUD)"]
+        subgraph AI_Engine["5. Dịch vụ AI (FastAPI Service)"]
+            AI_Core["Máy chủ FastAPI mở cổng API<br>- Tinh chỉnh mô tả dự án chuẩn STAR<br>- Kịch bản câu hỏi phỏng vấn ảo<br>- Xử lý âm thanh với mô hình AI Hugging Face<br>- Phân loại bài đăng tuyển dụng"]
+        end
     end
 
-    subgraph AI_Engine["4. AI & Thuật toán"]
-        AI_Core["Dịch vụ FastAPI trên Kaggle<br>- Tích hợp DeepSeek API<br>- Mô hình AI trên Hugging Face<br>- Tinh chỉnh mô tả dự án chuẩn STAR<br>- Kịch bản câu hỏi phỏng vấn ảo<br>- Thuật toán tính điểm Match Score<br>- Phân loại bài đăng tuyển dụng"]
-    end
-
-    subgraph Storage["5. Cơ sở dữ liệu (PostgreSQL)"]
-        DB[("PostgreSQL Database<br>- Tài khoản người dùng<br>- Hồ sơ CV & tệp tin PDF<br>- Lịch sử phỏng vấn & tin việc làm")]
-    end
-
-    subgraph CloudServices["6. Dịch vụ ngoài & Đám mây"]
-        Cloud["Dịch vụ kết nối<br>- Nền tảng Hugging Face (Kho mô hình AI)<br>- Máy chủ SMTP (Gửi thư ứng tuyển)<br>- Nguồn cấp tin tuyển dụng công khai"]
+    subgraph External_Services["DỊCH VỤ BÊN NGOÀI (EXTERNAL CLOUD SERVICES)"]
+        DeepSeek["DeepSeek Open Platform<br>(DeepSeek API LLM)"]
+        HuggingFace["Hugging Face Hub<br>(Kho mô hình AI)"]
+        SMTP_Server["Máy chủ Gmail SMTP<br>(Gửi email ứng tuyển tự động)"]
+        Social_Sources["Nguồn cấp tin công khai<br>(Fanpage, LinkedIn doanh nghiệp)"]
     end
 
     User <-->|HTTP / HTTPS| Frontend
     Frontend <-->|REST API / HTTPS| Backend
-    Backend <-->|HTTPS API| AI_Engine
     Backend <-->|ORM / SQL| Storage
-    Backend <-->|HTTPS / SMTP| CloudServices
-    AI_Engine -.->|Tải mô hình / HTTPS| CloudServices
+    Backend <-->|Tunneling / HTTPS API| AI_Engine
+    Backend -->|Gửi email / SMTP| SMTP_Server
+    Backend -->|Quét bài đăng định kỳ| Social_Sources
+    AI_Engine <-->|Gọi LLM / HTTPS| DeepSeek
+    AI_Engine -.->|Tải mô hình / HTTPS| HuggingFace
 ```
 
 ##### B. Bảng tổng hợp thành phần kiến trúc & Công nghệ sử dụng (Tech Stack)
@@ -131,9 +140,9 @@ flowchart LR
 | **5** | **Dịch vụ mạng & Đám mây** | **Hugging Face Hub, SMTP, Cloud Storage** | Cung cấp kho lưu trữ các mô hình AI mã nguồn mở, tự động gửi email ứng tuyển qua SMTP và lưu trữ tệp tin CV PDF. | `HTTPS / SMTP` |
 
 *Ghi chú kiến trúc:*
-* Toàn bộ luồng giao tiếp giữa các thành phần chủ yếu diễn ra qua giao thức HTTP/HTTPS với định dạng dữ liệu chuẩn JSON.
+* Toàn bộ kiến trúc được phân tách thành 3 phân vùng hạ tầng rõ ràng: Môi trường máy cục bộ (chạy trọn gói Frontend, Backend và PostgreSQL thông qua Docker Compose), Hạ tầng tính toán AI trên Kaggle (chạy dịch vụ FastAPI tận dụng GPU miễn phí) và các Dịch vụ đám mây bên ngoài.
 * Backend NestJS là trung tâm điều phối và kiểm soát bảo mật, đảm bảo an toàn thông tin trước khi đọc hoặc ghi vào cơ sở dữ liệu.
-* Các mô hình và tính năng AI được lập trình đóng gói thành dịch vụ Backend FastAPI chạy trên môi trường Kaggle (tận dụng tài nguyên tính toán GPU miễn phí), tích hợp các mô hình AI trên Hugging Face và mở cổng API để máy chủ NestJS Backend cục bộ gọi trực tiếp, kết hợp cùng DeepSeek API giúp tối ưu chi phí và đảm bảo tốc độ phản hồi nhanh.
+* Dịch vụ AI FastAPI trên Kaggle kết nối trực tiếp với DeepSeek API và tải mô hình từ Hugging Face, đồng thời mở cổng API (Tunneling qua HTTPS) để máy chủ Backend cục bộ gọi xử lý nghiệp vụ thông suốt.
 
 ---
 
