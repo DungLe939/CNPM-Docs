@@ -11,6 +11,7 @@ status: "Đã hoàn thành"
 
 | Thông tin cuộc họp | Chi tiết |
 | :--- | :--- |
+| **Đơn vị thực hiện** | Nhóm 02 |
 | **Dự án** | Đồ án Nhập môn Công nghệ Phần mềm |
 | **Thời gian** | 20:25 – 22:00, Thứ Hai, ngày 12/10/2026 |
 | **Hình thức / Địa điểm** | Trực tuyến qua Google Meet |

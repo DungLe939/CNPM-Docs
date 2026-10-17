@@ -1,5 +1,6 @@
 ---
 title: "Project Proposal: Nền tảng HireUS"
+group: "Nhóm 02"
 course: "Nhập môn Công nghệ Phần mềm (Introduction to Software Engineering)"
 instructor: "Thầy Phạm Minh Tuấn & Thầy Nguyễn Ngô Duy Khoa"
 institution: "Khoa Công nghệ Thông tin - Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM"
@@ -19,7 +20,7 @@ status: "Đề xuất đồ án đợt 1 (Project Proposal)"
 
 > **Giảng viên thực hành (GVTH):** Thầy Nguyễn Ngô Duy Khoa
 
-> **Nhóm thực hiện:** Nhóm sinh viên 4 thành viên
+> **Nhóm thực hiện:** Nhóm 02 (4 thành viên)
 
 > **Mô hình phát triển:** Scrum (Agile) triển khai trong 8 tuần
 

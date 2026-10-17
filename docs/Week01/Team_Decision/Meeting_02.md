@@ -13,6 +13,7 @@ status: "Đã hoàn thành"
 
 | Thông tin | Chi tiết |
 | :--- | :--- |
+| **Đơn vị thực hiện** | Nhóm 02 |
 | **Thời gian** | 20:30 – 22:00, ngày 14/10/2026 |
 | **Địa điểm / Hình thức** | Google Meet |
 | **Mục đích cuộc họp** | Thống nhất ý tưởng đồ án |
