@@ -62,7 +62,7 @@ Vì dự án có nhiều thành viên cùng làm việc trên GitHub, AI **BẮT
 
 Khi đồng bộ tài liệu, **tuyệt đối không lưu file lộn xộn ở thư mục gốc tuần (`docs/WeekXX/`)**. Hệ thống phải tự động phân loại:
 - **Biên bản họp nhóm** (`Meeting_*.md`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Team_Decision/`**.
-- **Kế hoạch, Tài liệu nhóm tự làm** (`JobSeeker_Implementation_Plan.*`, `*plan*`, `*proposal*`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Team_Decision/Material/`**.
+- **Kế hoạch, Tài liệu nhóm tự làm** (`HireUS_Implementation_Plan.*`, `*plan*`, `*proposal*`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Team_Decision/Material/`**.
 - **Tài liệu học tập, Thông báo, Biểu mẫu của Thầy** (`Template*`, `Thông_báo_*`, `Material`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Material/`**.
 - **Bài toán mẫu, Đặc tả mẫu** (`Problem_example_*`): $\rightarrow$ Bắt buộc lưu vào **`docs/WeekXX/Problem_example/`**.
 

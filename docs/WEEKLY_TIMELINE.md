@@ -16,12 +16,13 @@
   - [Problem_example_01: Sàn đấu giá trực tuyến](./Week01/Problem_example/Problem_example_01.md)
   - [Problem_example_02: Ứng dụng theo dõi sức khỏe](./Week01/Problem_example/Problem_example_02.md)
 - [x] Họp nhóm lần 1 (12/10/2026): thống nhất cấu trúc repo, quy trình Scrum/Jira, tech stack Next.js/NestJS/PostgreSQL ([Meeting_01.md](./Week01/Team_Decision/Meeting_01.md)).
-- [x] Họp nhóm lần 2 (14/10/2026): chốt ý tưởng đề tài JobSeeker AI & phân chia vai trò 4 thành viên ([Meeting_02.md](./Week01/Team_Decision/Meeting_02.md)).
-- [x] Lập bản Kế hoạch Triển khai Chi tiết ([JobSeeker_Implementation_Plan.md](./Week01/Team_Decision/Material/JobSeeker_Implementation_Plan.md)).
+- [x] Họp nhóm lần 2 (14/10/2026): chốt ý tưởng đề tài HireUS & phân chia vai trò 4 thành viên ([Meeting_02.md](./Week01/Team_Decision/Meeting_02.md)).
+- [x] Lập bản Kế hoạch Triển khai Chi tiết ([HireUS_Implementation_Plan.md](./Week01/Team_Decision/Material/HireUS_Implementation_Plan.md)).
 
 ### Thành phẩm Tuần 01:
 - Biên bản họp nhóm: [Meeting_01.md](./Week01/Team_Decision/Meeting_01.md) & [Meeting_02.md](./Week01/Team_Decision/Meeting_02.md).
-- Kế hoạch triển khai chi tiết: [JobSeeker_Implementation_Plan.md](./Week01/Team_Decision/Material/JobSeeker_Implementation_Plan.md) & [.html](./Week01/Team_Decision/Material/JobSeeker_Implementation_Plan.html).
+- Kế hoạch triển khai chi tiết: [HireUS_Implementation_Plan.md](./Week01/Team_Decision/Material/HireUS_Implementation_Plan.md) & [.html](./Week01/Team_Decision/Material/HireUS_Implementation_Plan.html).
+- Hồ sơ nộp đợt 1 (Proposal): [Project_Proposal.md](./Week01/Submission/Project_Proposal.md) & [Project_Proposal.html](./Week01/Submission/Project_Proposal.html) (Đóng gói zip: [Hướng dẫn nộp bài](./Week01/Submission/README.md)).
 
 ---
 

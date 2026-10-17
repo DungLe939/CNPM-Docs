@@ -1,6 +1,6 @@
 ---
-title: "Bản Kế hoạch Triển khai Chi tiết: Hệ thống JobSeeker AI"
-project: "JobSeeker AI - Nền tảng Tìm việc & Luyện phỏng vấn IT cho Intern/Fresher"
+title: "Bản Kế hoạch Triển khai Chi tiết: Hệ thống HireUS"
+project: "HireUS - Nền tảng Tìm việc & Luyện phỏng vấn IT cho Intern/Fresher"
 course: "Nhập môn Công nghệ Phần mềm"
 author: "Nhóm Đồ án - Trưởng nhóm: Lê Tấn Dũng"
 date: "15/10/2026"
@@ -9,7 +9,7 @@ status: "Chính thức phê duyệt"
 ---
 
 # BẢN KẾ HOẠCH TRIỂN KHAI CHI TIẾT (IMPLEMENTATION PLAN)
-## DỰ ÁN: NỀN TẢNG TỐI ƯU HỒ SƠ, MÔ PHỎNG PHỎNG VẤN KỸ THUẬT & SĂN VIỆC LÀM IT (JOBSEEKER AI)
+## DỰ ÁN: NỀN TẢNG TỐI ƯU HỒ SƠ, MÔ PHỎNG PHỎNG VẤN KỸ THUẬT & SĂN VIỆC LÀM IT (HIREUS)
 
 > **Môn học:** Nhập môn Công nghệ Phần mềm (Introduction to Software Engineering)  
 > **Trường:** Đại học Khoa học Tự nhiên, ĐHQG-HCM  
@@ -228,7 +228,7 @@ erDiagram
 | Tuần | Mốc thời gian | Giai đoạn & Nội dung công việc trọng tâm | Thành phẩm bàn giao (Deliverables) |
 | :---: | :---: | :--- | :--- |
 | **Week 01** | 12/10 - 18/10 | **Khởi động dự án:** Họp nhóm phân công vai trò, thiết lập 3 repo con (`FE`, `BE`, `Docs`) và repo cha, khởi tạo Jira Scrum board, thống nhất 5 phân hệ bài toán. | - Biên bản họp: `Meeting_01.md`<br>- Không gian Jira Scrum & GitHub Repositories. |
-| **Week 02** | 19/10 - 25/10 | **Đề xuất dự án (Proposal):** Hoàn thiện tài liệu Project Proposal chuẩn 5 phần, chuẩn bị bản kế hoạch chi tiết, loại bỏ văn phong AI Writing. | - `Project_Proposal.md`<br>- `Project_Proposal.html`<br>- `JobSeeker_Implementation_Plan.md`. |
+| **Week 02** | 19/10 - 25/10 | **Đề xuất dự án (Proposal):** Hoàn thiện tài liệu Project Proposal chuẩn 5 phần, chuẩn bị bản kế hoạch chi tiết, loại bỏ văn phong AI Writing. | - `Project_Proposal.md`<br>- `Project_Proposal.html`<br>- `HireUS_Implementation_Plan.md`. |
 | **Week 03** | 26/10 - 01/11 | **Phân tích yêu cầu (SRS):** Đặc tả chi tiết Use Cases cho 5 phân hệ, vẽ sơ đồ Use Case tổng thể, xây dựng Activity Diagrams & Sequence Diagrams cho luồng phỏng vấn và lọc tin AI. | - Tài liệu SRS hoàn chỉnh:<br>`Software_Requirements_Specification.md`. |
 | **Week 04** | 02/11 - 08/11 | **Thiết kế phần mềm (SDD):** Thiết kế kiến trúc module NestJS/Next.js, thiết kế giao diện Figma (5 màn hình chính), thiết kế CSDL PostgreSQL (ERD & Migrations). | - Tài liệu SDD hoàn chỉnh:<br>`Software_Design_Document.md`<br>- Bản mẫu Figma & Database Schema script. |
 | **Week 05** | 09/11 - 15/11 | **Cài đặt - Sprint 1:** Khởi tạo Next.js & NestJS, Auth JWT, lập trình Phân hệ 1 (CV Builder, SeekerBot gợi ý STAR/XYZ, kết xuất PDF text layer). | - Mã nguồn Sprint 1 trên GitHub.<br>- Module CV Builder & SeekerBot hoạt động thực tế. |

@@ -60,12 +60,12 @@ graph TD
      * Ví dụ: `Meeting_01.md` đã ấn định cuộc họp ngày 14/10/2026 để chốt đề tài và phân công vai trò, nhưng kho tài liệu chỉ có kế hoạch triển khai ngày 15/10 mà thiếu mất `Meeting_02.md`.
    - **Hành động của AI:**
      * Bắt buộc cảnh báo người dùng ngay trong đoạn chat: *"Thiếu biên bản họp `Meeting_02.md` tương ứng với buổi họp ngày 14/10 đã lên lịch"*.
-     * Đề xuất hỗ trợ người dùng tạo và chuẩn hóa ngay file `Meeting_02.md` dựa trên các quyết định và kế hoạch thực tế (`JobSeeker_Implementation_Plan.md`) để hoàn thiện hồ sơ đồ án nộp giảng viên.
+     * Đề xuất hỗ trợ người dùng tạo và chuẩn hóa ngay file `Meeting_02.md` dựa trên các quyết định và kế hoạch thực tế (`HireUS_Implementation_Plan.md`) để hoàn thiện hồ sơ đồ án nộp giảng viên.
 
 5. **Bước 5: Trích Dẫn Nguồn Đúng Chuẩn (Dual-Linking: Local Path + Google Drive Link)**
    - Khi biên soạn hoặc trích dẫn các tài liệu được đồng bộ từ Google Drive:
    - **BẮT BUỘC cung cấp liên kết kép (Dual-linking):**
-     * Link nội bộ tương đối trong repo: `[JobSeeker_Implementation_Plan.md](./Material/JobSeeker_Implementation_Plan.md)` (để xem offline/Git).
+     * Link nội bộ tương đối trong repo: `[HireUS_Implementation_Plan.md](./Material/HireUS_Implementation_Plan.md)` (để xem offline/Git).
      * Link Google Drive gốc trực tuyến: `[Xem trên Google Drive](https://drive.google.com/file/d/1s8uYv3yBGpx7TyCsTtIVSbNTrC8LbDbY/view)` kèm link folder Drive chung để giảng viên/đồng đội kiểm chứng bản gốc cloud.
    - Tuyệt đối không chỉ ghi tên file suông mà không trích dẫn link nguồn.
 
@@ -85,7 +85,7 @@ Khi tải tài liệu từ Drive về, **tuyệt đối không để file nằm 
 | Phân vùng tài liệu | Mục đích sử dụng | Từ khóa nhận diện | Thư mục đích phân loại | Ví dụ minh họa |
 | :--- | :--- | :--- | :--- | :--- |
 | **Biên bản họp nhóm** | Ghi nhận nội dung, quyết định và phân công của các buổi họp nhóm | `meeting`, `bien_ban`, `hop_nhom` | **`docs/WeekXX/Team_Decision/`** | [Meeting_01.md](../../docs/Week01/Team_Decision/Meeting_01.md)<br>[Meeting_02.md](../../docs/Week01/Team_Decision/Meeting_02.md) |
-| **Tài liệu/Kế hoạch nhóm** | Kế hoạch triển khai, tài liệu đặc tả, bản nháp đề xuất do nhóm tự làm | `jobseeker`, `plan`, `proposal`, `decision` | **`docs/WeekXX/Team_Decision/Material/`** | [JobSeeker_Implementation_Plan.md](../../docs/Week01/Team_Decision/Material/JobSeeker_Implementation_Plan.md)<br>[JobSeeker_Implementation_Plan.html](../../docs/Week01/Team_Decision/Material/JobSeeker_Implementation_Plan.html) |
+| **Tài liệu/Kế hoạch nhóm** | Kế hoạch triển khai, tài liệu đặc tả, bản nháp đề xuất do nhóm tự làm | `hireus`, `jobseeker`, `plan`, `proposal`, `decision` | **`docs/WeekXX/Team_Decision/Material/`** | [HireUS_Implementation_Plan.md](../../docs/Week01/Team_Decision/Material/HireUS_Implementation_Plan.md)<br>[HireUS_Implementation_Plan.html](../../docs/Week01/Team_Decision/Material/HireUS_Implementation_Plan.html) |
 | **Tài liệu từ Giảng viên** | **CHỈ DÀNH RIÊNG** cho thông báo, template, đề cương hướng dẫn từ Thầy nndkhoa | `material`, `thong_bao`, `template`, `tai_lieu` | **`docs/WeekXX/Material/`** | [Template#0-ProjectProposal-2022.pdf](../../docs/Week01/Material/Template%230-ProjectProposal-2022.pdf)<br>[Thông_báo_1.md](../../docs/Week01/Material/Thông_báo_1.md) |
 | **Bài toán mẫu** | Các bài toán đặc tả mẫu do môn học cung cấp để tham khảo | `problem`, `example`, `bai_toan`, `de_bai` | **`docs/WeekXX/Problem_example/`** | [Problem_example_01.md](../../docs/Week01/Problem_example/Problem_example_01.md) |
 

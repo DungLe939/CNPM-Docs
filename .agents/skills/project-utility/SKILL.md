@@ -58,5 +58,5 @@ Khi tạo mới một bài nộp hoặc hoàn thành một mốc công việc:
 - **Mục đích:** Đảm bảo vừa duyệt được offline trong Git repo, vừa cung cấp nguồn cloud chính thống để đối soát hoặc cho giảng viên chấm điểm trực tiếp.
 - **Cấu trúc chuẩn:**
   * `[Tên_tài_liệu.md](./đường_dẫn_tương_đối.md) ⏐ [Bản gốc Google Drive](https://drive.google.com/file/d/.../view)`
-  * Ví dụ: `[JobSeeker_Implementation_Plan.md](./JobSeeker_Implementation_Plan.md) ⏐ [Xem trên Google Drive](https://drive.google.com/file/d/1s8uYv3yBGpx7TyCsTtIVSbNTrC8LbDbY/view)`
+  * Ví dụ: `[HireUS_Implementation_Plan.md](./HireUS_Implementation_Plan.md) ⏐ [Xem trên Google Drive](https://drive.google.com/file/d/1s8uYv3yBGpx7TyCsTtIVSbNTrC8LbDbY/view)`
 - **Áp dụng:** Mọi biên bản họp, tài liệu phân tích hoặc báo cáo tuần khi nhắc đến sản phẩm/tài liệu đồng bộ từ Drive phải tuân thủ định dạng này.

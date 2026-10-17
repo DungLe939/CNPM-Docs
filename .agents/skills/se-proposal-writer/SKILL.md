@@ -59,21 +59,39 @@ Bắt buộc có bảng theo mẫu:
 ---
 
 ### Mục 3: Kế hoạch Phát triển Phần mềm
-Lựa chọn mô hình phát triển rõ ràng (**Scrum** hoặc **Waterfall**):
-- Liệt kê các giai đoạn và thành phẩm đầu ra cụ thể:
-  1. Phân tích yêu cầu (Requirements Analysis) $\rightarrow$ SRS document
-  2. Thiết kế phần mềm (Software Design) $\rightarrow$ Architecture & DB Schema
-  3. Cài đặt (Implementation) $\rightarrow$ Mã nguồn trên GitHub
-  4. Kiểm thử phần mềm (Testing) $\rightarrow$ Test Plan & Test Cases
-  5. Triển khai & Bảo trì (Deployment & Maintenance) $\rightarrow$ Link Web / App chạy thực tế
+Lựa chọn mô hình phát triển rõ ràng (**Scrum (Agile)** theo chu kỳ Sprint hoặc **Waterfall**), quản lý trên nền tảng quản trị công việc (như Jira Software):
+- Nếu áp dụng Scrum, chia lộ trình thành các Sprint cố định (ví dụ 2 tuần / Sprint).
+- Mỗi Sprint tập trung thể hiện trực quan và rõ ràng 3 thành phần cốt lõi:
+  1. **Mục tiêu Sprint (Sprint Goal):** Nêu rõ giá trị nghiệp vụ hoặc khả năng mới mà hệ thống đạt được sau Sprint bằng ngôn ngữ dễ hiểu.
+  2. **Kế hoạch cụ thể theo từng tuần:** Nêu rõ công việc trọng tâm từng tuần, bám sát nghiệp vụ thực tế, người mới đọc vào hiểu ngay cần làm gì.
+  3. **Thành phẩm cụ thể đầu ra (Deliverables):** Mô tả rõ bản chất và nội dung cốt lõi của sản phẩm (tài liệu, bản thiết kế giao diện, module phần mềm, báo cáo kiểm thử).
+- Bảng tổng hợp lộ trình phát triển tập trung vào tiến độ các tuần và thành phẩm có thể kiểm chứng được (Deliverables). Ước lượng công số (Man-Hours) không để rải rác trong từng Sprint mà được gom quản lý tập trung ở mục Kế hoạch Nhân sự & Chi phí để tránh làm loãng bức tranh phát triển kỹ thuật.
+
+#### ⚠️ QUY TẮC CỐT LÕI: DIỄN ĐẠT TRỰC QUAN & THÂN THIỆN CHO NGƯỜI NGOÀI NGÀNH (NON-TECH & ONBOARDING-FRIENDLY)
+1. **Không liệt kê tên file cộc lốc (No Raw Filename Drops):**
+   - Tuyệt đối không chỉ ghi tên tệp mã nguồn hoặc tài liệu (ví dụ: `Project_Proposal.md`, `SRS.md`, `Meeting_01.md`, `Test_Report.md`...) như một đầu mục thành phẩm mà không có lời giải thích.
+   - Giảng viên, người chấm điểm hoặc các bên liên quan phi kỹ thuật (non-tech) sẽ không hiểu một tên file viết tắt có ý nghĩa gì và chứa nội dung gì.
+   - **Phải mô tả bản chất thành phẩm:** Nêu rõ tên sản phẩm nghiệp vụ, giải thích tóm tắt nội dung chính và giá trị thực tế của nó (nếu có tên file kỹ thuật thì để trong ngoặc kèm link tham chiếu, nhưng phần mô tả nghiệp vụ phải đứng trước và là trọng tâm).
+   - *Ví dụ sai:* `* Hồ sơ đề xuất đồ án: Project_Proposal.md và Project_Proposal.html.`
+   - *Ví dụ chuẩn:* `* Bộ hồ sơ đề xuất đồ án (Project Proposal): Tài liệu toàn diện trình bày bối cảnh bài toán tuyển dụng, khảo sát khó khăn của sinh viên IT, giải pháp 5 phân hệ công nghệ, kiến trúc kỹ thuật Client - Server và kế hoạch 4 Sprint (8 tuần) kèm phân bổ nhân sự.`
+2. **Ngôn từ trực quan, người mới tham gia dự án đọc vào hiểu ngay:**
+   - Tránh dùng từ lóng kỹ thuật nội bộ hoặc viết tắt bí hiểm khi mô tả công việc tuần.
+   - Diễn đạt rõ hành động, mục tiêu và kết quả kỳ vọng để bất kỳ thành viên mới nào tham gia vào nhóm cũng có thể nắm bắt được tiến độ và nhiệm vụ.
+3. **Tuyệt đối không tự tiện đưa số liệu chưa chốt hoặc cam kết quá sớm (No Unverified Numbers or Premature Commitments):**
+   - **Nghiêm cấm tự bịa hoặc đưa vào tài liệu bất kỳ số liệu cụ thể nào mà nhóm chưa chốt:** Tuyệt đối không tự đưa các con số cứng như chi phí chính xác (*0 VNĐ*), thời gian phản hồi cụ thể (*dưới 1.5s, dưới 200ms*), hoặc các chỉ số hiệu năng chưa qua đo lường thực nghiệm.
+   - **Lý do:** Bản Proposal là hồ sơ đề xuất sơ bộ đầu kỳ. Việc đưa vào những con số cam kết tuyệt đối khi chưa có số liệu thực tế sẽ tạo ra rủi ro rất lớn khi nghiệm thu (lỡ khi làm thực tế bị chậm hơn hoặc phát sinh chi phí hạ tầng).
+   - **Cách diễn đạt chuẩn:** Diễn đạt dưới dạng định hướng hoặc dự kiến (ví dụ: *"dự toán chi phí dự kiến"*, *"ưu tiên tối ưu ngân sách qua các gói dịch vụ đám mây miễn phí"*, *"tối ưu hóa thời gian phản hồi"* thay vì cam kết *"chi phí 0 VNĐ"* hay *"phản hồi dưới 1.5s"*).
 
 ---
 
 ### Mục 4: Kế hoạch Nhân sự & Chi phí
-- **Cấu trúc nhân sự:** Phân chia trách nhiệm (RACI matrix hoặc mô hình Scrum: Product Owner, Scrum Master, Developers, QA).
-- **Chi phí dự kiến:** 
-  - Hạ tầng / Hosting: Tận dụng Free Tier (Vercel, Supabase, Neon) hoặc ước tính chi phí cụ thể.
-  - Tên miền, API bên thứ ba (nếu có).
+- **Cấu trúc nhân sự & Trách nhiệm (RACI):** Phân chia trách nhiệm rõ ràng (Ma trận RACI: Responsible, Accountable, Consulted, Informed hoặc mô hình Scrum).
+- **Chi phí nhân sự & Phân bổ công số (Man-Hours Allocation):** 
+  - Toàn bộ công số (ví dụ 400 người-giờ) được quản lý tập trung tại đây: Bảng tổng hợp công số 4 Sprint theo thành viên và danh mục chi tiết nhiệm vụ/giờ công của từng thành viên.
+  - Giải thích rõ cơ chế quy đổi công số nội bộ của sinh viên (không phát sinh tiền lương thuê ngoài).
+- **Kế hoạch chi phí dịch vụ & hạ tầng dự kiến:** 
+  - Hạ tầng / Hosting: Ưu tiên gói miễn phí (Free Tier như Vercel, Supabase, Neon) hoặc ước tính chi phí dự kiến.
+  - Tên miền, API AI bên thứ ba (Google AI Studio, Resend...).
 
 ---
 
@@ -85,4 +103,9 @@ Trước khi bàn giao bản Proposal cho người dùng, AI phải tự kiểm 
 - [ ] Dung lượng phát biểu bài toán có vượt quá 2 trang không?
 - [ ] Bảng User Story có đúng định dạng chuẩn (As a... I want to... So that...) không?
 - [ ] Đã kích hoạt skill `anti-ai-fluff` để lọc sạch từ ngữ sáo rỗng chưa?
+- [ ] **Diễn đạt trực quan & Thân thiện non-tech:** Kế hoạch phát triển và thành phẩm đầu ra đã được giải thích rõ ràng về bản chất, nội dung và giá trị chưa? Tuyệt đối không để xảy ra tình trạng ném tên file cộc lốc (`.md`, `.html`, `.docx`...) khiến người đọc không hiểu sản phẩm là gì?
+- [ ] **Kiểm tra số liệu & Cam kết chưa chốt:** Đã rà soát và loại bỏ toàn bộ các số liệu cụ thể chưa được nhóm chốt (như khẳng định chi phí 0 VNĐ, thời gian phản hồi dưới X giây...)? Đảm bảo diễn đạt ở mức định hướng/dự kiến an toàn chưa?
+- [ ] Đã kiểm tra cách dùng dấu câu, tuyệt đối không lạm dụng dấu chấm phẩy (;) trong văn xuôi và bảng biểu (thay bằng dấu phẩy , hoặc tách câu bằng dấu chấm .)?
+- [ ] Đã kiểm tra quy tắc viết hoa, không viết hoa tùy tiện danh từ chung ở giữa câu (như "Nhật ký", "Điểm tương thích", "Bảng phân tích"...)?
+- [ ] Đã kiểm tra cách dùng dấu ngoặc đơn, hạn chế tối đa mở ngoặc đơn chú thích và không kẹp kè dịch song ngữ Anh - Việt trong ngoặc đơn?
 - [ ] Tất cả liên kết trong tài liệu đều dùng đường dẫn tương đối (relative path) chưa?

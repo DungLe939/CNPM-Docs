@@ -28,7 +28,7 @@ Project/
 │   │   ├── Problem_example/    # Các bài toán đặc tả mẫu (Sàn đấu giá, Health monitor)
 │   │   └── Team_Decision/      # Quyết định, biên bản họp & tài liệu nhóm
 │   │       ├── Meeting_01.md & Meeting_02.md
-│   │       └── Material/       # Kế hoạch triển khai (JobSeeker_Implementation_Plan.md & .html)
+│   │       └── Material/       # Kế hoạch triển khai (HireUS_Implementation_Plan.md & .html)
 │   └── Week02/ (Sắp tới)       # Đợt nộp Proposal đợt 1
 └── .agents/
     ├── README.md               # Mô tả tổng quan & danh mục tất cả skills, rules

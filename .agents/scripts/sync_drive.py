@@ -183,7 +183,7 @@ def classify_destination(file_name, target_week_dir):
         return os.path.join(target_week_dir, "Team_Decision")
 
     # 2. Tài liệu, kế hoạch triển khai do nhóm tự làm -> Team_Decision/Material
-    if any(k in name_lower for k in ["jobseeker", "plan", "proposal", "decision"]):
+    if any(k in name_lower for k in ["hireus", "jobseeker", "plan", "proposal", "decision"]):
         return os.path.join(target_week_dir, "Team_Decision", "Material")
 
     # 3. Tài liệu, đồ án yêu cầu của Thầy -> Material

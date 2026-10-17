@@ -47,5 +47,5 @@
 | `docs/WEEKLY_TIMELINE.md` | Quản trị tiến độ | Nhật ký theo dõi hoạt động và nhiệm vụ của nhóm theo từng tuần |
 | `docs/Week01/Material/Thông_báo_1.md` | Thông báo | Thông báo và lưu ý chính thức từ thầy nndkhoa |
 | `docs/Week01/Problem_example/` | Tài liệu mẫu | Hai bài toán mẫu: Sàn đấu giá trực tuyến và App theo dõi sức khỏe |
-| `docs/Week01/Team_Decision/` | Quản lý nhóm | Biên bản họp (Meeting_01, Meeting_02) & Kế hoạch triển khai JobSeeker AI |
+| `docs/Week01/Team_Decision/` | Quản lý nhóm | Biên bản họp (Meeting_01, Meeting_02) & Kế hoạch triển khai HireUS |
 | `.agents/skills/` | AI Skills | Bộ kỹ năng chuẩn hóa quy trình làm việc cho AI trong dự án |

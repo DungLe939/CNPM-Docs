@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Proposal: Nền tảng HireUS</title>
+  <!-- Theme script for zero-flash load -->
+  <script>
+    const savedTheme = localStorage.getItem('hireus_theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Mermaid.js for Interactive Diagrams -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    const isDark = (document.documentElement.getAttribute('data-theme') || 'dark') === 'dark';
+    mermaid.initialize({ 
+      startOnLoad: true, 
+      theme: isDark ? 'dark' : 'default',
+      themeVariables: isDark ? {
+        darkMode: true,
+        background: '#0d1527',
+        primaryColor: '#1e3a8a',
+        primaryTextColor: '#f1f5f9',
+        primaryBorderColor: '#3b82f6',
+        lineColor: '#60a5fa',
+        secondaryColor: '#1e293b',
+        tertiaryColor: '#0f172a'
+      } : {
+        fontFamily: 'Inter, sans-serif'
+      },
+      securityLevel: 'loose',
+      fontFamily: 'Inter, sans-serif'
+    });
+  </script>
+  <style>
+    :root, [data-theme="dark"] {
+      --bg: #090d16;
+      --surface: #111827;
+      --surface-alt: #1e293b;
+      --surface-hover: #1f293d;
+      --border: #2e384d;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --heading: #f8fafc;
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --primary-light: rgba(59, 130, 246, 0.15);
+      --badge-border: rgba(59, 130, 246, 0.35);
+      --success: #34d399;
+      --success-light: rgba(52, 211, 153, 0.15);
+      --success-border: rgba(52, 211, 153, 0.35);
+      --warning: #fbbf24;
+      --pill-bg: rgba(59, 130, 246, 0.2);
+      --pill-text: #93c5fd;
+      --meta-bg: #162032;
+      --meta-border: #3b82f6;
+      --table-header-bg: #172033;
+      --table-row-hover: rgba(59, 130, 246, 0.08);
+      --code-bg: #1e293b;
+      --code-text: #38bdf8;
+      --code-border: #334155;
+      --mermaid-bg: #0d1527;
+      --mermaid-border: #223049;
+      --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
+      --radius: 12px;
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --surface-hover: #f1f5f9;
+      --border: #e2e8f0;
+      --border-subtle: rgba(0, 0, 0, 0.06);
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      --heading: #0f172a;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --badge-border: #bfdbfe;
+      --success: #10b981;
+      --success-light: #ecfdf5;
+      --success-border: #a7f3d0;
+      --warning: #f59e0b;
+      --pill-bg: #dbeafe;
+      --pill-text: #1e40af;
+      --meta-bg: #f1f5f9;
+      --meta-border: #2563eb;
+      --table-header-bg: #f8fafc;
+      --table-row-hover: #f8fafc;
+      --code-bg: #f1f5f9;
+      --code-text: #0f172a;
+      --code-border: #e2e8f0;
+      --mermaid-bg: #ffffff;
+      --mermaid-border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background-color: var(--bg);
+      padding: 30px 20px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px;
+      border: 1px solid var(--border);
+      transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    /* Action bar for printing & theme toggle */
+    .action-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .btn {
+      padding: 9px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .btn-toggle {
+      background: var(--surface-alt);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-toggle:hover {
+      background: var(--surface-hover);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.45);
+    }
+
+    /* Header & Badges */
+    .header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--badge-border);
+    }
+    .badge-sub {
+      background-color: var(--success-light);
+      color: var(--success);
+      border: 1px solid var(--success-border);
+      margin-left: 8px;
+    }
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .meta-box {
+      background: var(--meta-bg);
+      border-left: 4px solid var(--meta-border);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      border-top: 1px solid var(--border-subtle);
+      border-right: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    /* Headings */
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-top: 40px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-top: 26px;
+      margin-bottom: 12px;
+    }
+    h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+    h5 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    strong {
+      color: var(--heading);
+      font-weight: 600;
+    }
+
+    p { margin-bottom: 16px; text-align: justify; }
+    ul, ol { margin-bottom: 16px; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 28px 0;
+      font-size: 0.92rem;
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+    }
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    th {
+      background-color: var(--table-header-bg);
+      font-weight: 600;
+      color: var(--heading);
+      border-bottom: 2px solid var(--border);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background-color: var(--table-row-hover); }
+
+    /* Alert & Highlights */
+    .alert {
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .alert-info {
+      background-color: var(--primary-light);
+      border: 1px solid var(--badge-border);
+      color: var(--heading);
+    }
+
+    /* Mermaid Container */
+    .mermaid {
+      background: var(--mermaid-bg);
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--mermaid-border);
+      margin: 24px 0;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+      overflow-x: auto;
+    }
+
+    /* Code styling */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: var(--code-bg);
+      padding: 3px 7px;
+      border-radius: 4px;
+      color: var(--code-text);
+      border: 1px solid var(--code-border);
+    }
+
+    /* Utility badges */
+    .pill-hours {
+      background: var(--pill-bg);
+      color: var(--pill-text);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: inline-block;
+      border: 1px solid var(--badge-border);
+    }
+
+    @media print {
+      body { background: white !important; color: #111 !important; padding: 0 !important; }
+      .container { box-shadow: none !important; border: none !important; padding: 0 !important; max-width: 100% !important; background: white !important; }
+      .action-bar { display: none !important; }
+      h1, h2, h3, h4, h5, strong { color: #000 !important; }
+      p, li, td { color: #222 !important; }
+      table { border-color: #cbd5e1 !important; }
+      th { background-color: #f1f5f9 !important; color: #0f172a !important; border-color: #cbd5e1 !important; }
+      td { border-color: #e2e8f0 !important; }
+      .meta-box { background: #f8fafc !important; color: #111 !important; border-left-color: #2563eb !important; }
+      .badge { border-color: #cbd5e1 !important; color: #1d4ed8 !important; background: #eff6ff !important; }
+      code { background: #f1f5f9 !important; color: #0f172a !important; border-color: #cbd5e1 !important; }
+      .mermaid { background: white !important; border-color: #cbd5e1 !important; box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="action-bar">
+      <button class="btn btn-toggle" id="themeToggle" onclick="toggleTheme()" title="Chuyển chế độ sáng / tối">
+        <span id="themeIcon">☀️</span> <span id="themeLabel">Phông sáng</span>
+      </button>
+      <button class="btn btn-primary" onclick="window.print()">
+        <span>🖨️ In hoặc Xuất PDF</span>
+      </button>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="badge">ĐH Khoa học Tự nhiên, ĐHQG-HCM</div>
+      <div class="badge badge-sub">Bộ môn Công nghệ Phần mềm</div>
+      <h1>NHẬP MÔN CÔNG NGHỆ PHẦN MỀM</h1>
+      <div class="subtitle">PROJECT PROPOSAL: NỀN TẢNG TỐI ƯU HỒ SƠ, MÔ PHỎNG PHỎNG VẤN KỸ THUẬT & SĂN VIỆC LÀM CHO SINH VIÊN IT (HIREUS)</div>
+      
+      <div class="meta-box">
+        <strong>Giảng viên lý thuyết (GVLT):</strong> Thầy Phạm Minh Tuấn<br>
+        <strong>Giảng viên thực hành (GVTH):</strong> Thầy Nguyễn Ngô Duy Khoa<br>
+        <strong>Nhóm thực hiện:</strong> Nhóm sinh viên 4 thành viên (Lê Tấn Dũng, Võ Nguyễn Việt Hoàng, Võ Minh Khoa, Đỗ Chí Cao)<br>
+        <strong>Mô hình phát triển:</strong> Scrum (Agile) triển khai trong 8 tuần<br>
+        <strong>Trạng thái:</strong> Đề xuất đồ án đợt 1 (Project Proposal) | <strong>Phiên bản:</strong> 1.0
+      </div>
+    </header>
+
+    <!-- SECTION 1 -->
+    <section>
+      <h2>1. BẢNG ĐÁNH GIÁ THÀNH VIÊN</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%; text-align: center;">STT</th>
+            <th style="width: 18%; text-align: center;">MSSV</th>
+            <th style="width: 34%;">Họ và Tên</th>
+            <th style="width: 22%; text-align: center;">% Đóng góp (Tối đa 100%)</th>
+            <th style="width: 18%; text-align: center;">Chữ ký</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;"><em>&lt;MSSV1&gt;</em></td>
+            <td><strong>Lê Tấn Dũng</strong></td>
+            <td style="text-align: center;">100%</td>
+            <td style="text-align: center; color: var(--text-muted);"><em>(Ký khi nộp)</em></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">2</td>
+            <td style="text-align: center;"><em>&lt;MSSV2&gt;</em></td>
+            <td><strong>Võ Nguyễn Việt Hoàng</strong></td>
+            <td style="text-align: center;">100%</td>
+            <td style="text-align: center; color: var(--text-muted);"><em>(Ký khi nộp)</em></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">3</td>
+            <td style="text-align: center;"><em>&lt;MSSV3&gt;</em></td>
+            <td><strong>Võ Minh Khoa</strong></td>
+            <td style="text-align: center;">100%</td>
+            <td style="text-align: center; color: var(--text-muted);"><em>(Ký khi nộp)</em></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">4</td>
+            <td style="text-align: center;"><em>&lt;MSSV4&gt;</em></td>
+            <td><strong>Đỗ Chí Cao</strong></td>
+            <td style="text-align: center;">100%</td>
+            <td style="text-align: center; color: var(--text-muted);"><em>(Ký khi nộp)</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section>
+      <h2>2. PHÁT BIỂU BÀI TOÁN SƠ LƯỢC</h2>
+      
+      <p><strong>HireUS</strong> là hệ thống ứng dụng web giúp kết nối sinh viên ngành Công nghệ Thông tin với các cơ hội việc làm thực tập sinh và sinh viên mới tốt nghiệp. Hệ thống hỗ trợ sinh viên tự chuẩn hóa hồ sơ ứng tuyển đúng chuẩn công nghiệp, tham gia các buổi phỏng vấn thử nghiệm bằng giọng nói với trí tuệ nhân tạo, đối chiếu năng lực hiện tại với yêu cầu của thị trường lao động, tự động hóa quy trình nộp hồ sơ xin việc đến các nhà tuyển dụng và theo dõi các đợt mở đơn tuyển dụng sớm từ mạng xã hội.</p>
+
+      <p>Khi cần tạo hồ sơ xin việc, đầu tiên sinh viên cung cấp các thông tin cá nhân và năng lực chuyên môn: họ và tên, địa chỉ email, số điện thoại, liên kết trang cá nhân (LinkedIn, GitHub), mục tiêu nghề nghiệp, thông tin học vấn gồm trường, chuyên ngành, điểm GPA tích lũy và chứng chỉ chuyên môn, danh mục kỹ năng kỹ thuật gồm ngôn ngữ lập trình, framework, cơ sở dữ liệu và công cụ phát triển, cùng danh sách các dự án kỹ thuật đã từng tham gia. Thông tin này cần chính xác và trung thực để nhà tuyển dụng đánh giá đúng năng lực. Đối với mỗi dự án, sinh viên cần cung cấp: tên dự án, đường dẫn mã nguồn, vai trò đảm nhận, thời gian thực hiện, công nghệ sử dụng và các gạch đầu dòng mô tả những đóng góp cụ thể. Kế tiếp, để tối ưu hóa nội dung, sinh viên có thể kích hoạt trợ lý SeekerBot. Trợ lý này sẽ phân tích từng câu mô tả dự án và tự động gợi ý viết lại theo cấu trúc định lượng kết quả với số liệu đo lường cụ thể và phương pháp STAR gồm bối cảnh, nhiệm vụ, hành động và kết quả. Sinh viên có thể xem bản so sánh trước và sau khi gợi ý để lựa chọn áp dụng hoặc tự chỉnh sửa lại theo ý muốn. Về hình thức trình bày, hệ thống tự động sắp xếp dữ liệu theo bố cục đơn cột chuẩn ATS nhằm tránh lỗi đọc văn bản khi các doanh nghiệp dùng phần mềm tự động quét hồ sơ. Sinh viên có thể tùy biến thứ tự hiển thị các khối nội dung và xem trước bản in theo thời gian thực. Sau khi hoàn thiện, sinh viên có thể xuất bản hồ sơ ra tệp tin định dạng PDF với lớp văn bản chuẩn 100% cho phép chọn và sao chép dữ liệu chính xác, hoặc lưu lại thành các mẫu hồ sơ khác nhau trong tài khoản của mình.</p>
+
+      <p>Khi cần rèn luyện kỹ năng phỏng vấn chuyên môn, đầu tiên sinh viên thiết lập cấu hình phòng phỏng vấn ảo: lựa chọn vị trí ứng tuyển như Frontend, Backend, Fullstack hoặc AI/Data, chọn cấp độ thực tập sinh hoặc fresher, ngôn ngữ phỏng vấn bằng tiếng Việt hoặc tiếng Anh, và chọn gói nội dung phỏng vấn gồm kiến thức nền tảng cốt lõi, tư duy thuật toán hoặc giải quyết tình huống kỹ thuật thực tế. Kế tiếp, hệ thống kiểm tra kết nối microphone và loa hoặc tai nghe của thiết bị người dùng trước khi bắt đầu. Trong phòng phỏng vấn, trí tuệ nhân tạo trong vai trò người phỏng vấn kỹ thuật AI Tech Lead sẽ phát câu hỏi trực tiếp bằng giọng nói tự nhiên thông qua hệ thống âm thanh. Mỗi câu hỏi hiển thị kèm đồng hồ đếm ngược thời gian trả lời tối đa 2 phút cho mỗi câu. Sinh viên trả lời bằng lời nói trực tiếp thông qua microphone. Hệ thống sẽ nhận dạng âm thanh tức thời, chuyển thành văn bản và phân tích câu trả lời của ứng viên. Dựa trên nội dung sinh viên vừa trình bày, hệ thống sẽ linh hoạt đưa ra câu hỏi phụ hoặc hỏi sâu thêm vào các từ khóa kỹ thuật liên quan, đảm bảo tính liên tục và độ trễ thấp phù hợp cho phản xạ đối thoại của buổi phỏng vấn. Sinh viên có quyền yêu cầu người phỏng vấn "nhắc lại câu hỏi" hoặc "gợi ý định hướng trả lời" tối đa 2 lần trong một buổi. Mỗi phiên phỏng vấn kéo dài từ 5 đến 7 câu hỏi. Khi hoàn thành tất cả câu hỏi, hệ thống chấm điểm và xuất bản báo cáo đánh giá năng lực chi tiết theo thang điểm 100 dựa trên 3 tiêu chí: độ chính xác kiến thức nền tảng, tư duy xử lý vấn đề, và khả năng diễn đạt chuyên môn, kèm theo nhận xét chi tiết ưu/khuyết điểm và gợi ý câu trả lời chuẩn cho từng câu hỏi.</p>
+
+      <p>Về phía tìm kiếm cơ hội việc làm, hệ thống cung cấp danh mục các vị trí tuyển dụng thực tập sinh và fresher được thu thập từ các kênh tuyển dụng uy tín. Sinh viên có thể tìm kiếm việc làm theo các tiêu chí: chức danh công việc, địa điểm làm việc như TP. Hồ Chí Minh, Hà Nội, Đà Nẵng hoặc làm việc từ xa, và mức hỗ trợ hoặc lương. Khi sinh viên bấm xem chi tiết một bản mô tả công việc JD, hệ thống tự động bóc tách các yêu cầu kỹ thuật và đối chiếu với hồ sơ CV hiện tại của sinh viên để tính toán điểm tương thích năng lực Match Score từ 0% đến 100%. Đồng thời, hệ thống hiển thị bảng phân tích khoảng cách kỹ năng gồm hai danh sách: các kỹ năng sinh viên đã đáp ứng được đánh dấu màu xanh và các kỹ năng nhà tuyển dụng yêu cầu nhưng sinh viên còn thiếu được đánh dấu màu đỏ kèm theo gợi ý từ khóa tài liệu học tập để sinh viên chủ động trau dồi. Khi sinh viên quyết định nộp đơn ứng tuyển cho công việc đã chọn, hệ thống hỗ trợ quy trình gửi hồ sơ tự động. Đầu tiên, hệ thống trích xuất địa chỉ email nhận hồ sơ từ bản mô tả công việc. Kế tiếp, hệ thống tự động soạn thảo thư ứng tuyển cá nhân hóa bám sát các yêu cầu nổi bật của công việc và gắn kết với thế mạnh của sinh viên. Sinh viên có thể đọc lại, chỉnh sửa tiêu đề email và nội dung bức thư theo ý mình, kiểm tra lại tệp đính kèm CV PDF. Sau khi sinh viên bấm xác nhận gửi, hệ thống sẽ gửi trực tiếp email đến nhà tuyển dụng qua giao thức SMTP và ghi nhận trạng thái vào nhật ký ứng tuyển. Để phòng ngừa hành vi gửi thư rác, mỗi tài khoản sinh viên bị giới hạn gửi tối đa 10 email ứng tuyển tự động trong một ngày.</p>
+
+      <p>Để sinh viên không bỏ lỡ các kỳ tuyển dụng lớn từ các tập đoàn công nghệ như VNG, Bosch, NAB, FPT hay Viettel, hệ thống cung cấp công cụ Radar theo dõi thông tin tuyển dụng từ mạng xã hội. Sinh viên có thể thiết lập danh sách các Fanpage Facebook hoặc trang LinkedIn doanh nghiệp mà mình muốn theo dõi bằng cách cung cấp đường dẫn URL của trang. Định kỳ 6 giờ một lần, hệ thống tự động quét các bài viết mới xuất hiện trên các trang này và dùng trí tuệ nhân tạo để phân loại nội dung. Hệ thống sẽ tự động loại bỏ các bài viết truyền thông nội bộ, chúc mừng sinh nhật, hoặc hoạt động phong trào, chỉ giữ lại các bài đăng thực sự mở đợt tuyển dụng sinh viên. Đối với các bài viết tuyển dụng được duyệt, hệ thống tự động bóc tách các thông tin chính: tên doanh nghiệp, tên chương trình tuyển dụng, vị trí tuyển, yêu cầu ứng viên, thời hạn nộp hồ sơ và liên kết dẫn đến biểu mẫu đăng ký gốc. Khi có thông tin đợt tuyển dụng mới, hệ thống sẽ gửi thông báo tức thời trên bảng điều khiển của sinh viên và gửi email thông báo tổng hợp, giúp sinh viên nắm bắt kịp thời để chuẩn bị nộp đơn trước hạn chót.</p>
+
+      <p>Toàn bộ quá trình từ lúc tạo CV, phỏng vấn thử đến lúc gửi hồ sơ ứng tuyển đều được thực hiện trực tuyến thông qua trình duyệt web trên máy tính có kết nối Internet. Để đảm bảo tính an toàn và bảo mật thông tin, sinh viên cần đăng ký tài khoản với bước xác thực qua email và đăng nhập trước khi sử dụng hệ thống. Mọi thông tin hồ sơ cá nhân, kết quả phỏng vấn và lịch sử ứng tuyển đều được mã hóa và lưu trữ an toàn trong cơ sở dữ liệu quan hệ PostgreSQL. Về phía client trên thiết bị người dùng, hệ thống yêu cầu trình duyệt web hiện đại có hỗ trợ HTML5 và Web Speech API, đồng thời máy tính phải được trang bị microphone và loa hoặc tai nghe hoạt động bình thường phục vụ tương tác âm thanh hai chiều. Phía máy chủ, hệ thống được phát triển trên nền tảng Node.js, tích hợp dịch vụ trí tuệ nhân tạo và máy chủ gửi email SMTP. Toàn bộ quy trình phát triển và hoàn thiện phần mềm được nhóm quản lý theo mô hình Agile/Scrum trong thời hạn 8 tuần.</p>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section>
+      <h2>3. GIẢI PHÁP ĐỀ XUẤT</h2>
+      <p>Nhằm giải quyết triệt để các bài toán và nhu cầu thực tế đã nêu ở Mục 2, nhóm đề xuất giải pháp hệ thống <strong>HireUS</strong> gồm 5 phân hệ phần mềm kết hợp chặt chẽ:</p>
+
+      <ol>
+        <li><strong>Phân hệ 1:</strong> Tạo CV chuẩn ATS & Trợ lý Cố vấn SeekerBot.</li>
+        <li><strong>Phân hệ 2:</strong> Mô phỏng Phỏng vấn Kỹ thuật Giọng nói Thời gian thực (Voice Mock Interview).</li>
+        <li><strong>Phân hệ 3:</strong> Hỗ trợ Ứng tuyển & Rải CV Tự động (Auto Job Dispatcher).</li>
+        <li><strong>Phân hệ 4:</strong> Tổng hợp Việc làm & Đối sánh Năng lực (Job Matching & Skill Gap Analysis).</li>
+        <li><strong>Phân hệ 5:</strong> Radar Săn tin Tuyển dụng Sớm từ Mạng xã hội (Social Early Recruitment Radar).</li>
+      </ol>
+
+      <h3>3.1. Phần mềm</h3>
+      
+      <h4>3.1.1. Danh sách các chức năng phần mềm</h4>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 45%;">Nhu cầu</th>
+            <th style="width: 55%;">Yêu cầu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Là sinh viên IT, tôi muốn tạo hồ sơ trên biểu mẫu nhập liệu có cấu trúc phân định rõ ràng và xem trước trực tiếp theo chuẩn ATS để CV không bị máy quét tự động loại bỏ.</td>
+            <td><strong>Trình tạo CV chuẩn ATS:</strong> Form nhập liệu đa khối (Kỹ năng, Dự án, Học vấn...), xem trước trực tiếp (Live Preview) bố cục đơn cột chuẩn mực, hỗ trợ xuất bản tệp PDF có text layer 100%.</td>
+          </tr>
+          <tr>
+            <td>Là sinh viên IT, tôi muốn nhận được gợi ý viết lại phần mô tả dự án theo phương pháp định lượng và cấu trúc rõ ràng để làm nổi bật năng lực kỹ thuật của bản thân.</td>
+            <td><strong>Trợ lý cố vấn SeekerBot:</strong> Phân tích câu mô tả dự án, tự động gợi ý chuẩn hóa theo công thức định lượng kết quả và chuẩn STAR, phản hồi nhanh chóng và hỗ trợ so sánh kết quả trực quan.</td>
+          </tr>
+          <tr>
+            <td>Là sinh viên IT, tôi muốn tham gia phòng phỏng vấn kỹ thuật 1:1 bằng giọng nói với AI Tech Lead để rèn luyện phản xạ trả lời câu hỏi chuyên môn chân thực như phỏng vấn thật.</td>
+            <td><strong>Phỏng vấn kỹ thuật giọng nói:</strong> Tương tác âm thanh hai chiều (Voice-to-Voice) qua micro và loa, phản hồi thoại nhanh và liên tục, kịch bản hỏi đáp chuyên sâu 5 - 7 câu theo từng vị trí (Frontend, Backend, AI...).</td>
+          </tr>
+          <tr>
+            <td>Là sinh viên IT sau khi phỏng vấn, tôi muốn nhận được báo cáo đánh giá chi tiết theo các tiêu chí kỹ thuật chuẩn mực để biết rõ lỗ hổng kiến thức và kịp thời ôn tập.</td>
+            <td><strong>Đánh giá năng lực kỹ thuật:</strong> Tự động tổng hợp bảng điểm theo thang 100 dựa trên 3 tiêu chí (<em>Kiến thức nền tảng, Tư duy giải quyết vấn đề, Diễn đạt chuyên môn</em>), kèm nhận xét cụ thể và câu trả lời mẫu tham khảo.</td>
+          </tr>
+          <tr>
+            <td>Là sinh viên IT, tôi muốn hệ thống tự động so khớp CV của tôi với các việc làm đang mở để nhanh chóng chọn ra các công việc phù hợp nhất với năng lực hiện có.</td>
+            <td><strong>Đối soát năng lực (Job Matching):</strong> Thu thập tin tuyển dụng Intern/Fresher, thuật toán đối sánh tính điểm tương thích Match Score (0% - 100%) giữa hồ sơ và JD, gắn nhãn kỹ năng đã đáp ứng và kỹ năng còn thiếu.</td>
+          </tr>
+          <tr>
+            <td>Là sinh viên IT, tôi muốn xem bảng phân tích kỹ năng thị trường đang đòi hỏi để có định hướng tự học bổ sung các công nghệ còn thiếu.</td>
+            <td><strong>Phân tích khoảng cách kỹ năng (Skill Gap):</strong> Trực quan hóa danh mục công nghệ nhà tuyển dụng yêu cầu nhiều nhất cho vị trí mục tiêu, gợi ý lộ trình tự học và chủ đề dự án cần thực hiện.</td>
+          </tr>
+          <tr>
+            <td>Là sinh viên IT, tôi muốn tự động tạo Cover Letter bám sát bản mô tả công việc và gửi hồ sơ ứng tuyển qua email để tiết kiệm thời gian rải CV thủ công.</td>
+            <td><strong>Tự động gửi hồ sơ ứng tuyển:</strong> Tự động trích xuất email nhà tuyển dụng từ JD, sinh Cover Letter cá nhân hóa, gửi kèm CV PDF trực tiếp qua giao thức SMTP, quy định gửi tối đa 10 email/ngày để đảm bảo an toàn.</td>
+          </tr>
+          <tr>
+            <td>Là sinh viên IT, tôi muốn theo dõi bài đăng tuyển dụng từ Fanpage/LinkedIn của các công ty công nghệ lớn để không bỏ lỡ đợt tuyển dụng sớm.</td>
+            <td><strong>Cấu hình Radar theo dõi mạng xã hội:</strong> Cho phép người dùng thêm và quản lý danh sách đường dẫn (URL) Fanpage hoặc trang doanh nghiệp cần theo dõi, định kỳ quét bài viết mới.</td>
+          </tr>
+          <tr>
+            <td>Là sinh viên IT, tôi muốn hệ thống tự lọc bài viết trên mạng xã hội để chỉ nhận thông báo về các đợt mở đơn thực tập/fresher thực sự, tránh bị làm phiền bởi tin tức truyền thông nội bộ.</td>
+            <td><strong>Lọc và cảnh báo tin tuyển dụng:</strong> Dùng AI phân loại bài viết, lọc bỏ tin phong trào/sinh nhật, trích xuất hạn chót nộp đơn (deadline), phát cảnh báo tức thời qua Dashboard và Email, chu kỳ quét 6 giờ/lần.</td>
+          </tr>
+          <tr>
+            <td>Là người dùng, tôi muốn hệ thống phản hồi nhanh chóng ở các tác vụ thông thường để đảm bảo trải nghiệm sử dụng thuận tiện.</td>
+            <td><strong>Hiệu năng & phản hồi:</strong> Tối ưu hóa tốc độ tải trang và thời gian xử lý API, có hiển thị trạng thái chờ khi thực hiện các tác vụ tốn thời gian.</td>
+          </tr>
+          <tr>
+            <td>Là người dùng đã đăng ký, tôi muốn mật khẩu đăng nhập và thông tin cá nhân của tôi được bảo vệ an toàn để không bị lộ lọt dữ liệu.</td>
+            <td><strong>Bảo vệ mật khẩu & an toàn dữ liệu:</strong> Xác thực tài khoản bằng JWT Token, phân quyền truy cập, mã hóa mật khẩu và bảo mật thông tin hồ sơ trong cơ sở dữ liệu.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>3.1.2. Kiến trúc tổng thể phần mềm</h4>
+      <p>Hệ thống <strong>HireUS</strong> được xây dựng theo mô hình Client - Server hiện đại, trong đó Backend đóng vai trò trung tâm điều phối logic nghiệp vụ, quản lý dữ liệu và kết nối với các dịch vụ trí tuệ nhân tạo cùng các API đám mây bên ngoài.</p>
+      
+      <h5>A. Sơ đồ kiến trúc tổng thể (Architecture Diagram)</h5>
+      <div class="mermaid">
+flowchart LR
+    User["1. Người dùng<br>(Sinh viên IT / Máy tính cá nhân)"]
+    
+    subgraph Frontend["2. Frontend (Next.js / React)"]
+        FE_UI["Giao diện người dùng<br>- Tạo CV & xem trước trực tiếp<br>- Phòng phỏng vấn giọng nói ảo<br>- Bảng việc làm & Radar cảnh báo"]
+    end
+
+    subgraph Backend["3. Backend (NestJS Server)"]
+        BE_Core["Trung tâm điều phối & nghiệp vụ<br>- Xác thực bảo mật JWT Token<br>- Xử lý nghiệp vụ 5 phân hệ<br>- Điều phối AI & tiến trình chạy nền"]
+    end
+
+    subgraph AI_Engine["4. AI & Thuật toán"]
+        AI_Core["Google Gemini API<br>- Tinh chỉnh mô tả dự án chuẩn STAR<br>- Kịch bản câu hỏi phỏng vấn ảo<br>- Thuật toán tính điểm Match Score<br>- Phân loại bài đăng tuyển dụng"]
+    end
+
+    subgraph Storage["5. Cơ sở dữ liệu (PostgreSQL)"]
+        DB[("PostgreSQL Database<br>- Tài khoản người dùng<br>- Hồ sơ CV & tệp tin PDF<br>- Lịch sử phỏng vấn & tin việc làm")]
+    end
+
+    subgraph CloudServices["6. Dịch vụ đám mây (Cloud Services)"]
+        Cloud["Dịch vụ ngoài<br>- Web Speech API (Thu & phát giọng nói)<br>- Máy chủ SMTP (Gửi thư ứng tuyển)<br>- Nguồn cấp tin tuyển dụng công khai"]
+    end
+
+    User <-->|HTTP / HTTPS| Frontend
+    Frontend <-->|REST API / HTTPS| Backend
+    Backend <-->|HTTPS API| AI_Engine
+    Backend <-->|ORM / SQL| Storage
+    Backend <-->|HTTPS / SMTP| CloudServices
+    Frontend -.->|Web Speech API| CloudServices
+      </div>
+
+      <h5>B. Bảng tổng hợp thành phần kiến trúc & Công nghệ sử dụng (Tech Stack)</h5>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%; text-align: center;">STT</th>
+            <th style="width: 22%;">Khối thành phần</th>
+            <th style="width: 25%;">Công nghệ lựa chọn (Tech Stack)</th>
+            <th style="width: 30%;">Vai trò & Nhiệm vụ chính trong hệ thống</th>
+            <th style="width: 15%; text-align: center;">Giao thức kết nối</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center;"><strong>1</strong></td>
+            <td><strong>Frontend (Client)</strong></td>
+            <td><strong>Next.js 14 (React, TypeScript)</strong></td>
+            <td>Cung cấp giao diện người dùng tương tác trực quan: form nhập liệu CV, xem trước bản in ATS, phòng phỏng vấn âm thanh và bảng thông tin việc làm.</td>
+            <td style="text-align: center;"><code>HTTP / HTTPS</code></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>2</strong></td>
+            <td><strong>Backend (Server)</strong></td>
+            <td><strong>NestJS (Node.js, TypeScript)</strong></td>
+            <td>Trung tâm điều phối toàn bộ hệ thống: tiếp nhận yêu cầu từ Frontend, xử lý logic nghiệp vụ, quản lý phiên xác thực JWT và điều phối luồng dữ liệu.</td>
+            <td style="text-align: center;"><code>REST API / HTTPS</code></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>3</strong></td>
+            <td><strong>AI & Thuật toán</strong></td>
+            <td><strong>Google Gemini 1.5 Flash API</strong></td>
+            <td>Hỗ trợ trợ lý cố vấn SeekerBot phân tích STAR, tạo câu hỏi phỏng vấn kỹ thuật giọng nói và bóc tách dữ liệu tin tuyển dụng.</td>
+            <td style="text-align: center;"><code>HTTPS (REST API)</code></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>4</strong></td>
+            <td><strong>Cơ sở dữ liệu (Database)</strong></td>
+            <td><strong>PostgreSQL (kèm Prisma ORM)</strong></td>
+            <td>Lưu trữ bền vững và bảo mật thông tin tài khoản, hồ sơ cá nhân, lịch sử phỏng vấn, danh mục việc làm và nhật ký ứng tuyển.</td>
+            <td style="text-align: center;"><code>TCP / SQL (ORM)</code></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>5</strong></td>
+            <td><strong>Dịch vụ đám mây (Cloud Services)</strong></td>
+            <td><strong>Web Speech API, SMTP, Cloud Storage</strong></td>
+            <td>Nhận diện và phát âm thanh giọng nói hai chiều trực tiếp trên trình duyệt, tự động gửi email ứng tuyển và lưu trữ tệp tin CV PDF.</td>
+            <td style="text-align: center;"><code>HTTPS / SMTP</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><em>Ghi chú kiến trúc:</em></p>
+      <ul>
+        <li>Toàn bộ luồng giao tiếp giữa các thành phần chủ yếu diễn ra qua giao thức HTTP/HTTPS với định dạng dữ liệu chuẩn JSON.</li>
+        <li>Backend là trung tâm điều phối và kiểm soát bảo mật, đảm bảo an toàn thông tin trước khi đọc hoặc ghi vào cơ sở dữ liệu.</li>
+        <li>Mô hình AI được tích hợp linh hoạt qua API đám mây, giúp tối ưu chi phí hạ tầng và đảm bảo tốc độ phản hồi nhanh cho các tác vụ ngôn ngữ tự nhiên.</li>
+      </ul>
+
+      <h3>3.2. Phần cứng</h3>
+      <p>Hệ thống <strong>HireUS</strong> vận hành trên nền tảng đám mây và web tiêu chuẩn, yêu cầu cấu hình phần cứng tối thiểu cho các bên như sau:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">Đối tượng</th>
+            <th style="width: 40%;">Cấu hình phần cứng tối thiểu</th>
+            <th style="width: 35%;">Thiết bị ngoại vi & Kết nối mạng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Người dùng cuối (Client)</strong></td>
+            <td>Máy tính cá nhân (PC hoặc Laptop), tối thiểu 2 GB RAM, trình duyệt web hỗ trợ HTML5 và Web Speech API.</td>
+            <td>Có microphone và loa hoặc tai nghe hoạt động tốt phục vụ phỏng vấn giọng nói, kết nối Internet ổn định.</td>
+          </tr>
+          <tr>
+            <td><strong>Máy chủ vận hành (Server)</strong></td>
+            <td>Cloud Server từ 2 vCPU, 2 GB RAM, 20 GB ổ cứng SSD (sử dụng hạ tầng Vercel, Render và Supabase).</td>
+            <td>Đường truyền Internet tốc độ cao, hỗ trợ kết nối HTTPS và các dịch vụ API bên ngoài.</td>
+          </tr>
+          <tr>
+            <td><strong>Thiết bị phát triển (Team)</strong></td>
+            <td>Laptop cá nhân tối thiểu 8 GB RAM, ổ đĩa SSD phục vụ cài đặt Node.js runtime, môi trường ảo hóa Docker và Git.</td>
+            <td>Kết nối Internet phục vụ làm việc nhóm qua GitHub và kiểm thử API đám mây.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section>
+      <h2>4. KẾ HOẠCH PHÁT TRIỂN</h2>
+      <p><em>Nhóm sinh viên trình bày cụ thể kế hoạch phát triển phần mềm, cùng thành phẩm cụ thể của từng giai đoạn.</em></p>
+
+      <div class="alert alert-info">
+        <strong>Lưu ý theo quy định của Giảng viên:</strong> Khác với biểu mẫu mặc định mô tả theo mô hình Thác nước (Waterfall), nhóm lựa chọn và hiện thực hóa quy trình phát triển theo mô hình linh hoạt <strong>Scrum (Agile)</strong> trong thời hạn 8 tuần của học kỳ. Toàn bộ 5 giai đoạn kỹ thuật cốt lõi (Phân tích, Thiết kế, Cài đặt, Kiểm thử, Triển khai) được nhóm phân rã, lồng ghép vào các chu kỳ Sprint hàng tuần với cam kết sản phẩm đầu ra (Deliverables) cụ thể.<br><br>
+        <strong>Tổng ước lượng công số toàn dự án (Total Man-Hours):</strong> Dự án gồm 4 thành viên, làm việc trong 8 tuần với định mức trung bình <strong>12.5 giờ/tuần/thành viên</strong> (tương đương 50 giờ/tuần cho cả nhóm), tổng công số dự kiến là <strong>400 Người-giờ (Man-Hours)</strong>.
+      </div>
+
+      <h3>4.1. Phân tích yêu cầu (Requirements Analysis)</h3>
+      <ul>
+        <li><strong>Thời gian thực hiện:</strong> Tuần 01 – Tuần 03 (tương đương Sprint 0 & Giai đoạn chuẩn bị).</li>
+        <li><strong>Mục tiêu & Hoạt động trọng tâm:</strong>
+          <ul>
+            <li>Khảo sát thực tế các khó khăn của sinh viên IT khi viết CV và phỏng vấn, bóc tách 11 câu chuyện người dùng (User Stories) đã xác định ở Mục 3.1.1.</li>
+            <li>Phân rã Product Backlog trên Jira Software, gắn điểm ước lượng Story Points và xác định thứ tự ưu tiên theo phương pháp MoSCoW.</li>
+            <li>Xây dựng sơ đồ Use Case tổng thể và bảng đặc tả chi tiết (Use Case Specifications) cho 5 phân hệ phần mềm của hệ thống <strong>HireUS</strong>.</li>
+            <li>Xây dựng sơ đồ hoạt động (Activity Diagrams) cho luồng phỏng vấn kỹ thuật giọng nói và luồng tự động gửi email ứng tuyển qua SMTP.</li>
+          </ul>
+        </li>
+        <li><strong>Thành phẩm cụ thể (Deliverables):</strong> <code>Project_Proposal.md</code> & <code>Project_Proposal.html</code> (Đề xuất đồ án đợt 1 - Tuần 02), <code>Software_Requirements_Specification.md</code> (SRS - Tuần 03), Product Backlog hoàn chỉnh trên Jira Software.</li>
+        <li><strong>Ước lượng công số (Man-Hours):</strong> <span class="pill-hours">70 Người-giờ</span> (chiếm 17.5% tổng công số dự án):
+          <ul>
+            <li><em>Lê Tấn Dũng (Leader):</em> 22 giờ (quản trị Product Backlog, khảo sát nghiệp vụ AI).</li>
+            <li><em>Võ Nguyễn Việt Hoàng:</em> 16 giờ (đặc tả yêu cầu giao diện người dùng CV & Mock Interview).</li>
+            <li><em>Võ Minh Khoa:</em> 16 giờ (đặc tả Use Cases Backend, luồng đối thoại và SMTP).</li>
+            <li><em>Đỗ Chí Cao:</em> 16 giờ (đặc tả yêu cầu phi chức năng, kiểm thử và cơ sở dữ liệu).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>4.2. Thiết kế phần mềm (Software Design)</h3>
+      <ul>
+        <li><strong>Thời gian thực hiện:</strong> Tuần 03 – Tuần 04.</li>
+        <li><strong>Mục tiêu & Hoạt động trọng tâm:</strong>
+          <ul>
+            <li>Chuyển hóa toàn bộ yêu cầu từ tài liệu SRS thành kiến trúc kỹ thuật chi tiết theo mô hình phân tầng đa lớp (Multi-tier Architecture).</li>
+            <li>Thiết kế kiến trúc module phía máy chủ NestJS và các thành phần giao diện Next.js 14, định nghĩa danh sách RESTful API Endpoints và sự kiện WebSocket.</li>
+            <li>Thiết kế cơ sở dữ liệu quan hệ trên PostgreSQL: Sơ đồ thực thể kết hợp (ERD), lược đồ cơ sở dữ liệu vật lý (Physical Schema), các ràng buộc toàn vẹn và chỉ mục đánh số phục vụ tối ưu hóa truy vấn.</li>
+            <li>Thiết kế giao diện UI/UX trực quan trên Figma cho 5 màn hình chính: CV Builder (Split-view), Voice Mock Interview Room, Job Dashboard & Skill Gap, Application Dispatcher, Social Radar Alert.</li>
+            <li>Xây dựng Sequence Diagrams mô tả chi tiết tương tác giữa Client - NestJS - Google Gemini API - Máy chủ SMTP.</li>
+          </ul>
+        </li>
+        <li><strong>Thành phẩm cụ thể (Deliverables):</strong> <code>Software_Design_Document.md</code> (SDD - Tuần 04), Bản mẫu thiết kế giao diện Figma Clickable Prototype, Bản vẽ ERD và Database Migration scripts.</li>
+        <li><strong>Ước lượng công số (Man-Hours):</strong> <span class="pill-hours">60 Người-giờ</span> (chiếm 15.0% tổng công số dự án):
+          <ul>
+            <li><em>Lê Tấn Dũng:</em> 15 giờ (thiết kế luồng tương tác AI, kiến trúc tổng thể).</li>
+            <li><em>Võ Nguyễn Việt Hoàng:</em> 20 giờ (thiết kế UI/UX trên Figma, layout chuẩn ATS).</li>
+            <li><em>Võ Minh Khoa:</em> 15 giờ (thiết kế API contracts, Sequence Diagrams).</li>
+            <li><em>Đỗ Chí Cao:</em> 10 giờ (thiết kế ERD, Database Schema PostgreSQL).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>4.3. Cài đặt (implement) phần mềm (Software Implementation)</h3>
+      <ul>
+        <li><strong>Thời gian thực hiện:</strong> Tuần 05 – Tuần 07 (được tổ chức thành 3 chu kỳ Sprint liên tiếp).</li>
+        <li><strong>Mục tiêu & Hoạt động trọng tâm theo 3 Sprint:</strong>
+          <ul>
+            <li><strong>Sprint 1 (Tuần 05 - Nền tảng Cốt lõi & Phân hệ CV Builder):</strong> Thiết lập môi trường dự án (Next.js 14, NestJS, PostgreSQL), hiện thực hóa Auth JWT, lập trình Phân hệ 1 (Form nhập liệu, Live Preview ATS, SeekerBot AI gợi ý STAR/XYZ, kết xuất PDF text layer 100%). <em>Công số:</em> <strong>60 Người-giờ</strong>.</li>
+            <li><strong>Sprint 2 (Tuần 06 - Phân hệ Phỏng vấn Giọng nói & Đối soát Việc làm):</strong> Lập trình Phân hệ 2 (Phòng phỏng vấn thoại hai chiều thời gian thực qua Web Speech API & Gemini API, đối thoại chuyên môn phản xạ nhanh, chấm điểm 3 tiêu chí) và Phân hệ 4 (Dashboard so khớp việc làm IT, Match Score 0% - 100% và trực quan hóa Skill Gap). <em>Công số:</em> <strong>60 Người-giờ</strong>.</li>
+            <li><strong>Sprint 3 (Tuần 07 - Tự động Ứng tuyển & Radar Tuyển dụng Mạng xã hội):</strong> Lập trình Phân hệ 3 (Auto Job Dispatcher trích xuất email, sinh Cover Letter cá nhân hóa, gửi qua SMTP kèm Rate Limiter 10 email/ngày) và Phân hệ 5 (Background Worker quét bài đăng Fanpage/LinkedIn, AI Classifier lọc bài rác, bóc tách Deadline và phát cảnh báo tức thời). <em>Công số:</em> <strong>50 Người-giờ</strong>.</li>
+          </ul>
+        </li>
+        <li><strong>Thành phẩm cụ thể (Deliverables):</strong> Toàn bộ mã nguồn hoàn chỉnh của 5 phân hệ trên GitHub Repositories, Phiên bản phần mềm chạy được thực tế (Working Software Increment) sau mỗi chu kỳ Sprint.</li>
+        <li><strong>Ước lượng công số (Man-Hours):</strong> <span class="pill-hours">170 Người-giờ</span> (chiếm 42.5% tổng công số dự án - giai đoạn trọng tâm nhất):
+          <ul>
+            <li><em>Lê Tấn Dũng:</em> 45 giờ (lập trình tích hợp Gemini AI, Voice streaming, AI Classifier).</li>
+            <li><em>Võ Nguyễn Việt Hoàng:</em> 45 giờ (lập trình giao diện Next.js, Web Speech API, PDF viewer).</li>
+            <li><em>Võ Minh Khoa:</em> 45 giờ (lập trình NestJS API, SMTP email service, Background Worker).</li>
+            <li><em>Đỗ Chí Cao:</em> 35 giờ (lập trình CSDL PostgreSQL, tối ưu truy vấn, hỗ trợ API).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>4.4. Kiểm thử phần mềm (Testing & Quality Assurance)</h3>
+      <ul>
+        <li><strong>Thời gian thực hiện:</strong> Tiến hành liên tục trong mỗi Sprint (Tuần 05 – Tuần 07) và tập trung cao điểm vào Tuần 07.</li>
+        <li><strong>Mục tiêu & Hoạt động trọng tâm:</strong>
+          <ul>
+            <li>Xây dựng ma trận kiểm thử (Test Matrix) bao quát toàn bộ 11 yêu cầu chức năng và phi chức năng.</li>
+            <li>Viết và thực thi <strong>Kiểm thử đơn vị (Unit Testing)</strong> cho các dịch vụ cốt lõi Backend bằng Jest (đảm bảo Code Coverage &ge; 70%).</li>
+            <li><strong>Kiểm thử tích hợp (Integration Testing):</strong> Kiểm tra luồng gọi API Gemini, kết nối CSDL PostgreSQL và luồng gửi email SMTP.</li>
+            <li><strong>Kiểm thử phi chức năng & hiệu năng:</strong> Đo lường và tối ưu độ trễ phản hồi giọng nói (bảo đảm tương tác thoại của AI Tech Lead diễn ra liên tục, không bị ngắt quãng), đo lường và tối ưu hóa thời gian phản hồi của các API thông thường (bảo đảm hệ thống vận hành mượt mà, hạn chế tối đa độ trễ), rà soát bảo mật JWT, mã hóa bcrypt và chống rò rỉ dữ liệu cá nhân.</li>
+          </ul>
+        </li>
+        <li><strong>Thành phẩm cụ thể (Deliverables):</strong> <code>Test_Report.md</code> (Báo cáo kiểm thử - Tuần 07), Bộ Test Cases tự động (Jest) tích hợp trong CI/CD.</li>
+        <li><strong>Ước lượng công số (Man-Hours):</strong> <span class="pill-hours">50 Người-giờ</span> (chiếm 12.5% tổng công số dự án):
+          <ul>
+            <li><em>Lê Tấn Dũng:</em> 10 giờ (kiểm thử chất lượng câu trả lời AI, đo độ trễ âm thanh).</li>
+            <li><em>Võ Nguyễn Việt Hoàng:</em> 10 giờ (kiểm thử giao diện UI/UX trên các độ phân giải màn hình).</li>
+            <li><em>Võ Minh Khoa:</em> 10 giờ (kiểm thử chịu tải API, hạn mức Rate Limiting 10 mail/ngày).</li>
+            <li><em>Đỗ Chí Cao (QA Lead):</em> 20 giờ (chủ trì thiết kế Test Plan, viết Jest Unit Tests, lập Test Report).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>4.5. Triển khai, bảo trì (Deployment & Maintenance)</h3>
+      <ul>
+        <li><strong>Thời gian thực hiện:</strong> Tuần 08 (Sprint cuối & Đóng gói sản phẩm).</li>
+        <li><strong>Mục tiêu & Hoạt động trọng tâm:</strong>
+          <ul>
+            <li>Đóng gói mã nguồn thành Docker Container để chuẩn hóa môi trường thực thi giữa máy tính cục bộ và máy chủ đám mây.</li>
+            <li>Triển khai phần mềm lên hạ tầng thực tế: Frontend trên Vercel (kết nối tên miền <code>hireus.vercel.app</code>, SSL miễn phí), Backend trên Render / Railway, Cơ sở dữ liệu trên Supabase / Neon DB.</li>
+            <li>Cấu hình an toàn các biến môi trường (Environment Variables: API Keys, SMTP Credentials, Database URL).</li>
+            <li>Giám sát hệ thống sau triển khai (Monitoring & Logging): Theo dõi tỷ lệ lỗi, tình trạng tài nguyên CPU/RAM.</li>
+            <li>Soạn thảo hướng dẫn sử dụng (User Manual), quay video clip demo các kịch bản thực tế và chuẩn bị slide thuyết trình nghiệm thu đồ án trước hội đồng.</li>
+          </ul>
+        </li>
+        <li><strong>Thành phẩm cụ thể (Deliverables):</strong> Ứng dụng Web hoạt động trực tiếp trên môi trường Internet (Production URL), Video clip demo, slide báo cáo và báo cáo tổng kết đồ án (Tuần 08).</li>
+        <li><strong>Ước lượng công số (Man-Hours):</strong> <span class="pill-hours">50 Người-giờ</span> (chiếm 12.5% tổng công số dự án):
+          <ul>
+            <li><em>Lê Tấn Dũng:</em> 15 giờ (điều phối đóng gói Docker, triển khai Cloud, chuẩn bị slide báo cáo).</li>
+            <li><em>Võ Nguyễn Việt Hoàng:</em> 12 giờ (triển khai Vercel, kiểm tra responsive giao diện thực tế).</li>
+            <li><em>Võ Minh Khoa:</em> 13 giờ (triển khai Render Backend, cấu hình biến môi trường, quay video demo).</li>
+            <li><em>Đỗ Chí Cao:</em> 10 giờ (cấu hình Supabase DB, giám sát nhật ký lỗi, kiểm tra dữ liệu demo).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>4.6. Bảng Tổng hợp Tiến độ Scrum 8 Tuần & Phân bổ Công số (Man-Hours Summary)</h3>
+      <p>Dưới đây là bảng đối chiếu tổng thể giữa lộ trình 8 tuần học kỳ, các giai đoạn kỹ thuật tương ứng, thành phẩm đầu ra và ước lượng công số người-giờ chi tiết:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 14%; text-align: center;">Tuần</th>
+            <th style="width: 16%;">Giai đoạn / Sprint</th>
+            <th style="width: 18%;">Pha Kỹ thuật</th>
+            <th style="width: 28%;">Nội dung Công việc Trọng tâm</th>
+            <th style="width: 14%;">Thành phẩm Đầu ra</th>
+            <th style="width: 10%; text-align: center;">Công số</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center;"><strong>Week 01</strong><br><small style="color: var(--text-muted);">(12/10 - 18/10)</small></td>
+            <td><strong>Khởi động Dự án</strong><br><small style="color: var(--text-muted);">(Sprint 0)</small></td>
+            <td>4.1 Phân tích yêu cầu</td>
+            <td>Họp nhóm phân công vai trò, chốt đề tài HireUS. Khởi tạo Jira Scrum Backlog, cấu trúc GitHub Repos.</td>
+            <td>Biên bản họp Meeting 01, 02; Jira & Repos.</td>
+            <td style="text-align: center;"><span class="pill-hours">20h</span></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>Week 02</strong><br><small style="color: var(--text-muted);">(19/10 - 25/10)</small></td>
+            <td><strong>Đề xuất Đồ án</strong><br><small style="color: var(--text-muted);">(Proposal)</small></td>
+            <td>4.1 Phân tích yêu cầu</td>
+            <td>Soạn thảo tài liệu Project Proposal chuẩn biểu mẫu bộ môn. Đặc tả 5 phân hệ, phân tích đối thủ, kiến trúc hệ thống.</td>
+            <td>Bài nộp đợt 1: <code>Project_Proposal.md</code> & <code>.html</code></td>
+            <td style="text-align: center;"><span class="pill-hours">25h</span></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>Week 03</strong><br><small style="color: var(--text-muted);">(26/10 - 01/11)</small></td>
+            <td><strong>Đặc tả Yêu cầu</strong><br><small style="color: var(--text-muted);">(SRS)</small></td>
+            <td>4.1 Phân tích yêu cầu & 4.2 Thiết kế sơ bộ</td>
+            <td>Khảo sát nghiệp vụ chi tiết, viết tài liệu SRS. Lập Use Case Diagrams, Activity & Sequence Diagrams.</td>
+            <td>Tài liệu đặc tả: <code>Software_Requirements_Specification.md</code></td>
+            <td style="text-align: center;"><span class="pill-hours">40h</span></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>Week 04</strong><br><small style="color: var(--text-muted);">(02/11 - 08/11)</small></td>
+            <td><strong>Thiết kế Hệ thống</strong><br><small style="color: var(--text-muted);">(Design)</small></td>
+            <td>4.2 Thiết kế phần mềm</td>
+            <td>Thiết kế kiến trúc NestJS/Next.js chi tiết. Thiết kế UI/UX trên Figma (5 màn hình). Thiết kế CSDL PostgreSQL (ERD).</td>
+            <td>Tài liệu thiết kế SDD, Figma Prototype, Database script.</td>
+            <td style="text-align: center;"><span class="pill-hours">45h</span></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>Week 05</strong><br><small style="color: var(--text-muted);">(09/11 - 15/11)</small></td>
+            <td><strong>Cài đặt - Sprint 1</strong><br><small style="color: var(--text-muted);">(Core Platform)</small></td>
+            <td>4.3 Cài đặt phần mềm & 4.4 Kiểm thử đơn vị</td>
+            <td>Khởi tạo Next.js, NestJS, xác thực Auth JWT. Lập trình Phân hệ 1: CV Builder chuẩn ATS, SeekerBot AI gợi ý STAR/XYZ, kết xuất PDF.</td>
+            <td>Mã nguồn Sprint 1 trên GitHub, bản chạy thực tế CV Builder.</td>
+            <td style="text-align: center;"><span class="pill-hours">65h</span></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>Week 06</strong><br><small style="color: var(--text-muted);">(16/11 - 22/11)</small></td>
+            <td><strong>Cài đặt - Sprint 2</strong><br><small style="color: var(--text-muted);">(Voice & Match)</small></td>
+            <td>4.3 Cài đặt phần mềm & 4.4 Kiểm thử tích hợp</td>
+            <td>Lập trình Phân hệ 2: Phòng phỏng vấn giọng nói AI Tech Lead (Web Speech API, tương tác thoại liên tục, chấm điểm). Lập trình Phân hệ 4: Dashboard so khớp việc làm IT & Skill Gap.</td>
+            <td>Mã nguồn Sprint 2 trên GitHub, bản chạy thực nghiệm phỏng vấn & việc làm.</td>
+            <td style="text-align: center;"><span class="pill-hours">65h</span></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>Week 07</strong><br><small style="color: var(--text-muted);">(23/11 - 29/11)</small></td>
+            <td><strong>Cài đặt - Sprint 3</strong><br><small style="color: var(--text-muted);">(Radar & QA)</small></td>
+            <td>4.3 Cài đặt phần mềm & 4.4 Kiểm thử toàn diện</td>
+            <td>Lập trình Phân hệ 3: Auto Job Dispatcher (SMTP, Rate Limit 10/ngày). Lập trình Phân hệ 5: Social Feed Worker & AI Classifier. Viết Jest Unit Tests, kiểm thử tải và bảo mật.</td>
+            <td><code>Test_Report.md</code>, Bộ Test Cases (Jest), Toàn bộ mã nguồn hoàn thiện trên GitHub.</td>
+            <td style="text-align: center;"><span class="pill-hours">70h</span></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><strong>Week 08</strong><br><small style="color: var(--text-muted);">(30/11 - 07/12)</small></td>
+            <td><strong>Đóng gói & Nghiệm thu</strong><br><small style="color: var(--text-muted);">(Final Sprint)</small></td>
+            <td>4.5 Triển khai, bảo trì</td>
+            <td>Đóng gói Docker, triển khai Vercel, Render & Supabase. Kiểm tra tải Production, giám sát nhật ký lỗi. Quay video demo, xây dựng slide báo cáo tổng kết đồ án.</td>
+            <td>Web App Production URL, Video demo, slide báo cáo và báo cáo nghiệm thu.</td>
+            <td style="text-align: center;"><span class="pill-hours">70h</span></td>
+          </tr>
+          <tr style="background: var(--surface-alt); font-weight: 700;">
+            <td style="text-align: center;">TỔNG CỘNG</td>
+            <td>Toàn bộ 8 tuần</td>
+            <td>5 Pha Kỹ thuật</td>
+            <td>Hoàn thành trọn vẹn đồ án môn học HireUS</td>
+            <td>Hệ thống chạy thực tế + Bộ hồ sơ kỹ thuật đầy đủ</td>
+            <td style="text-align: center; color: var(--primary);">400h</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Bảng Ma trận Đối soát Phân bổ Công số (Man-Hours Cross-Verification Matrix)</h4>
+      <p>Nhằm bảo đảm tính minh bạch, cân bằng khối lượng công việc và đối soát chéo chính xác giữa 5 giai đoạn kỹ thuật với 4 thành viên trong nhóm:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Pha Kỹ thuật / Hạng mục</th>
+            <th style="text-align: center;">Lê Tấn Dũng<br><small>(Leader)</small></th>
+            <th style="text-align: center;">Võ Nguyễn Việt Hoàng<br><small>(Frontend)</small></th>
+            <th style="text-align: center;">Võ Minh Khoa<br><small>(Backend)</small></th>
+            <th style="text-align: center;">Đỗ Chí Cao<br><small>(QA & DB)</small></th>
+            <th style="text-align: center;">Tổng Công số Pha</th>
+            <th style="text-align: center;">Tỷ trọng (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>4.1. Phân tích yêu cầu</strong></td>
+            <td style="text-align: center;">22h</td>
+            <td style="text-align: center;">16h</td>
+            <td style="text-align: center;">16h</td>
+            <td style="text-align: center;">16h</td>
+            <td style="text-align: center;"><strong>70h</strong></td>
+            <td style="text-align: center;">17.5%</td>
+          </tr>
+          <tr>
+            <td><strong>4.2. Thiết kế phần mềm</strong></td>
+            <td style="text-align: center;">15h</td>
+            <td style="text-align: center;">20h</td>
+            <td style="text-align: center;">15h</td>
+            <td style="text-align: center;">10h</td>
+            <td style="text-align: center;"><strong>60h</strong></td>
+            <td style="text-align: center;">15.0%</td>
+          </tr>
+          <tr>
+            <td><strong>4.3. Cài đặt (implement)</strong></td>
+            <td style="text-align: center;">45h</td>
+            <td style="text-align: center;">45h</td>
+            <td style="text-align: center;">45h</td>
+            <td style="text-align: center;">35h</td>
+            <td style="text-align: center;"><strong>170h</strong></td>
+            <td style="text-align: center;">42.5%</td>
+          </tr>
+          <tr>
+            <td><strong>4.4. Kiểm thử phần mềm</strong></td>
+            <td style="text-align: center;">10h</td>
+            <td style="text-align: center;">10h</td>
+            <td style="text-align: center;">10h</td>
+            <td style="text-align: center;">20h</td>
+            <td style="text-align: center;"><strong>50h</strong></td>
+            <td style="text-align: center;">12.5%</td>
+          </tr>
+          <tr>
+            <td><strong>4.5. Triển khai, bảo trì</strong></td>
+            <td style="text-align: center;">15h</td>
+            <td style="text-align: center;">12h</td>
+            <td style="text-align: center;">13h</td>
+            <td style="text-align: center;">10h</td>
+            <td style="text-align: center;"><strong>50h</strong></td>
+            <td style="text-align: center;">12.5%</td>
+          </tr>
+          <tr style="background: var(--surface-alt); font-weight: 700;">
+            <td>TỔNG CỘNG THEO THÀNH VIÊN</td>
+            <td style="text-align: center; color: var(--primary);">107h</td>
+            <td style="text-align: center; color: var(--primary);">103h</td>
+            <td style="text-align: center; color: var(--primary);">99h</td>
+            <td style="text-align: center; color: var(--primary);">91h</td>
+            <td style="text-align: center; color: var(--primary);">400 Người-giờ</td>
+            <td style="text-align: center;">100.0%</td>
+          </tr>
+          <tr style="font-style: italic; color: var(--text-muted);">
+            <td>Mức đóng góp dự kiến</td>
+            <td style="text-align: center;">26.75%</td>
+            <td style="text-align: center;">25.75%</td>
+            <td style="text-align: center;">24.75%</td>
+            <td style="text-align: center;">22.75%</td>
+            <td style="text-align: center;">100.0%</td>
+            <td style="text-align: center;">Đồng đều ~ 25%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section>
+      <h2>5. KẾ HOẠCH NHÂN SỰ & CHI PHÍ</h2>
+      
+      <h3>5.1. Kế hoạch Nhân sự & Ma trận Phân công Trách nhiệm (RACI)</h3>
+      <p>Dự án gồm 4 thành viên vận hành theo mô hình Scrum. Trách nhiệm của từng thành viên được phân định rõ ràng thông qua ma trận RACI: <strong>R</strong> (Responsible), <strong>A</strong> (Accountable), <strong>C</strong> (Consulted), <strong>I</strong> (Informed):</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Hạng mục công việc trọng tâm</th>
+            <th style="text-align: center;">Lê Tấn Dũng<br><small>(Leader / AI)</small></th>
+            <th style="text-align: center;">Võ Nguyễn Việt Hoàng<br><small>(Frontend Dev)</small></th>
+            <th style="text-align: center;">Võ Minh Khoa<br><small>(Backend Dev)</small></th>
+            <th style="text-align: center;">Đỗ Chí Cao<br><small>(Database & QA)</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Quản trị dự án Scrum, Jira Backlog & Đại diện nộp bài</strong></td>
+            <td style="text-align: center; font-weight: 700; color: var(--primary);">A / R</td>
+            <td style="text-align: center;">I</td>
+            <td style="text-align: center;">I</td>
+            <td style="text-align: center;">I</td>
+          </tr>
+          <tr>
+            <td><strong>Soạn thảo tài liệu kỹ thuật (Proposal, SRS, SDD, Report)</strong></td>
+            <td style="text-align: center; font-weight: 700; color: var(--primary);">A</td>
+            <td style="text-align: center;">R</td>
+            <td style="text-align: center;">R</td>
+            <td style="text-align: center;">R</td>
+          </tr>
+          <tr>
+            <td><strong>Thiết kế UI/UX trên Figma (5 phân hệ)</strong></td>
+            <td style="text-align: center;">C</td>
+            <td style="text-align: center; font-weight: 700; color: var(--primary);">A / R</td>
+            <td style="text-align: center;">I</td>
+            <td style="text-align: center;">C</td>
+          </tr>
+          <tr>
+            <td><strong>Phát triển giao diện CV Builder & Audio Interview (Next.js)</strong></td>
+            <td style="text-align: center;">C</td>
+            <td style="text-align: center; font-weight: 700; color: var(--primary);">A / R</td>
+            <td style="text-align: center;">C</td>
+            <td style="text-align: center;">I</td>
+          </tr>
+          <tr>
+            <td><strong>Phát triển Dashboard Job Match & Radar Alert UI</strong></td>
+            <td style="text-align: center;">C</td>
+            <td style="text-align: center; font-weight: 700; color: var(--primary);">A / R</td>
+            <td style="text-align: center;">I</td>
+            <td style="text-align: center;">C</td>
+          </tr>
+          <tr>
+            <td><strong>Xây dựng API Backend & Auto Dispatcher (NestJS)</strong></td>
+            <td style="text-align: center;">C</td>
+            <td style="text-align: center;">I</td>
+            <td style="text-align: center; font-weight: 700; color: var(--primary);">A / R</td>
+            <td style="text-align: center;">C</td>
+          </tr>
+          <tr>
+            <td><strong>Phát triển Social Feed Worker & AI Classifier Service</strong></td>
+            <td style="text-align: center; font-weight: 700; color: var(--primary);">A / R</td>
+            <td style="text-align: center;">I</td>
+            <td style="text-align: center;">R</td>
+            <td style="text-align: center;">C</td>
+          </tr>
+          <tr>
+            <td><strong>Thiết kế & Tối ưu hóa Database PostgreSQL</strong></td>
+            <td style="text-align: center;">C</td>
+            <td style="text-align: center;">I</td>
+            <td style="text-align: center;">C</td>
+            <td style="text-align: center; font-weight: 700; color: var(--primary);">A / R</td>
+          </tr>
+          <tr>
+            <td><strong>Thiết kế Test Cases, Thực thi Kiểm thử hệ thống (QA/QC)</strong></td>
+            <td style="text-align: center;">I</td>
+            <td style="text-align: center;">C</td>
+            <td style="text-align: center;">C</td>
+            <td style="text-align: center; font-weight: 700; color: var(--primary);">A / R</td>
+          </tr>
+          <tr>
+            <td><strong>Đóng gói Docker, Triển khai Cloud & Tổng duyệt Demo</strong></td>
+            <td style="text-align: center; font-weight: 700; color: var(--primary);">A / R</td>
+            <td style="text-align: center;">R</td>
+            <td style="text-align: center;">R</td>
+            <td style="text-align: center;">R</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5.2. Kế hoạch Chi phí Dự kiến (Ngân sách tối ưu 0 VNĐ)</h3>
+      <p>Nhóm tận dụng triệt để các nền tảng dịch vụ đám mây miễn phí (Free Tier / Developer Plans) dành cho sinh viên, đảm bảo tổng ngân sách thực tế của nhóm là <strong>0 VNĐ</strong>:</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Khoản mục chi phí</th>
+            <th>Nhà cung cấp dịch vụ</th>
+            <th>Cấu hình / Gói dịch vụ</th>
+            <th style="text-align: center;">Chi phí thực tế</th>
+            <th style="text-align: right;">Chi phí thị trường ước tính</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lưu trữ Frontend Web App</strong></td>
+            <td>Vercel</td>
+            <td>Gói Hobby (Next.js SSR, CDN toàn cầu, SSL miễn phí)</td>
+            <td style="text-align: center; font-weight: 700; color: var(--success);">0 VNĐ</td>
+            <td style="text-align: right;">~ 480.000 VNĐ / tháng</td>
+          </tr>
+          <tr>
+            <td><strong>Lưu trữ Backend API Server</strong></td>
+            <td>Render / Railway</td>
+            <td>Gói Free Tier Web Service (Docker container, 512MB RAM)</td>
+            <td style="text-align: center; font-weight: 700; color: var(--success);">0 VNĐ</td>
+            <td style="text-align: right;">~ 180.000 VNĐ / tháng</td>
+          </tr>
+          <tr>
+            <td><strong>Cơ sở dữ liệu PostgreSQL</strong></td>
+            <td>Supabase / Neon DB</td>
+            <td>Gói Free Tier (500MB storage, Pooling connection)</td>
+            <td style="text-align: center; font-weight: 700; color: var(--success);">0 VNĐ</td>
+            <td style="text-align: right;">~ 240.000 VNĐ / tháng</td>
+          </tr>
+          <tr>
+            <td><strong>AI LLM API</strong></td>
+            <td>Google AI Studio</td>
+            <td>Gói Gemini 1.5 Flash (Miễn phí 15 requests/phút)</td>
+            <td style="text-align: center; font-weight: 700; color: var(--success);">0 VNĐ</td>
+            <td style="text-align: right;">~ 150.000 VNĐ / 1.000 lượt phân tích</td>
+          </tr>
+          <tr>
+            <td><strong>Xử lý Giọng nói (STT / TTS)</strong></td>
+            <td>Web Speech API & Browser Audio</td>
+            <td>Tận dụng công cụ nhận diện giọng nói tích hợp trên trình duyệt</td>
+            <td style="text-align: center; font-weight: 700; color: var(--success);">0 VNĐ</td>
+            <td style="text-align: right;">~ 200.000 VNĐ / tháng</td>
+          </tr>
+          <tr>
+            <td><strong>Gửi Thư điện tử (Email Dispatcher)</strong></td>
+            <td>Gmail SMTP / Resend Free Tier</td>
+            <td>Hạn mức 100 - 300 email miễn phí mỗi ngày, đáp ứng demo</td>
+            <td style="text-align: center; font-weight: 700; color: var(--success);">0 VNĐ</td>
+            <td style="text-align: right;">~ 100.000 VNĐ / tháng</td>
+          </tr>
+          <tr>
+            <td><strong>Tên miền hoạt động (Domain)</strong></td>
+            <td>Subdomain Vercel / Render</td>
+            <td><code>hireus.vercel.app</code> (Miễn phí đi kèm hạ tầng)</td>
+            <td style="text-align: center; font-weight: 700; color: var(--success);">0 VNĐ</td>
+            <td style="text-align: right;">~ 250.000 VNĐ / năm</td>
+          </tr>
+          <tr>
+            <td><strong>Quản trị dự án & Backlog</strong></td>
+            <td>Atlassian Jira</td>
+            <td>Gói Jira Software Cloud Free (Hỗ trợ tối đa 10 thành viên)</td>
+            <td style="text-align: center; font-weight: 700; color: var(--success);">0 VNĐ</td>
+            <td style="text-align: right;">Miễn phí</td>
+          </tr>
+          <tr>
+            <td><strong>Quản lý mã nguồn & CI/CD</strong></td>
+            <td>GitHub</td>
+            <td>Gói GitHub Free (Repositories, Pull Requests, GitHub Actions)</td>
+            <td style="text-align: center; font-weight: 700; color: var(--success);">0 VNĐ</td>
+            <td style="text-align: right;">Miễn phí</td>
+          </tr>
+          <tr style="background: var(--surface-alt); font-weight: 700;">
+            <td colspan="3">TỔNG CỘNG CHI PHÍ THỰC TẾ</td>
+            <td style="text-align: center; color: var(--success); font-size: 1.1rem;">0 VNĐ</td>
+            <td style="text-align: right; color: var(--primary);">Tối ưu tuyệt đối cho đồ án sinh viên</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section>
+      <h2>6. KẾT LUẬN & CAM KẾT</h2>
+      <p>Tài liệu Project Proposal này đã làm rõ bối cảnh bài toán thực tế, các luồng nghiệp vụ người dùng, kiến trúc kỹ thuật đa lớp và kế hoạch 8 tuần theo mô hình Scrum cho hệ thống <strong>HireUS</strong>. Nhóm cam kết:</p>
+      <ol>
+        <li>Tuân thủ nghiêm ngặt quy trình phát triển phần mềm Agile/Scrum và chuẩn mực kỹ thuật đã thống nhất.</li>
+        <li>Kiểm soát chặt chẽ phạm vi trong 5 phân hệ cốt lõi để đảm bảo hoàn thành sản phẩm chạy thực tế đúng hạn.</li>
+        <li>Chịu trách nhiệm toàn diện về chất lượng bài nộp, bảo đảm trung thực, loại bỏ triệt để văn phong AI Writing và hướng tới một giải pháp công nghệ có tính ứng dụng cao cho cộng đồng sinh viên IT.</li>
+      </ol>
+    </section>
+
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('hireus_theme', newTheme);
+      updateThemeBtn(newTheme);
+    }
+
+    function updateThemeBtn(theme) {
+      const icon = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+      if (theme === 'light') {
+        if (icon) icon.textContent = '🌙';
+        if (label) label.textContent = 'Phông đen';
+      } else {
+        if (icon) icon.textContent = '☀️';
+        if (label) label.textContent = 'Phông sáng';
+      }
+    }
+
+    // Set initial button label
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      updateThemeBtn(currentTheme);
+    });
+  </script>
+</body>
+</html>

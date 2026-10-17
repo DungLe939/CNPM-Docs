@@ -47,7 +47,7 @@ status: "Đã hoàn thành"
   - Hạn chót chọn ý tưởng cho từng người: **22:00 ngày 15/10/2026**.
 - **Đã chốt ý tưởng của Dũng:**
   - Link Google Drive gốc: [https://drive.google.com/drive/folders/12e0__KnGQOQayRmNEWwYPrq-0ErlqGph](https://drive.google.com/drive/folders/12e0__KnGQOQayRmNEWwYPrq-0ErlqGph)
-  - Tài liệu chi tiết trong repo: [JobSeeker_Implementation_Plan.md](./Material/JobSeeker_Implementation_Plan.md)
+  - Tài liệu chi tiết trong repo: [HireUS_Implementation_Plan.md](./Material/HireUS_Implementation_Plan.md)
 
 ---
 
