@@ -193,21 +193,23 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(11, 15, 25, 0.88);
       border-bottom: 1px solid var(--border-subtle);
       transition: all 0.25s ease;
     }
 
     [data-theme="light"] .topbar {
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .topbar-content {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 10px 24px;
+      padding: 0 24px;
+      height: 56px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -215,23 +217,36 @@
     }
 
     .topbar-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--text-heading);
       display: flex;
       align-items: center;
       gap: 8px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: -0.01em;
+    }
+
+    .topbar-title .brand-logo {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.4);
     }
 
     .topbar-title span.doc-tag {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 2px 7px;
+      padding: 2px 6px;
       border-radius: 4px;
       background: var(--accent-cyan-bg);
       color: var(--accent-blue);
@@ -241,7 +256,15 @@
     .topbar-nav {
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 4px;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .topbar-nav::-webkit-scrollbar {
+      display: none;
     }
 
     .nav-link {
@@ -249,8 +272,10 @@
       font-weight: 600;
       color: var(--text-muted);
       text-decoration: none;
-      padding: 5px 10px;
+      padding: 6px 10px;
       border-radius: 6px;
+      white-space: nowrap !important;
+      flex-shrink: 0;
       transition: all 0.15s ease;
     }
 
@@ -263,6 +288,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-shrink: 0;
     }
 
     .btn {
@@ -324,7 +350,7 @@
       position: relative;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 860px) {
       .doc-card {
         padding: 32px 20px;
       }
@@ -788,15 +814,16 @@
   <header class="topbar">
     <div class="topbar-content">
       <div class="topbar-title">
-        <span class="doc-tag">P1 PROPOSAL</span>
-        <span>HireUS &bull; Nhập môn CNPM</span>
+        <div class="brand-logo">H</div>
+        <span>HireUS</span>
+        <span class="doc-tag">Proposal</span>
       </div>
       <nav class="topbar-nav">
         <a href="#sec-1" class="nav-link">1. Đánh giá</a>
         <a href="#sec-2" class="nav-link">2. Bài toán</a>
         <a href="#sec-3" class="nav-link">3. Giải pháp</a>
-        <a href="#sec-4" class="nav-link">4. Kế hoạch (4 Sprint)</a>
-        <a href="#sec-5" class="nav-link">5. Nhân sự & Chi phí</a>
+        <a href="#sec-4" class="nav-link">4. Kế hoạch</a>
+        <a href="#sec-5" class="nav-link">5. Chi phí</a>
       </nav>
       <div class="topbar-actions">
         <button class="btn btn-secondary" id="themeToggleBtn" onclick="toggleTheme()" title="Chuyển chế độ sáng / tối">
