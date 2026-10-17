@@ -799,8 +799,219 @@
       section {
         page-break-inside: auto;
       }
-      h2 {
-        page-break-after: avoid;
+    /* -------------------------------------------------------------
+       OUTLINE FLOATING BUTTON & DRAWER (LEFT SIDE)
+       ------------------------------------------------------------- */
+    h1, h2, h3, h4, h5 {
+      scroll-margin-top: 75px;
+    }
+
+    .outline-wrapper {
+      position: fixed;
+      left: 20px;
+      top: 72px;
+      z-index: 120;
+    }
+
+    /* Floating Pill Button */
+    .outline-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-glow);
+      border-radius: 999px;
+      color: var(--accent-blue);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 10px rgba(56, 189, 248, 0.2);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+    }
+
+    .outline-btn:hover,
+    .outline-wrapper:hover .outline-btn,
+    .outline-wrapper.is-open .outline-btn {
+      background: var(--surface-card);
+      border-color: var(--accent-blue);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4), 0 0 14px rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      transform: translateY(-1px);
+    }
+
+    .outline-btn .btn-icon {
+      font-size: 0.95rem;
+      line-height: 1;
+    }
+
+    /* Invisible hover buffer so moving mouse between button and drawer is 100% smooth */
+    .outline-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 320px;
+      height: 12px;
+    }
+
+    /* Floating Drawer Panel */
+    .outline-drawer {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 320px;
+      max-height: calc(100vh - 120px);
+      background: rgba(11, 17, 30, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glow);
+      border-radius: 14px;
+      box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px) scale(0.97);
+      transform-origin: top left;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    [data-theme="light"] .outline-drawer {
+      background: rgba(255, 255, 255, 0.96);
+      border-color: #cbd5e1;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+    }
+
+    [data-theme="light"] .outline-btn {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: #cbd5e1;
+      color: #0284c7;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Show when wrapper hovered OR when opened/pinned */
+    .outline-wrapper:hover .outline-drawer,
+    .outline-wrapper.is-open .outline-drawer {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .outline-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.02);
+      flex-shrink: 0;
+    }
+
+    .outline-header-title {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .outline-pin-hint {
+      font-size: 0.68rem;
+      color: var(--text-subtle);
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .outline-list {
+      padding: 10px 8px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-main) transparent;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .outline-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .outline-list::-webkit-scrollbar-thumb {
+      background: var(--border-main);
+      border-radius: 4px;
+    }
+    .outline-list::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-blue);
+    }
+
+    .outline-item {
+      display: block;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      line-height: 1.4;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-left: 2px solid transparent;
+    }
+
+    .outline-item.lvl-2 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-top: 6px;
+    }
+
+    .outline-item.lvl-3 {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-main);
+      padding-left: 18px;
+    }
+
+    .outline-item.lvl-4 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding-left: 28px;
+    }
+
+    .outline-item.lvl-5 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-subtle);
+      padding-left: 38px;
+      font-style: italic;
+    }
+
+    .outline-item:hover {
+      background: var(--accent-cyan-bg);
+      color: var(--accent-blue);
+      border-left-color: var(--accent-blue);
+    }
+
+    .outline-item.is-active {
+      background: var(--accent-cyan-bg);
+      color: var(--accent-blue);
+      border-left-color: var(--accent-blue);
+      font-weight: 700;
+    }
+
+    @media print {
+      .outline-wrapper {
+        display: none !important;
       }
     }
   </style>
@@ -835,6 +1046,23 @@
       </div>
     </div>
   </header>
+
+  <!-- FLOATING OUTLINE (LEFT SIDE) -->
+  <aside class="outline-wrapper" id="outlineWrapper" aria-label="Mục lục đề án">
+    <button class="outline-btn" id="outlineBtn" title="Rê chuột để xem outline chi tiết hoặc bấm để ghim">
+      <span class="btn-icon">📋</span>
+      <span>Outline</span>
+    </button>
+    <div class="outline-drawer" id="outlineDrawer">
+      <div class="outline-header">
+        <span class="outline-header-title">📑 Outline Chi Tiết</span>
+        <span class="outline-pin-hint" id="outlinePinHint">Rê / Bấm ghim</span>
+      </div>
+      <nav class="outline-list" id="outlineList">
+        <!-- Tự động sinh từ các tiêu đề H2 -> H5 -->
+      </nav>
+    </div>
+  </aside>
 
   <div class="container">
     <main class="doc-card">
@@ -1685,6 +1913,80 @@ flowchart TB
     document.addEventListener('DOMContentLoaded', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
       updateThemeBtn(currentTheme);
+
+      // Automatic Outline Generator & ScrollSpy
+      const outlineList = document.getElementById('outlineList');
+      const outlineWrapper = document.getElementById('outlineWrapper');
+      const outlineBtn = document.getElementById('outlineBtn');
+      const pinHint = document.getElementById('outlinePinHint');
+      if (!outlineList || !outlineWrapper || !outlineBtn) return;
+
+      // Toggle Pin on Click
+      outlineBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = outlineWrapper.classList.toggle('is-open');
+        if (pinHint) pinHint.textContent = isOpen ? 'Đã ghim (Bấm đóng)' : 'Rê / Bấm ghim';
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!outlineWrapper.contains(e.target)) {
+          outlineWrapper.classList.remove('is-open');
+          if (pinHint) pinHint.textContent = 'Rê / Bấm ghim';
+        }
+      });
+
+      // Find all headings inside doc-card
+      const headings = document.querySelectorAll('.doc-card h2, .doc-card h3, .doc-card h4, .doc-card h5');
+      const items = [];
+
+      headings.forEach((heading, index) => {
+        if (!heading.id) {
+          heading.id = 'heading-node-' + index;
+        }
+
+        const level = heading.tagName.toLowerCase().replace('h', '');
+        const link = document.createElement('a');
+        link.href = '#' + heading.id;
+        link.className = 'outline-item lvl-' + level;
+        link.textContent = heading.textContent.trim();
+        link.title = heading.textContent.trim();
+
+        link.addEventListener('click', () => {
+          if (!outlineWrapper.classList.contains('is-open')) {
+            outlineWrapper.classList.remove('is-open');
+          }
+        });
+
+        outlineList.appendChild(link);
+        items.push({ heading, link });
+      });
+
+      // ScrollSpy to highlight active heading
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrollPos = window.scrollY + 100;
+            let currentActive = null;
+
+            for (let i = 0; i < items.length; i++) {
+              if (items[i].heading.offsetTop <= scrollPos) {
+                currentActive = items[i];
+              } else {
+                break;
+              }
+            }
+
+            items.forEach(item => item.link.classList.remove('is-active'));
+            if (currentActive) {
+              currentActive.link.classList.add('is-active');
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
     });
   </script>
 </body>
