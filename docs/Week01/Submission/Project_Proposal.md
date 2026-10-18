@@ -1,8 +1,8 @@
 ---
-title: "Project Proposal: Nền tảng HireUS"
+title: "Project Proposal: Nền tảng HireUS Tools"
 group: "Nhóm 02"
 course: "Nhập môn Công nghệ Phần mềm (Introduction to Software Engineering)"
-instructor: "Thầy Phạm Minh Tuấn & Thầy Nguyễn Ngô Duy Khoa"
+instructor: "Thầy Ngô Ngọc Đăng Khoa & Thầy Phạm Minh Tuấn"
 institution: "Khoa Công nghệ Thông tin - Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM"
 date: "16/10/2026"
 version: "1.0 - Chính thức nộp P1"
@@ -10,19 +10,19 @@ status: "Đề xuất đồ án đợt 1 (Project Proposal)"
 ---
 
 # NHẬP MÔN CÔNG NGHỆ PHẦN MỀM
-## PROJECT PROPOSAL: NỀN TẢNG TỐI ƯU HỒ SƠ, MÔ PHỎNG PHỎNG VẤN KỸ THUẬT & SĂN VIỆC LÀM CHO SINH VIÊN IT (HIREUS)
+## PROJECT PROPOSAL: NỀN TẢNG TỐI ƯU HỒ SƠ, MÔ PHỎNG PHỎNG VẤN KỸ THUẬT & SĂN VIỆC LÀM CHO SINH VIÊN IT (HIREUS TOOLS)
 
 > **Môn:** Nhập môn Công nghệ Phần mềm (Introduction to Software Engineering)
 
 > **Trường:** Đại học Khoa học Tự nhiên, ĐHQG-HCM
 
+> **Giảng viên thực hành (GVTH):** Thầy Ngô Ngọc Đăng Khoa
+
 > **Giảng viên lý thuyết (GVLT):** Thầy Phạm Minh Tuấn
 
-> **Giảng viên thực hành (GVTH):** Thầy Nguyễn Ngô Duy Khoa
+> **Nhóm thực hiện:** Nhóm 02
 
-> **Nhóm thực hiện:** Nhóm 02 (4 thành viên)
-
-> **Mô hình phát triển:** Scrum (Agile) triển khai trong 8 tuần
+> **Mô hình phát triển:** Scrum
 
 ---
 
@@ -30,314 +30,163 @@ status: "Đề xuất đồ án đợt 1 (Project Proposal)"
 
 | STT | MSSV | Họ và Tên | % Đóng góp (Tối đa 100%) | Chữ ký |
 | :---: | :---: | :--- | :---: | :---: |
-| 1 | *<MSSV1>* | **Lê Tấn Dũng** | 100% | *(Ký khi nộp)* |
-| 2 | *<MSSV2>* | **Võ Nguyễn Việt Hoàng** | 100% | *(Ký khi nộp)* |
-| 3 | *<MSSV3>* | **Võ Minh Khoa** | 100% | *(Ký khi nộp)* |
-| 4 | *<MSSV4>* | **Đỗ Chí Cao** | 100% | *(Ký khi nộp)* |
+| 1 | 24120194 | **Võ Minh Khoa** | 100% | <img src="./image/Khoa.jpg" height="40" alt="Chữ ký Võ Minh Khoa" /> |
+| 2 | 24120249 | **Võ Nguyễn Việt Hoàng** | 100% | <img src="./image/Hoàng.png" height="40" alt="Chữ ký Võ Nguyễn Việt Hoàng" /> |
+| 3 | 24120270 | **Đỗ Chí Cao** | 100% | <img src="./image/Cao.png" height="40" alt="Chữ ký Đỗ Chí Cao" /> |
+| 4 | 24120290 | **Lê Tấn Dũng** | 100% | <img src="./image/Dũng.jpg" height="40" alt="Chữ ký Lê Tấn Dũng" /> |
 
 ---
 
 ## 2. PHÁT BIỂU BÀI TOÁN SƠ LƯỢC
 
-**HireUS** là hệ thống ứng dụng web giúp kết nối sinh viên ngành Công nghệ Thông tin với các cơ hội việc làm thực tập sinh và sinh viên mới tốt nghiệp. Hệ thống hỗ trợ sinh viên tự chuẩn hóa hồ sơ ứng tuyển đúng chuẩn công nghiệp, tham gia các buổi phỏng vấn thử nghiệm bằng giọng nói với trí tuệ nhân tạo, đối chiếu năng lực hiện tại với yêu cầu của thị trường lao động, tự động hóa quy trình nộp hồ sơ xin việc đến các nhà tuyển dụng và theo dõi các đợt mở đơn tuyển dụng sớm từ mạng xã hội.
+Trong thời đại AI, sinh viên rất khó để tìm và xin được một công việc. Đặc biệt đối với ngành Công nghệ Thông tin khi AI lên ngôi, những bạn Intern hay Fresher trong mảng này thường phải cạnh tranh gay gắt và nhà tuyển dụng cũng đòi hỏi rất nhiều thứ ở ứng viên. Sau khi phân tích và làm rõ, nhóm em hiện thấy có 4 khó khăn mà các bạn sinh viên IT hay gặp phải:
 
-Khi cần tạo hồ sơ xin việc, đầu tiên sinh viên cung cấp các thông tin cá nhân và năng lực chuyên môn: họ và tên, địa chỉ email, số điện thoại, liên kết trang cá nhân (LinkedIn, GitHub), mục tiêu nghề nghiệp, thông tin học vấn gồm trường, chuyên ngành, điểm GPA tích lũy và chứng chỉ chuyên môn, danh mục kỹ năng kỹ thuật gồm ngôn ngữ lập trình, framework, cơ sở dữ liệu và công cụ phát triển, cùng danh sách các dự án kỹ thuật đã từng tham gia. Thông tin này cần chính xác và trung thực để nhà tuyển dụng đánh giá đúng năng lực. Đối với mỗi dự án, sinh viên cần cung cấp: tên dự án, đường dẫn mã nguồn, vai trò đảm nhận, thời gian thực hiện, công nghệ sử dụng và các gạch đầu dòng mô tả những đóng góp cụ thể. Kế tiếp, để tối ưu hóa nội dung, sinh viên có thể kích hoạt trợ lý SeekerBot. Trợ lý này sẽ phân tích từng câu mô tả dự án và tự động gợi ý viết lại theo cấu trúc định lượng kết quả với số liệu đo lường cụ thể và phương pháp STAR gồm bối cảnh, nhiệm vụ, hành động và kết quả. Sinh viên có thể xem bản so sánh trước và sau khi gợi ý để lựa chọn áp dụng hoặc tự chỉnh sửa lại theo ý muốn. Về hình thức trình bày, hệ thống tự động sắp xếp dữ liệu theo bố cục đơn cột chuẩn ATS nhằm tránh lỗi đọc văn bản khi các doanh nghiệp dùng phần mềm tự động quét hồ sơ. Sinh viên có thể tùy biến thứ tự hiển thị các khối nội dung và xem trước bản in theo thời gian thực. Sau khi hoàn thiện, sinh viên có thể xuất bản hồ sơ ra tệp tin định dạng PDF với lớp văn bản chuẩn 100% cho phép chọn và sao chép dữ liệu chính xác, hoặc lưu lại thành các mẫu hồ sơ khác nhau trong tài khoản của mình.
+* **Không biết viết CV và CV chưa đạt chuẩn:** Đa số CV sinh viên viết theo mẫu tự do, thiếu số liệu định lượng về dự án và dễ bị hệ thống tự động lọc hồ sơ ATS (Applicant Tracking System) loại bỏ rớt khỏi vòng CV.
 
-Khi cần rèn luyện kỹ năng phỏng vấn chuyên môn, đầu tiên sinh viên thiết lập cấu hình phòng phỏng vấn ảo: lựa chọn vị trí ứng tuyển như Frontend, Backend, Fullstack hoặc AI/Data, chọn cấp độ thực tập sinh hoặc fresher, ngôn ngữ phỏng vấn bằng tiếng Việt hoặc tiếng Anh, và chọn gói nội dung phỏng vấn gồm kiến thức nền tảng cốt lõi, tư duy thuật toán hoặc giải quyết tình huống kỹ thuật thực tế. Kế tiếp, hệ thống kiểm tra kết nối microphone và loa hoặc tai nghe của thiết bị người dùng trước khi bắt đầu. Trong phòng phỏng vấn, trí tuệ nhân tạo trong vai trò người phỏng vấn kỹ thuật AI Tech Lead sẽ phát câu hỏi trực tiếp bằng giọng nói tự nhiên thông qua hệ thống âm thanh. Mỗi câu hỏi hiển thị kèm đồng hồ đếm ngược thời gian trả lời tối đa 2 phút cho mỗi câu. Sinh viên trả lời bằng lời nói trực tiếp thông qua microphone. Hệ thống sẽ nhận dạng âm thanh tức thời, chuyển thành văn bản và phân tích câu trả lời của ứng viên. Dựa trên nội dung sinh viên vừa trình bày, hệ thống sẽ linh hoạt đưa ra câu hỏi phụ hoặc hỏi sâu thêm vào các từ khóa kỹ thuật liên quan, đảm bảo tính liên tục và độ trễ thấp phù hợp cho phản xạ đối thoại của buổi phỏng vấn. Sinh viên có quyền yêu cầu người phỏng vấn "nhắc lại câu hỏi" hoặc "gợi ý định hướng trả lời" tối đa 2 lần trong một buổi. Mỗi phiên phỏng vấn kéo dài từ 5 đến 7 câu hỏi. Khi hoàn thành tất cả câu hỏi, hệ thống chấm điểm và xuất bản báo cáo đánh giá năng lực chi tiết theo thang điểm 100 dựa trên 3 tiêu chí: độ chính xác kiến thức nền tảng, tư duy xử lý vấn đề, và khả năng diễn đạt chuyên môn, kèm theo nhận xét chi tiết ưu/khuyết điểm và gợi ý câu trả lời chuẩn cho từng câu hỏi.
+* **Tâm lý thiếu tự tin khi tham gia phỏng vấn:** Mặc dù nắm vững kiến thức lý thuyết, nhiều sinh viên vẫn thiếu kinh nghiệm thực tế và cơ hội luyện tập với các câu hỏi phỏng vấn chuyên sâu theo hình thức 1:1, dẫn đến khả năng phản xạ và trình bày câu trả lời còn hạn chế. Bên cạnh đó, tại một số doanh nghiệp, phỏng vấn được thực hiện bằng tiếng Anh, khiến sinh viên gặp khó khăn trong việc diễn đạt ý tưởng, trình bày kiến thức chuyên môn và thể hiện năng lực của bản thân một cách rõ ràng, thuyết phục.
 
-Về phía tìm kiếm cơ hội việc làm, hệ thống cung cấp danh mục các vị trí tuyển dụng thực tập sinh và fresher được thu thập từ các kênh tuyển dụng uy tín. Sinh viên có thể tìm kiếm việc làm theo các tiêu chí: chức danh công việc, địa điểm làm việc như TP. Hồ Chí Minh, Hà Nội, Đà Nẵng hoặc làm việc từ xa, và mức hỗ trợ hoặc lương. Khi sinh viên bấm xem chi tiết một bản mô tả công việc JD, hệ thống tự động bóc tách các yêu cầu kỹ thuật và đối chiếu với hồ sơ CV hiện tại của sinh viên để tính toán điểm tương thích năng lực Match Score từ 0% đến 100%. Đồng thời, hệ thống hiển thị bảng phân tích khoảng cách kỹ năng gồm hai danh sách: các kỹ năng sinh viên đã đáp ứng được đánh dấu màu xanh và các kỹ năng nhà tuyển dụng yêu cầu nhưng sinh viên còn thiếu được đánh dấu màu đỏ kèm theo gợi ý từ khóa tài liệu học tập để sinh viên chủ động trau dồi. Khi sinh viên quyết định nộp đơn ứng tuyển cho công việc đã chọn, hệ thống hỗ trợ quy trình gửi hồ sơ tự động. Đầu tiên, hệ thống trích xuất địa chỉ email nhận hồ sơ từ bản mô tả công việc. Kế tiếp, hệ thống tự động soạn thảo thư ứng tuyển cá nhân hóa bám sát các yêu cầu nổi bật của công việc và gắn kết với thế mạnh của sinh viên. Sinh viên có thể đọc lại, chỉnh sửa tiêu đề email và nội dung bức thư theo ý mình, kiểm tra lại tệp đính kèm CV PDF. Sau khi sinh viên bấm xác nhận gửi, hệ thống sẽ gửi trực tiếp email đến nhà tuyển dụng qua giao thức SMTP và ghi nhận trạng thái vào nhật ký ứng tuyển. Để phòng ngừa hành vi gửi thư rác, mỗi tài khoản sinh viên bị giới hạn gửi tối đa 10 email ứng tuyển tự động trong một ngày.
+* **Khó tiếp cận thông tin tuyển dụng sớm:** Nhiều sinh viên mong muốn được thực tập và làm việc tại các doanh nghiệp mục tiêu nhưng lại gặp khó khăn trong việc cập nhật thông tin tuyển dụng. Các cơ hội thực tập thường được đăng tải phân tán trên nhiều nền tảng như: LinkedIn, Facebook, ITViec,... khiến thông tin dễ bị trôi hoặc bị lẫn giữa các bài đăng khác. Điều này khiến sinh viên có thể bỏ lỡ những vị trí phù hợp, các đợt tuyển dụng quan trọng hoặc những chương trình thực tập mà bản thân đang quan tâm.
 
-Để sinh viên không bỏ lỡ các kỳ tuyển dụng lớn từ các tập đoàn công nghệ như VNG, Bosch, NAB, FPT hay Viettel, hệ thống cung cấp công cụ Radar theo dõi thông tin tuyển dụng từ mạng xã hội. Sinh viên có thể thiết lập danh sách các Fanpage Facebook hoặc trang LinkedIn doanh nghiệp mà mình muốn theo dõi bằng cách cung cấp đường dẫn URL của trang. Định kỳ 6 giờ một lần, hệ thống tự động quét các bài viết mới xuất hiện trên các trang này và dùng trí tuệ nhân tạo để phân loại nội dung. Hệ thống sẽ tự động loại bỏ các bài viết truyền thông nội bộ, chúc mừng sinh nhật, hoặc hoạt động phong trào, chỉ giữ lại các bài đăng thực sự mở đợt tuyển dụng sinh viên. Đối với các bài viết tuyển dụng được duyệt, hệ thống tự động bóc tách các thông tin chính: tên doanh nghiệp, tên chương trình tuyển dụng, vị trí tuyển, yêu cầu ứng viên, thời hạn nộp hồ sơ và liên kết dẫn đến biểu mẫu đăng ký gốc. Khi có thông tin đợt tuyển dụng mới, hệ thống sẽ gửi thông báo tức thời trên bảng điều khiển của sinh viên và gửi email thông báo tổng hợp, giúp sinh viên nắm bắt kịp thời để chuẩn bị nộp đơn trước hạn chót.
-
-Toàn bộ quá trình từ lúc tạo CV, phỏng vấn thử đến lúc gửi hồ sơ ứng tuyển đều được thực hiện trực tuyến thông qua trình duyệt web trên máy tính có kết nối Internet. Để đảm bảo tính an toàn và bảo mật thông tin, sinh viên cần đăng ký tài khoản với bước xác thực qua email và đăng nhập trước khi sử dụng hệ thống. Mọi thông tin hồ sơ cá nhân, kết quả phỏng vấn và lịch sử ứng tuyển đều được mã hóa và lưu trữ an toàn trong cơ sở dữ liệu quan hệ PostgreSQL. Về phía client trên thiết bị người dùng, hệ thống yêu cầu trình duyệt web hiện đại có hỗ trợ HTML5, đồng thời máy tính phải được trang bị microphone và loa hoặc tai nghe hoạt động bình thường phục vụ tương tác âm thanh hai chiều. Phía máy chủ, hệ thống được phát triển trên nền tảng Node.js (NestJS), kết nối với môi trường Kaggle để triển khai các dịch vụ AI, tích hợp mô hình AI trên Hugging Face kết hợp DeepSeek API, cùng máy chủ gửi email SMTP. Toàn bộ quy trình phát triển và hoàn thiện phần mềm được nhóm quản lý theo mô hình Agile/Scrum trong thời hạn 8 tuần.
+* **Mơ hồ về độ phù hợp và khoảng cách kỹ năng so với thị trường việc làm:** Khi các bạn sinh viên rải hàng trăm CV và bị từ chối sau các cuộc phỏng vấn có thể là một cú sốc và các bạn không biết nguyên nhân từ đâu mà mình thất bại. Trên hết là, các bạn không biết rõ mình đang thiếu hụt kiến thức gì cụ thể để chủ động tự học và bù đắp đúng trọng tâm từ đó cải thiện mình khi đi phỏng vấn.
 
 ---
 
 ## 3. GIẢI PHÁP ĐỀ XUẤT
 
-Nhằm giải quyết triệt để các bài toán và nhu cầu thực tế đã nêu ở Mục 2, nhóm đề xuất giải pháp hệ thống **HireUS** gồm 5 phân hệ phần mềm kết hợp chặt chẽ:
+### 3.1. Ý tưởng & Mô hình giải pháp
 
-1. **Phân hệ 1:** Tạo CV chuẩn ATS & Trợ lý Cố vấn SeekerBot.
-2. **Phân hệ 2:** Mô phỏng Phỏng vấn Kỹ thuật Giọng nói Thời gian thực (Voice Mock Interview).
-3. **Phân hệ 3:** Hỗ trợ Ứng tuyển & Rải CV Tự động (Auto Job Dispatcher).
-4. **Phân hệ 4:** Tổng hợp Việc làm & Đối sánh Năng lực (Job Matching & Skill Gap Analysis).
-5. **Phân hệ 5:** Radar Săn tin Tuyển dụng Sớm từ Mạng xã hội (Social Early Recruitment Radar).
+#### 3.1.1. Bốn phân hệ cốt lõi
 
-### 3.1. Phần mềm
+Để giải quyết trực diện 4 khó khăn thực tế đã nêu trên, nhóm đề xuất giải pháp hệ thống **HireUS Tools** gồm 4 phân hệ cốt lõi:
 
-#### 3.1.1. Danh sách các chức năng phần mềm
+1. **Phân hệ 1 - Xây dựng CV chuẩn ATS & Trợ lý SeekerBot:** Cung cấp công cụ tạo và chỉnh sửa CV trực tuyến với các mẫu thiết kế chuyên nghiệp, hỗ trợ tối ưu hóa bố cục và nội dung theo tiêu chuẩn ATS nhằm tăng khả năng vượt qua vòng sàng lọc hồ sơ. Tích hợp trợ lý AI SeekerBot để hướng dẫn người dùng xây dựng nội dung CV, cải thiện cách mô tả kỹ năng, kinh nghiệm và dự án, đồng thời đưa ra các đề xuất điều chỉnh phù hợp với vị trí ứng tuyển.
+
+2. **Phân hệ 2 - Mô phỏng phỏng vấn Kỹ thuật Giọng nói (Voice Mock Interview):** Thiết lập phòng phỏng vấn 1:1 tương tác giọng nói hai chiều thời gian thực với AI Tech Lead (hỗ trợ cả tiếng Việt và tiếng Anh), hỏi đáp linh hoạt theo ngữ cảnh và cung cấp báo cáo đánh giá chi tiết.
+
+3. **Phân hệ 3 - Tổng hợp Việc làm & Đối sánh Năng lực (Job Matching & Skill Gap):** Bóc tách yêu cầu công việc từ Job, đối chiếu với CV của bản thân để tính điểm tương thích (%), chỉ ra chính xác các kỹ năng còn thiếu và gợi ý định hướng tự học bổ sung.
+
+4. **Phân hệ 4 - Săn tin tuyển dụng từ mạng xã hội (Job Tracking System):** Định kỳ theo dõi các Fanpage, trang LinkedIn của các doanh nghiệp IT, tự động dùng AI sàng lọc tin phong trào để kịp thời thông báo các đợt mở đơn thực tập Intern và Fresher.
+
+#### 3.1.2. Tình huống sử dụng thực tế
+
+* **Tình huống 1 (Chuẩn hóa CV và luyện phỏng vấn kỹ thuật):**
+  Chí Cao là sinh viên năm 3 ngành Kỹ thuật Phần mềm đang chuẩn bị ứng tuyển vị trí thực tập sinh Backend. Cao nhập thông tin dự án vào HireUS Tools và được trợ lý AI SeekerBot gợi ý viết lại phần đóng góp theo phương pháp định lượng STAR, sau đó xuất ra tệp PDF chuẩn ATS. Tiếp theo, Cao vào phòng phỏng vấn ảo, chọn vị trí Backend Fresher để luyện phản xạ trả lời câu hỏi trực tiếp bằng giọng nói với AI Tech Lead và nhận báo cáo đánh giá các lỗ hổng kiến thức sau buổi phỏng vấn.
+
+* **Tình huống 2 (Đối soát kỹ năng và săn tin tuyển dụng sớm):**
+  Việt Hoàng muốn tìm cơ hội thực tập sớm tại các công ty công nghệ lớn nhưng do bận rộn bạn không thường xuyên kiểm tra bài đăng dẫn đến bị trôi bài trên mạng xã hội. Nhờ tính năng Job Tracking System, Hoàng nhận được thông báo ngay khi Fanpage của doanh nghiệp mở đợt tuyển sinh viên. Hoàng sao chép thông tin công việc (Job) vào hệ thống để kiểm tra độ phù hợp, hệ thống báo đạt 75% điểm tương thích và chỉ rõ Hoàng còn thiếu kiến thức về Docker. Nhờ đó, Hoàng biết chính xác cần bổ sung công nghệ gì để kịp hoàn thiện trước hạn nộp hồ sơ.
+
+#### 3.1.3. So sánh với các sản phẩm trên thị trường
+
+| Đối thủ | Điểm mạnh | Hạn chế đối với sinh viên IT |
+| :--- | :--- | :--- |
+| **TopCV / VietnamWorks** | Cơ sở dữ liệu việc làm lớn, nhiều mẫu thiết kế CV đa dạng. | Mẫu CV nhiều cột đồ họa dễ bị máy quét ATS đọc lỗi, không chuyên sâu cho ngành IT, không có tính năng phỏng vấn thử nghiệm bằng giọng nói. |
+| **LeetCode / HackerRank** | Kho bài tập thuật toán phong phú, chấm điểm code tự động chính xác. | Chỉ tập trung vào giải thuật thuần túy, không hỗ trợ rèn luyện kỹ năng giao tiếp phản xạ khi phỏng vấn, không hỗ trợ tạo CV hay săn việc. |
+| **LinkedIn** | Mạng xã hội tuyển dụng toàn cầu với mạng lưới kết nối doanh nghiệp rộng lớn. | Thông tin quá loãng, không tự động bóc tách và phân tích khoảng cách kỹ năng (Skill Gap) theo từng Job, không lọc riêng các đợt mở đơn thực tập sớm cho sinh viên. |
+
+#### 3.1.4. Điểm khác biệt của HireUS Tools
+
+Ngoài các tính năng trên, HireUS Tools tập trung tối ưu riêng cho sinh viên IT đi xin thực tập (Intern) và làm Fresher, đặc biệt là sinh viên năm 3 và năm 4, giúp nhóm đối tượng này có thể xin thực tập sớm nhất, đồng thời nhận được phản hồi và gợi ý cải thiện được cá nhân hóa theo hồ sơ của từng người. Nổi bật nhất là tính năng Voice Mock Interview, một tính năng hiếm có nền tảng nào cung cấp. Ngoài ra thay vì phải lên TopCV để chỉnh CV, sang LeetCode để luyện tập và vào LinkedIn để đọc tin tuyển dụng, sinh viên có thể thực hiện tất cả trên một nền tảng tích hợp duy nhất là HireUS Tools.
+
+### 3.2. Đặc tả kỹ thuật phần mềm
+
+#### 3.2.1. Danh sách các chức năng phần mềm
 
 | Nhu cầu | Yêu cầu |
 | :--- | :--- |
-| Là sinh viên IT, tôi muốn tạo hồ sơ trên biểu mẫu nhập liệu có cấu trúc phân định rõ ràng và xem trước trực tiếp theo chuẩn ATS để CV không bị máy quét tự động loại bỏ. | **Trình tạo CV chuẩn ATS:** Form nhập liệu đa khối (Kỹ năng, Dự án, Học vấn...), xem trước trực tiếp (Live Preview) bố cục đơn cột chuẩn mực, hỗ trợ xuất bản tệp PDF có text layer 100%. |
-| Là sinh viên IT, tôi muốn nhận được gợi ý viết lại phần mô tả dự án theo phương pháp định lượng và cấu trúc rõ ràng để làm nổi bật năng lực kỹ thuật của bản thân. | **Trợ lý cố vấn SeekerBot:** Phân tích câu mô tả dự án, tự động gợi ý chuẩn hóa theo công thức định lượng kết quả và chuẩn STAR, phản hồi nhanh chóng và hỗ trợ so sánh kết quả trực quan. |
-| Là sinh viên IT, tôi muốn tham gia phòng phỏng vấn kỹ thuật 1:1 bằng giọng nói với AI Tech Lead để rèn luyện phản xạ trả lời câu hỏi chuyên môn chân thực như phỏng vấn thật. | **Phỏng vấn kỹ thuật giọng nói:** Tương tác âm thanh hai chiều (Voice-to-Voice) qua micro và loa, phản hồi thoại nhanh và liên tục, kịch bản hỏi đáp chuyên sâu 5 - 7 câu theo từng vị trí (Frontend, Backend, AI...). |
-| Là sinh viên IT sau khi phỏng vấn, tôi muốn nhận được báo cáo đánh giá chi tiết theo các tiêu chí kỹ thuật chuẩn mực để biết rõ lỗ hổng kiến thức và kịp thời ôn tập. | **Đánh giá năng lực kỹ thuật:** Tự động tổng hợp bảng điểm theo thang 100 dựa trên 3 tiêu chí (*Kiến thức nền tảng, Tư duy giải quyết vấn đề, Diễn đạt chuyên môn*), kèm nhận xét cụ thể và câu trả lời mẫu tham khảo. |
-| Là sinh viên IT, tôi muốn hệ thống tự động so khớp CV của tôi với các việc làm đang mở để nhanh chóng chọn ra các công việc phù hợp nhất với năng lực hiện có. | **Đối soát năng lực (Job Matching):** Thu thập tin tuyển dụng Intern/Fresher, thuật toán đối sánh tính điểm tương thích Match Score (0% - 100%) giữa hồ sơ và JD, gắn nhãn kỹ năng đã đáp ứng và kỹ năng còn thiếu. |
-| Là sinh viên IT, tôi muốn xem bảng phân tích kỹ năng thị trường đang đòi hỏi để có định hướng tự học bổ sung các công nghệ còn thiếu. | **Phân tích khoảng cách kỹ năng (Skill Gap):** Trực quan hóa danh mục công nghệ nhà tuyển dụng yêu cầu nhiều nhất cho vị trí mục tiêu, gợi ý lộ trình tự học và chủ đề dự án cần thực hiện. |
-| Là sinh viên IT, tôi muốn tự động tạo Cover Letter bám sát bản mô tả công việc và gửi hồ sơ ứng tuyển qua email để tiết kiệm thời gian rải CV thủ công. | **Tự động gửi hồ sơ ứng tuyển:** Tự động trích xuất email nhà tuyển dụng từ JD, sinh Cover Letter cá nhân hóa, gửi kèm CV PDF trực tiếp qua giao thức SMTP, quy định gửi tối đa 10 email/ngày để đảm bảo an toàn. |
-| Là sinh viên IT, tôi muốn theo dõi bài đăng tuyển dụng từ Fanpage/LinkedIn của các công ty công nghệ lớn để không bỏ lỡ đợt tuyển dụng sớm. | **Cấu hình Radar theo dõi mạng xã hội:** Cho phép người dùng thêm và quản lý danh sách đường dẫn (URL) Fanpage hoặc trang doanh nghiệp cần theo dõi, định kỳ quét bài viết mới. |
-| Là sinh viên IT, tôi muốn hệ thống tự lọc bài viết trên mạng xã hội để chỉ nhận thông báo về các đợt mở đơn thực tập/fresher thực sự, tránh bị làm phiền bởi tin tức truyền thông nội bộ. | **Lọc và cảnh báo tin tuyển dụng:** Dùng AI phân loại bài viết, lọc bỏ tin phong trào/sinh nhật, trích xuất hạn chót nộp đơn (deadline), phát cảnh báo tức thời qua Dashboard và Email, chu kỳ quét 6 giờ/lần. |
-| Là người dùng, tôi muốn hệ thống phản hồi nhanh chóng ở các tác vụ thông thường để đảm bảo trải nghiệm sử dụng thuận tiện. | **Hiệu năng & phản hồi:** Tối ưu hóa tốc độ tải trang và thời gian xử lý API, có hiển thị trạng thái chờ khi thực hiện các tác vụ tốn thời gian. |
-| Là người dùng đã đăng ký, tôi muốn mật khẩu đăng nhập và thông tin cá nhân của tôi được bảo vệ an toàn để không bị lộ lọt dữ liệu. | **Bảo vệ mật khẩu & an toàn dữ liệu:** Xác thực tài khoản bằng JWT Token, phân quyền truy cập, mã hóa mật khẩu và bảo mật thông tin hồ sơ trong cơ sở dữ liệu. |
+| Là sinh viên IT, tôi muốn tạo và chỉnh sửa CV để không bị hệ thống quét loại bỏ. | **Trình tạo CV ATS** |
+| Là sinh viên IT, tôi muốn AI gợi ý viết lại mô tả dự án theo chuẩn STAR để làm nổi bật năng lực kỹ thuật. | **Trợ lý SeekerBot** |
+| Là sinh viên IT, tôi muốn tập luyện phỏng vấn thử 1:1 để rèn luyện phản xạ đối đáp thực tế. | **Phỏng vấn giọng nói** |
+| Là sinh viên IT, tôi muốn nhận báo cáo đánh giá sau phỏng vấn để biết rõ lỗ hổng kiến thức cần ôn tập. | **Báo cáo năng lực** |
+| Là sinh viên IT, tôi muốn đối chiếu CV với tin tuyển dụng để biết mức độ phù hợp trước khi ứng tuyển. | **Đối soát năng lực (Job Matching)** |
+| Là sinh viên IT, tôi muốn biết các kỹ năng còn thiếu so với yêu cầu thị trường để có kế hoạch tự học bù đắp. | **Phân tích khoảng cách kỹ năng** |
+| Là sinh viên IT, tôi muốn theo dõi tin tuyển dụng từ Fanpage, LinkedIn doanh nghiệp để nắm bắt cơ hội thực tập sớm. | **Theo dõi mạng xã hội (Job Tracking)** |
+| Là sinh viên IT, tôi muốn hệ thống tự lọc bỏ tin phong trào nội bộ để chỉ nhận thông báo khi có đợt mở đơn thực sự. | **Lọc tin tuyển dụng bằng AI** |
+| Là người dùng, tôi muốn dữ liệu cá nhân và tài khoản được bảo vệ an toàn khi sử dụng ứng dụng. | **Bảo mật & Xác thực tài khoản** |
+| Là người dùng, tôi muốn hệ thống phản hồi nhanh chóng và mượt mà trong các thao tác thông thường. | **Tối ưu trải nghiệm & Phản hồi** |
 
 ---
 
-#### 3.1.2. Kiến trúc tổng thể phần mềm
+#### 3.2.2. Kiến trúc tổng thể phần mềm
 
-Hệ thống **HireUS** được xây dựng theo mô hình Client - Server hiện đại, trong đó Backend đóng vai trò trung tâm điều phối logic nghiệp vụ, quản lý dữ liệu và kết nối với các dịch vụ trí tuệ nhân tạo cùng các API đám mây bên ngoài.
+![Sơ đồ kiến trúc tổng thể phần mềm HireUS Tools](./image/1.drawio.png)
 
-##### A. Sơ đồ kiến trúc tổng thể (Architecture Diagram)
+Kiến trúc phần mềm hay Tech Stack của nhóm được chọn với lý do như sau:
 
-```mermaid
-flowchart TB
-    User["Client / End-User<br>(Web Browser)"]
+* **Frontend (Next.js):** Nhóm em chọn Next.js vì giao diện chạy nhanh, dùng được Web Audio API để thu âm giọng nói trực tiếp và xuất CV PDF chuẩn ATS ngay trên trình duyệt. Next.js cũng thuộc hệ sinh thái React nên tài liệu nhiều, dễ học và kịp tiến độ đồ án.
 
-    subgraph Localhost["LOCAL HOST ENVIRONMENT (DOCKER COMPOSE)"]
-        subgraph Frontend["Frontend Tier (Next.js / TypeScript)"]
-            FE_UI["Client Interface<br>- ATS CV Builder & Live Preview<br>- Real-time Voice Mock Interview<br>- Job Matching & Skill Gap Analysis<br>- Early Recruitment Radar"]
-        end
+* **Backend (NestJS):** NestJS chia code theo module khá rõ ràng nên dễ bảo trì, và dễ chia việc theo từng phân hệ. NestJS dùng TypeScript giống Frontend nên cả nhóm chỉ cần học một ngôn ngữ, ngoài ra còn có sẵn Task Scheduling để chạy tác vụ cào tin định kỳ.
 
-        subgraph Backend["Backend Tier (NestJS / Node.js)"]
-            BE_Core["Application Gateway & Business Logic<br>- JWT Authentication & Guard<br>- Core Subsystem Services<br>- AI Orchestrator & Task Scheduler"]
-        end
+* **Cơ sở dữ liệu (PostgreSQL & Prisma ORM):** PostgreSQL ổn định, miễn phí và phù hợp để lưu dữ liệu có liên kết với nhau như hồ sơ, CV và lịch sử phỏng vấn. Prisma giúp kiểm soát kiểu dữ liệu và tự tạo migration, nên khi nhiều bạn cùng sửa cấu trúc database sẽ ít bị lỗi hơn.
 
-        subgraph Storage["Data Tier (PostgreSQL / Prisma ORM)"]
-            DB[("PostgreSQL Database<br>- Users & Profiles<br>- Resumes & Text Layers<br>- Interview Logs & Job Feeds")]
-        end
-    end
+* **Hạ tầng AI riêng (FastAPI trên Kaggle Cloud):** Nhóm em tách phần AI nặng (mô hình âm thanh Hugging Face và LLM API) ra khỏi backend chính để hệ thống không bị nghẽn, và nếu phần AI gặp lỗi thì các chức năng còn lại vẫn chạy bình thường. FastAPI nhẹ, hợp với Python nên dễ chạy các mô hình AI, đồng thời nhóm em tận dụng GPU miễn phí của Kaggle để tiết kiệm chi phí.
 
-    subgraph Kaggle_Env["AI COMPUTING INFRASTRUCTURE (KAGGLE GPU)"]
-        subgraph AI_Engine["AI Microservice (FastAPI / Python)"]
-            AI_Core["FastAPI Inference Engine<br>- STAR Resume Optimization Pipeline<br>- Interview Prompt & Evaluation Logic<br>- Hugging Face Audio & NLP Models<br>- Recruitment Post Classifier"]
-        end
-    end
-
-    subgraph External_Services["EXTERNAL CLOUD SERVICES & APIS"]
-        DeepSeek["DeepSeek Open Platform<br>(DeepSeek LLM API)"]
-        HuggingFace["Hugging Face Hub<br>(Pre-trained Models)"]
-        SMTP_Server["Gmail SMTP Server<br>(Automated Job Dispatcher)"]
-        Social_Sources["Public Social Channels<br>(Company Fanpages & LinkedIn)"]
-    end
-
-    User <-->|HTTPS / UI Events| Frontend
-    Frontend <-->|REST API / JSON| Backend
-    Backend <-->|Prisma ORM / TCP| Storage
-    Backend <-->|Reverse Tunnel / HTTPS| AI_Engine
-    Backend -->|SMTP TLS / Dispatch| SMTP_Server
-    Backend -->|Scheduled Scraping / HTTP| Social_Sources
-    AI_Engine <-->|LLM Inference / HTTPS| DeepSeek
-    AI_Engine -.->|Model Weights / HTTPS| HuggingFace
-```
-
-##### B. Bảng tổng hợp thành phần kiến trúc & Công nghệ sử dụng (Tech Stack)
-
-| STT | Khối thành phần | Công nghệ lựa chọn (Tech Stack) | Vai trò & Nhiệm vụ chính trong hệ thống | Giao thức kết nối |
-| :---: | :--- | :--- | :--- | :---: |
-| **1** | **Frontend (Client)** | **Next.js (React, TypeScript)** | Cung cấp giao diện người dùng tương tác trực quan: form nhập liệu CV, xem trước bản in ATS, phòng phỏng vấn âm thanh và bảng thông tin việc làm. | `HTTP / HTTPS` |
-| **2** | **Backend (Server)** | **NestJS (Node.js, TypeScript)** | Trung tâm điều phối toàn bộ hệ thống: tiếp nhận yêu cầu từ Frontend, xử lý logic nghiệp vụ, quản lý phiên xác thực JWT và điều phối luồng dữ liệu. | `REST API / HTTPS` |
-| **3** | **AI & Thuật toán** | **DeepSeek API, Kaggle, FastAPI & Hugging Face (AI Models)** | Xây dựng dịch vụ Backend phụ trợ bằng FastAPI trên môi trường Kaggle (GPU), tích hợp các mô hình AI trên Hugging Face và DeepSeek API, mở cổng API kết nối để máy chủ NestJS Backend gọi xử lý. | `HTTPS (REST API)` |
-| **4** | **Cơ sở dữ liệu (Database)** | **PostgreSQL (kèm Prisma ORM)** | Lưu trữ bền vững và bảo mật thông tin tài khoản, hồ sơ cá nhân, lịch sử phỏng vấn, danh mục việc làm và nhật ký ứng tuyển. | `TCP / SQL (ORM)` |
-| **5** | **Dịch vụ mạng & Đám mây** | **Hugging Face Hub, SMTP, Cloud Storage** | Cung cấp kho lưu trữ các mô hình AI mã nguồn mở, tự động gửi email ứng tuyển qua SMTP và lưu trữ tệp tin CV PDF. | `HTTPS / SMTP` |
-
-*Ghi chú kiến trúc:*
-* Toàn bộ kiến trúc được phân tách thành 3 phân vùng hạ tầng rõ ràng: Môi trường máy cục bộ (chạy trọn gói Frontend, Backend và PostgreSQL thông qua Docker Compose), Hạ tầng tính toán AI trên Kaggle (chạy dịch vụ FastAPI tận dụng GPU miễn phí) và các Dịch vụ đám mây bên ngoài.
-* Backend NestJS là trung tâm điều phối và kiểm soát bảo mật, đảm bảo an toàn thông tin trước khi đọc hoặc ghi vào cơ sở dữ liệu.
-* Dịch vụ AI FastAPI trên Kaggle kết nối trực tiếp với DeepSeek API và tải mô hình từ Hugging Face, đồng thời mở cổng API (Tunneling qua HTTPS) để máy chủ Backend cục bộ gọi xử lý nghiệp vụ thông suốt.
+* **DeepSeek API & Mạng xã hội:** DeepSeek có giá rẻ, chất lượng tốt và hỗ trợ cả tiếng Việt lẫn tiếng Anh, phù hợp để tối ưu CV theo chuẩn STAR. Bên cạnh đó, hệ thống theo dõi Fanpage/LinkedIn của các công ty để báo sớm khi họ mở đơn thực tập.
 
 ---
 
-### 3.2. Phần cứng
+### 3.3. Phần cứng & Hạ tầng
 
-Hệ thống **HireUS** được thiết kế chạy trực tiếp trên môi trường máy cục bộ (Localhost) thông qua Docker Compose, yêu cầu cấu hình phần cứng tối thiểu cho các bên như sau:
-
-| Đối tượng | Cấu hình phần cứng tối thiểu | Thiết bị ngoại vi & Kết nối mạng |
-| :--- | :--- | :--- |
-| **Người dùng cuối (Client)** | Máy tính cá nhân (PC hoặc Laptop), tối thiểu 2 GB RAM, trình duyệt web hiện đại hỗ trợ HTML5. | Có microphone và loa hoặc tai nghe hoạt động tốt phục vụ phỏng vấn giọng nói, kết nối mạng ổn định. |
-| **Môi trường vận hành (Localhost)** | Máy tính phục vụ chạy thử nghiệm cục bộ với tối thiểu 4 nhân CPU, 8 GB RAM, 20 GB ổ cứng trống (khởi chạy qua Docker Compose). | Kết nối mạng phục vụ gọi DeepSeek API, cổng API FastAPI từ Kaggle và gửi email qua SMTP. |
-| **Môi trường tính toán AI (Kaggle Cloud)** | Nền tảng đám mây Kaggle Notebooks với hỗ trợ GPU miễn phí phục vụ chạy dịch vụ Backend FastAPI và mở cổng dịch vụ API. | Kết nối mạng phục vụ mở cổng API FastAPI (Tunneling qua HTTPS) để máy chủ cục bộ gọi dịch vụ. |
-| **Thiết bị phát triển (Team)** | Laptop cá nhân tối thiểu 8 GB RAM, ổ đĩa SSD phục vụ cài đặt Node.js runtime, môi trường ảo hóa Docker và Git. | Kết nối mạng phục vụ làm việc nhóm qua GitHub và kết nối API FastAPI trên Kaggle. |
+| Đối tượng | Yêu cầu cấu hình tối thiểu |
+| :--- | :--- |
+| **Phía Client (Người dùng)** | Máy tính cá nhân kết nối Internet, có microphone và loa/tai nghe (phục vụ phỏng vấn giọng nói), trình duyệt web hiện đại (Chrome, Edge, Safari). |
+| **Phía Server (Vận hành hệ thống)** | CPU 4 nhân, RAM 8 GB, 20 GB ổ đĩa trống (khởi chạy trọn gói trên máy tính cá nhân qua Docker Compose). |
+| **Hạ tầng AI (Kaggle Cloud)** | Môi trường đám mây hỗ trợ GPU miễn phí (Kaggle Notebooks) phục vụ chạy mô hình giọng nói và xử lý AI. |
 
 ---
 
 ## 4. KẾ HOẠCH PHÁT TRIỂN
 
-Dự án được triển khai trong thời hạn **8 tuần** theo mô hình linh hoạt **Scrum (Agile)** trên nền tảng **Jira**. Nhóm chia toàn bộ lộ trình thành **4 chu kỳ Sprint (mỗi Sprint kéo dài 2 tuần)**. Mỗi Sprint đều có mục tiêu rõ ràng, định rõ công việc của từng tuần và thành phẩm cụ thể đầu ra:
+Dự án triển khai trong 8 tuần theo mô hình **Scrum** trên **Jira**, chia thành 4 chu kỳ Sprint (2 tuần/Sprint):
 
-### 4.1. Sprint 1: Khởi động Dự án & Đề xuất Đồ án (Tuần 01 - Tuần 02)
-
-* **Mục tiêu chặng (Sprint Goal):** Thống nhất bài toán thực tế về khó khăn khi ứng tuyển việc làm IT, thiết lập cấu trúc tổ chức nhóm, phân tích các nhu cầu người dùng cốt lõi và hoàn thành bộ hồ sơ đề xuất đồ án.
-* **Kế hoạch thực hiện từng tuần:**
-  * **Tuần 01 (Khởi động, khảo sát nghiệp vụ & Hoàn thành hồ sơ đề xuất):**
-    * Họp toàn đội để thống nhất văn hóa làm việc, quy định phân công trách nhiệm và thiết lập không gian quản trị dự án trên Jira Software cùng kho lưu trữ mã nguồn GitHub.
-    * Khảo sát thực tế nhu cầu và rào cản ứng tuyển của sinh viên IT, xây dựng 11 câu chuyện người dùng và xác định phạm vi 5 phân hệ phần mềm của hệ thống HireUS.
-    * Soạn thảo và hoàn thiện bộ hồ sơ đề xuất đồ án (Project Proposal) theo mẫu của bộ môn: Trình bày chi tiết bối cảnh, phân tích các giải pháp thị trường, kiến trúc kỹ thuật Client - Server, kế hoạch triển khai 4 Sprint trong 8 tuần và bảng phân bổ nhân sự, dự toán chi phí dự kiến.
-    * Kiểm tra chất lượng tài liệu, rà soát văn phong và đóng gói hồ sơ nộp báo cáo đợt 1 ngay trong Tuần 01.
-  * **Tuần 02 (Tiếp nhận phản hồi đề xuất, tinh chỉnh Backlog & Thiết lập khung dự án):**
-    * Tiếp nhận ý kiến đóng góp và phản hồi từ giảng viên về hồ sơ đề xuất đồ án để cập nhật, tinh chỉnh yêu cầu bài toán.
-    * Tinh chỉnh danh mục Product Backlog trên Jira Software, phân rã công việc chuẩn bị cho giai đoạn đặc tả yêu cầu phần mềm ở Sprint 2.
-    * Thiết lập khung dự án mẫu ban đầu gồm giao diện Next.js và máy chủ Backend NestJS, kiểm tra kết nối thử nghiệm cơ sở dữ liệu và cấu hình quy chuẩn kiểm tra mã nguồn (ESLint, Git flow).
-* **Thành phẩm cụ thể bàn giao (Sprint Deliverables):**
-  * **Bộ hồ sơ đề xuất đồ án hoàn chỉnh:** Đã hoàn thành và nộp trong Tuần 01 theo đúng biểu mẫu quy định của bộ môn công nghệ phần mềm.
-  * **Không gian quản trị dự án Jira Software:** Bảng Scrum Backlog đã được tạo lập và tinh chỉnh với đầy đủ danh sách câu chuyện người dùng và các nhiệm vụ kỹ thuật cho toàn nhóm.
-  * **Bộ biên bản làm việc nhóm:** Ghi nhận đầy đủ nội dung các buổi họp thảo luận đề tài, phân chia vai trò và cam kết đóng góp của từng thành viên.
-  * **Khung mã nguồn dự án mẫu đã thiết lập:** Môi trường lập trình Next.js và NestJS ban đầu đã sẵn sàng cho giai đoạn cài đặt.
-
----
-
-### 4.2. Sprint 2: Đặc tả Yêu cầu Chi tiết & Thiết kế Hệ thống (Tuần 03 - Tuần 04)
-
-* **Mục tiêu chặng (Sprint Goal):** Chuyển hóa toàn bộ nhu cầu người dùng thành tài liệu đặc tả chức năng chi tiết, thiết kế bộ khung phác thảo bố cục giao diện trực quan và thiết kế cấu trúc cơ sở dữ liệu cùng danh mục API cho hệ thống.
-* **Kế hoạch thực hiện từng tuần:**
-  * **Tuần 03 (Khảo sát chi tiết nghiệp vụ và lập hồ sơ yêu cầu phần mềm):**
-    * Xây dựng sơ đồ Use Case tổng thể và viết bản đặc tả từng trường hợp sử dụng cụ thể cho 5 phân hệ.
-    * Thiết kế sơ đồ luồng hoạt động (Activity Diagrams) cho 2 quy trình trọng tâm: Luồng phỏng vấn kỹ thuật bằng giọng nói và luồng tự động gửi email ứng tuyển qua SMTP.
-    * Hoàn thành hồ sơ đặc tả chi tiết toàn bộ tính năng và yêu cầu phần mềm làm căn cứ chuẩn mực cho đội ngũ lập trình và kiểm thử.
-  * **Tuần 04 (Thiết kế bố cục giao diện và kiến trúc kỹ thuật hệ thống):**
-    * Thiết kế bộ khung phác thảo bố cục giao diện trực quan (UI Wireframes) cho 5 màn hình chính gồm: Trình tạo CV chuẩn ATS, phòng phỏng vấn âm thanh ảo, bảng danh sách việc làm, trung tâm rải CV tự động và bảng điều khiển radar cảnh báo tuyển dụng sớm.
-    * Thiết kế cơ sở dữ liệu quan hệ PostgreSQL gồm sơ đồ thực thể liên kết (ERD), bảng lược đồ vật lý (Database Schema) và các tệp khởi tạo bảng dữ liệu tự động (Migration scripts).
-    * Thiết kế danh mục API Endpoints và các sơ đồ tuần tự (Sequence Diagrams) mô tả luồng trao đổi dữ liệu giữa màn hình giao diện, máy chủ Backend và dịch vụ trí tuệ nhân tạo DeepSeek API.
-    * Hoàn thành hồ sơ thiết kế kiến trúc phần mềm hướng dẫn chi tiết cách thức lập trình và kết nối dữ liệu hệ thống.
-* **Thành phẩm cụ thể bàn giao (Sprint Deliverables):**
-  * **Hồ sơ đặc tả yêu cầu phần mềm:** Văn bản quy định chi tiết toàn bộ tính năng, yêu cầu phi chức năng, kịch bản luồng xử lý và tiêu chí chấp nhận cho từng nghiệp vụ của HireUS.
-  * **Hồ sơ thiết kế kiến trúc phần mềm:** Bản hướng dẫn kiến trúc kỹ thuật chi tiết gồm cấu trúc tầng, sơ đồ CSDL, danh mục API và các luồng dữ liệu kết nối nội bộ.
-  * **Bộ khung phác thảo bố cục giao diện (UI Wireframes):** Bản vẽ cấu trúc trực quan các thành phần giao diện, giúp nhóm định hình rõ luồng thao tác và bố cục hiển thị trước khi bước vào lập trình.
-  * **Bộ kịch bản khởi tạo cơ sở dữ liệu:** Các tệp lệnh tự động (Migration scripts) sẵn sàng kích hoạt cơ sở dữ liệu PostgreSQL cho dự án.
-
----
-
-### 4.3. Sprint 3: Phát triển Nền tảng Cốt lõi & Phỏng vấn Giọng nói (Tuần 05 - Tuần 06)
-
-* **Mục tiêu chặng (Sprint Goal):** Lập trình xây dựng phiên bản phần mềm chạy thực tế đầu tiên tập trung vào các chức năng cốt lõi: Đăng nhập an toàn, tạo CV chuẩn ATS có AI trợ giúp, phòng phỏng vấn kỹ thuật giọng nói và đối soát việc làm.
-* **Kế hoạch thực hiện từng tuần:**
-  * **Tuần 05 (Hệ thống xác thực & Phân hệ tạo CV chuẩn ATS):**
-    * Cài đặt tính năng xác thực tài khoản an toàn qua JWT Token và mã hóa bảo mật mật khẩu bcrypt.
-    * Lập trình giao diện và chức năng tạo CV: Biểu mẫu nhập thông tin trực quan, màn hình xem trước bố cục đơn cột chuẩn ATS, chức năng xuất bản tệp PDF có text layer 100% cho máy quét tuyển dụng.
-    * Lập trình và triển khai dịch vụ Backend FastAPI trên nền tảng Kaggle, thiết lập mở cổng API kết nối với máy chủ Backend để gọi DeepSeek API tự động phân tích và viết lại câu mô tả kinh nghiệm dự án theo chuẩn định lượng kết quả STAR.
-  * **Tuần 06 (Phòng phỏng vấn giọng nói ảo & Bảng đối soát việc làm):**
-    * Lập trình phòng phỏng vấn mô phỏng: Thu âm giọng nói của ứng viên qua microphone trên trình duyệt, kết nối kịch bản hỏi đáp chuyên môn và phát âm thanh phản hồi của AI Tech Lead thông qua mô hình AI trên Hugging Face được tích hợp trên dịch vụ FastAPI Kaggle.
-    * Lập trình bảng thông tin việc làm và thuật toán so khớp: Tự động tính điểm phù hợp (Match Score từ 0% đến 100%) giữa hồ sơ cá nhân với bản mô tả công việc, hiển thị bảng kỹ năng ứng viên còn thiếu để định hướng học tập.
-* **Thành phẩm cụ thể bàn giao (Sprint Deliverables):**
-  * **Phiên bản phần mềm chạy thực tế đợt 1 (Working Software Increment 1):** Người dùng có thể đăng ký tài khoản, đăng nhập, tự soạn CV chuẩn ATS có AI gợi ý, thực hành phỏng vấn thử bằng giọng nói với AI Tech Lead và xem bảng điểm đánh giá năng lực kèm gợi ý việc làm phù hợp.
-  * **Kho mã nguồn hoàn thiện trên GitHub:** Toàn bộ mã nguồn giao diện và API máy chủ được lưu trữ an toàn, có quản lý lịch sử commit và vượt qua các bài kiểm thử đơn vị cơ bản.
-
----
-
-### 4.4. Sprint 4: Tự động Hóa Ứng tuyển, Kiểm thử Toàn diện & Hoàn thiện Sản phẩm (Tuần 07 - Tuần 08)
-
-* **Mục tiêu chặng (Sprint Goal):** Hoàn thiện 2 tính năng tự động hóa nâng cao, thực thi kiểm thử toàn diện bảo đảm phần mềm vận hành ổn định, đóng gói Docker chạy trọn gói trên môi trường cục bộ và nghiệm thu đồ án.
-* **Kế hoạch thực hiện từng tuần:**
-  * **Tuần 07 (Tự động ứng tuyển, Radar mạng xã hội & Kiểm thử chất lượng):**
-    * Lập trình tính năng tự động ứng tuyển: Tự động trích xuất địa chỉ email nhà tuyển dụng từ tin tuyển dụng, tự động tạo thư ứng tuyển cá nhân hóa bám sát năng lực ứng viên và gửi email đính kèm tệp CV qua giao thức SMTP với hạn mức an toàn tối đa 10 email mỗi ngày.
-    * Lập trình tính năng radar mạng xã hội: Tiến trình chạy nền quét bài đăng tuyển dụng trên mạng xã hội định kỳ 6 giờ một lần, gọi API phân loại tin từ dịch vụ FastAPI trên Kaggle và phát cảnh báo sớm các đợt mở đơn thực tập.
-    * Thực hiện kiểm thử toàn diện: Viết và chạy các bài kiểm thử tự động Jest (bảo đảm độ bao phủ mã nguồn Code Coverage $\ge 70\%$), kiểm thử tích hợp, kiểm thử bảo mật và tối ưu độ phản hồi của hệ thống.
-  * **Tuần 08 (Đóng gói Docker chạy cục bộ, Kiểm thử tích hợp & Nghiệm thu):**
-    * Đóng gói toàn bộ ứng dụng bằng Docker Compose, chuẩn hóa kịch bản khởi chạy đồng bộ Frontend, Backend và cơ sở dữ liệu PostgreSQL trực tiếp trên môi trường máy tính cục bộ (Localhost).
-    * Thực hiện kiểm thử tích hợp toàn diện từ đầu đến cuối trên môi trường cục bộ, rà soát nhật ký vận hành và tối ưu độ ổn định của hệ thống.
-    * Soạn thảo tài liệu hướng dẫn cài đặt và chạy thử nghiệm cục bộ, quay video clip demo các kịch bản thực tế và chuẩn bị slide báo cáo nghiệm thu trước hội đồng môn học.
-* **Thành phẩm cụ thể bàn giao (Sprint Deliverables):**
-  * **Hệ thống Web hoàn chỉnh vận hành ổn định trên môi trường cục bộ (Localhost):** Bộ sản phẩm phần mềm trọn vẹn 5 phân hệ kèm tệp đóng gói Docker Compose sẵn sàng khởi chạy trực tiếp trên máy tính để phục vụ đánh giá và nghiệm thu.
-  * **Bộ hồ sơ kiểm thử chất lượng phần mềm:** Văn bản tổng kết toàn bộ kết quả kiểm thử tự động, bảng thống kê lỗi đã khắc phục và kết quả đo lường độ ổn định của hệ thống.
-  * **Bộ học liệu và phương tiện nghiệm thu:** Tài liệu hướng dẫn cài đặt và vận hành cục bộ, video clip demo các luồng tính năng thực tế, slide thuyết trình báo cáo và toàn bộ mã nguồn hoàn thiện trên GitHub.
-
----
-
-### 4.5. Bảng Tổng hợp Lộ trình Phát triển 4 Sprint (8 Tuần)
-
-Dưới đây là bảng đối chiếu tổng thể kế hoạch 4 Sprint trong 8 tuần, phân định rõ trọng tâm từng tuần cùng thành phẩm cụ thể đầu ra có thể kiểm chứng được:
-
-| Chu kỳ Sprint | Tuần thực hiện | Nội dung công việc theo từng tuần | Thành phẩm cụ thể đầu ra của Sprint (Deliverables) |
+| Chu kỳ Sprint | Tuần | Công việc trọng tâm | Thành phẩm cụ thể đầu ra |
 | :---: | :---: | :--- | :--- |
-| **Sprint 1**<br>*(2 tuần)* | **Tuần 01**<br>*(12/10 - 18/10)* | Khởi động, thống nhất quy trình Scrum/Jira, cấu trúc GitHub, khảo sát nghiệp vụ, phân tích 11 User Stories, hoàn thành và nộp hồ sơ đề xuất đồ án. | - Bộ hồ sơ đề xuất đồ án hoàn chỉnh theo mẫu của bộ môn.<br>- Bộ biên bản làm việc nhóm ghi nhận cam kết đóng góp. |
-| | **Tuần 02**<br>*(19/10 - 25/10)* | Tiếp nhận phản hồi đề xuất từ giảng viên, tinh chỉnh Jira Backlog, dựng khung mã nguồn mẫu Next.js và NestJS, chuẩn hóa quy chuẩn Git. | - Không gian Jira Scrum Backlog chuẩn hóa.<br>- Khung mã nguồn dự án mẫu sẵn sàng trên GitHub. |
-| **Sprint 2**<br>*(2 tuần)* | **Tuần 03**<br>*(26/10 - 01/11)* | Khảo sát nghiệp vụ chi tiết, lập Use Case Specifications, Activity Diagrams và Sequence Diagrams. | - Hồ sơ đặc tả yêu cầu phần mềm chi tiết cho toàn bộ 5 phân hệ. |
-| | **Tuần 04**<br>*(02/11 - 08/11)* | Thiết kế bố cục giao diện trực quan (5 màn hình), thiết kế Database Schema PostgreSQL (ERD) và danh mục REST API. | - Hồ sơ thiết kế kiến trúc phần mềm chi tiết.<br>- Bộ khung phác thảo bố cục giao diện và kịch bản khởi tạo CSDL. |
-| **Sprint 3**<br>*(2 tuần)* | **Tuần 05**<br>*(09/11 - 15/11)* | Thiết lập FastAPI trên Kaggle mở cổng API, cài đặt Auth JWT, lập trình Phân hệ 1 (CV Builder ATS và trợ lý SeekerBot AI). | - Phân hệ tạo CV chuẩn ATS chạy thực nghiệm trên máy tính.<br>- Module đăng ký, đăng nhập và xác thực tài khoản hoàn tất. |
-| | **Tuần 06**<br>*(16/11 - 22/11)* | Lập trình Phân hệ 2 (Phỏng vấn giọng nói với mô hình AI trên Hugging Face qua API FastAPI Kaggle) và Phân hệ 4 (So khớp JD & Skill Gap). | - Bản chạy thực nghiệm phỏng vấn giọng nói kỹ thuật hai chiều.<br>- Bản chạy thực nghiệm so khớp hồ sơ và tính điểm phù hợp JD. |
-| **Sprint 4**<br>*(2 tuần)* | **Tuần 07**<br>*(23/11 - 29/11)* | Lập trình Phân hệ 3 (Auto Apply qua SMTP) và Phân hệ 5 (Social Early Radar gọi API FastAPI Kaggle), viết Jest Unit Tests. | - Bộ kiểm thử tự động Jest (độ bao phủ $\ge 70\%$) và báo cáo kết quả kiểm thử chất lượng.<br>- Mã nguồn hoàn chỉnh 5 phân hệ trên GitHub. |
-| | **Tuần 08**<br>*(30/11 - 07/12)* | Đóng gói Docker Compose chạy cục bộ, kiểm thử tích hợp toàn diện, quay video demo, slide báo cáo. | - Sản phẩm Web hoàn chỉnh vận hành trên môi trường cục bộ (Localhost).<br>- Video demo, slide báo cáo thuyết trình và tài liệu cài đặt. |
-| **TỔNG KẾT** | **8 tuần** | **Hoàn thành trọn vẹn 5 phân hệ và 5 pha kỹ thuật** | **Sản phẩm Web hoàn chỉnh chạy cục bộ + Bộ tài liệu kỹ thuật đầy đủ** |
+| **Sprint 1** | **Tuần 01** | Khảo sát nhu cầu, thống nhất ý tưởng, lập Jira Backlog và hoàn thiện hồ sơ đề xuất đồ án. | - Hồ sơ Project Proposal hoàn chỉnh.<br>- Biên bản làm việc nhóm & phân công. |
+| | **Tuần 02** | Tiếp nhận góp ý từ GV, tinh chỉnh Backlog, dựng khung mã nguồn mẫu Next.js & NestJS. | - Bảng Scrum Backlog trên Jira.<br>- Khung mã nguồn dự án trên GitHub. |
+| **Sprint 2** | **Tuần 03** | Lập Use Case chi tiết, vẽ Activity & Sequence Diagram cho 4 phân hệ. | - Hồ sơ đặc tả yêu cầu phần mềm. |
+| | **Tuần 04** | Thiết kế Wireframe 4 màn hình, thiết kế lược đồ cơ sở dữ liệu PostgreSQL (ERD) và danh mục REST API. | - Hồ sơ thiết kế kiến trúc phần mềm.<br>- Bản vẽ Wireframe & kịch bản tạo CSDL. |
+| **Sprint 3** | **Tuần 05** | Cài đặt Auth JWT, lập trình Phân hệ 1 (Tạo CV ATS & Trợ lý SeekerBot AI trên Kaggle). | - Module đăng ký/đăng nhập hoàn tất.<br>- Chức năng tạo CV ATS chạy thực nghiệm. |
+| | **Tuần 06** | Lập trình Phân hệ 2 (Phỏng vấn giọng nói AI hai chiều) và Phân hệ 3 (Đối soát Job & Skill Gap). | - Bản chạy thực nghiệm phỏng vấn giọng nói.<br>- Bản chạy thực nghiệm so khớp hồ sơ và JD. |
+| **Sprint 4** | **Tuần 07** | Lập trình Phân hệ 4 (Săn tin tuyển dụng mạng xã hội), tối ưu API và viết Jest Unit Tests. | - Bản chạy hệ thống quét tin tuyển dụng.<br>- Bộ kiểm thử tự động Jest (Coverage $\ge 70\%$). |
+| | **Tuần 08** | Đóng gói Docker Compose chạy cục bộ, kiểm thử tích hợp, quay video demo và slide báo cáo. | - Sản phẩm Web hoàn chỉnh chạy qua Docker.<br>- Video demo, slide báo cáo & tài liệu cài đặt. |
 
 ---
 
 ## 5. KẾ HOẠCH NHÂN SỰ & CHI PHÍ
-
 ### 5.1. Kế hoạch Nhân sự & Phân công Vai trò trong Nhóm
+Do dự án gồm 4 thành viên, mỗi thành viên đều có thế mạnh khác nhau nên các nhiệm vụ được phân công theo thế mạnh chuyên môn của từng thành viên.
 
-Dự án gồm 4 thành viên phối hợp chặt chẽ theo mô hình làm việc nhóm Scrum, mỗi thành viên đảm nhiệm một mảng chuyên môn kỹ thuật và phụ trách trực tiếp các phân hệ cụ thể:
-
-| STT | Thành viên | Vai trò dự án | Nhiệm vụ kỹ thuật trọng tâm | Phân hệ trực tiếp phụ trách |
+| STT | Thành viên | Vai trò dự án | Nhiệm vụ kỹ thuật trọng tâm | Phân hệ phụ trách |
 | :---: | :--- | :--- | :--- | :--- |
-| **1** | **Lê Tấn Dũng** | Trưởng nhóm / PM & Kỹ sư AI | Quản trị dự án trên Jira, chủ trì nộp bài, viết code dịch vụ FastAPI trên Kaggle và mở cổng API kết nối hệ thống | Phân hệ 2 (AI phỏng vấn), Phân hệ 5 (Radar tuyển dụng) và cổng API FastAPI Kaggle |
-| **2** | **Võ Nguyễn Việt Hoàng** | Kỹ sư AI & Dữ liệu (AI & Data Engineer) | Nghiên cứu tích hợp DeepSeek API, thuật toán so khớp Job Match và mô hình phân loại tin | Phân hệ 2 (AI phỏng vấn), Phân hệ 4 (So khớp JD), Phân hệ 5 (Radar tuyển dụng) |
-| **3** | **Võ Minh Khoa** | Lập trình viên Fullstack (Fullstack Developer) | Phát triển giao diện Next.js, xây dựng hệ thống API máy chủ NestJS và luồng gửi email SMTP | Phân hệ 1 (Tạo CV chuẩn ATS), Phân hệ 3 (Tự động ứng tuyển) và toàn bộ API máy chủ |
-| **4** | **Đỗ Chí Cao** | Kỹ sư CSDL & Kiểm thử (QA) | Thiết kế kiến trúc cơ sở dữ liệu PostgreSQL và kiểm thử chất lượng hệ thống | Cơ sở dữ liệu toàn hệ thống và bộ kịch bản kiểm thử tự động toàn diện |
+| **1** | **Lê Tấn Dũng** | Trưởng nhóm / PM & Kỹ sư AI | Quản trị dự án trên Jira, viết code dịch vụ FastAPI trên Kaggle và mở cổng API kết nối hệ thống | Phân hệ 2 (AI phỏng vấn) & Phân hệ 4 (Săn tin tuyển dụng) |
+| **2** | **Võ Nguyễn Việt Hoàng** | Kỹ sư AI & Dữ liệu | Tích hợp DeepSeek API, thuật toán so khớp Job Match và mô hình phân loại tin | Phân hệ 2 (AI phỏng vấn), Phân hệ 3 (Đối soát Job) & Phân hệ 4 |
+| **3** | **Võ Minh Khoa** | Lập trình viên Fullstack | Phát triển giao diện Next.js, xây dựng hệ thống API máy chủ NestJS | Phân hệ 1 (Tạo CV chuẩn ATS) & Phân hệ 3 (Đối soát Job) |
+| **4** | **Đỗ Chí Cao** | Kỹ sư CSDL & Kiểm thử (QA) | Thiết kế cơ sở dữ liệu PostgreSQL và kiểm thử chất lượng hệ thống | Quản trị cơ sở dữ liệu & Kiểm thử toàn diện |
 
 ---
 
-### 5.2. Chi phí Nhân sự & Phân bổ Công số (Man-Hours Allocation)
-
-Trong phạm vi đồ án môn học, chi phí nhân sự được quy đổi thông qua định mức thời gian dự kiến **320 người-giờ (Man-Hours)** do 4 thành viên trong nhóm phân bổ qua 8 tuần (4 chu kỳ Sprint, trung bình định mức khoảng 10 giờ/tuần/thành viên), không phát sinh chi phí thuê ngoài:
-
-#### Bảng Tổng hợp Phân bổ Công số theo Thành viên qua 4 Sprint
-
-| Chu kỳ Sprint | Nội dung trọng tâm | Lê Tấn Dũng<br>*(PM & Kỹ sư AI)* | Võ Nguyễn Việt Hoàng<br>*(AI & Data)* | Võ Minh Khoa<br>*(Fullstack)* | Đỗ Chí Cao<br>*(QA & DB)* | Tổng công số Sprint |
+### 5.2. Phân bổ Công số (Man-Hours Allocation)
+Nhằm đảm bảo đúng tiến độ, nhóm đề xuất định mức **8 giờ / người / tuần**. Tổng công số toàn nhóm trong 8 tuần là **256 người-giờ** (64 giờ / thành viên):
+| Chu kỳ Sprint | Nội dung trọng tâm | Lê Tấn Dũng | Võ Nguyễn Việt Hoàng | Võ Minh Khoa | Đỗ Chí Cao | Tổng Sprint |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Sprint 1** (Tuần 1 - 2) | Khởi động & đề xuất đồ án | 15h | 11h | 11h | 11h | **48h** |
-| **Sprint 2** (Tuần 3 - 4) | Đặc tả yêu cầu & thiết kế hệ thống | 22h | 22h | 20h | 16h | **80h** |
-| **Sprint 3** (Tuần 5 - 6) | Cài đặt CV Builder, phỏng vấn thoại & matching | 25h | 26h | 25h | 20h | **96h** |
-| **Sprint 4** (Tuần 7 - 8) | Tự động ứng tuyển, radar, kiểm thử & đóng gói cục bộ | 24h | 23h | 24h | 25h | **96h** |
-| **TỔNG CỘNG** | **Toàn bộ 8 tuần học kỳ** | **86h** | **82h** | **80h** | **72h** | **320 Người-giờ** |
-
-*Ghi chú quan trọng về công số:*
-* Định mức công số (Man-Hours) ở trên chỉ mang tính chất tham khảo tương đối phục vụ việc lập kế hoạch và phân bổ thời gian làm việc nội bộ của nhóm, hoàn toàn không phải là phần chính hay căn cứ để đánh giá điểm số và mức độ đóng góp của từng thành viên.
-* Điểm số và mức độ đóng góp thực tế sẽ được đánh giá dựa trên chất lượng sản phẩm hoàn thiện, hiệu quả giải quyết bài toán và tinh thần trách nhiệm trong suốt quá trình thực hiện đồ án.
-
-#### Chi tiết Phân bổ Công số & Trách nhiệm Từng Thành viên
-
-* **Lê Tấn Dũng (Trưởng nhóm / PM & Kỹ sư AI - Tổng định mức dự kiến: 86 giờ):**
-  * *Sprint 1 (15 giờ):* Quản trị Jira Backlog, khảo sát nghiệp vụ dự án, chủ trì hoàn thiện hồ sơ đề xuất đồ án.
-  * *Sprint 2 (22 giờ):* Chủ trì biên soạn hồ sơ đặc tả yêu cầu phần mềm và hồ sơ thiết kế kiến trúc hệ thống, nghiên cứu thiết lập dịch vụ FastAPI trên Kaggle và giải pháp mở cổng API.
-  * *Sprint 3 (25 giờ):* Viết code triển khai dịch vụ Backend FastAPI trên Kaggle, cấu hình mở cổng API kết nối với máy chủ Backend, phối hợp điều phối luồng gọi API phỏng vấn kỹ thuật.
-  * *Sprint 4 (24 giờ):* Lập trình hoàn thiện mô hình lọc tin thông minh tích hợp trên FastAPI Kaggle, tối ưu hóa độ ổn định cổng API, điều phối tích hợp toàn hệ thống và chuẩn bị slide báo cáo nghiệm thu.
-* **Võ Nguyễn Việt Hoàng (Kỹ sư AI & Dữ liệu / AI & Data Engineer - Tổng định mức dự kiến: 82 giờ):**
-  * *Sprint 1 (11 giờ):* Khảo sát giải pháp xử lý ngôn ngữ tự nhiên, phân tích dữ liệu tuyển dụng và cấu trúc dữ liệu CV chuẩn ATS.
-  * *Sprint 2 (22 giờ):* Thiết kế kịch bản prompt DeepSeek API, thiết kế thuật toán so khớp kỹ năng Job Match và đặc tả luồng dữ liệu AI.
-  * *Sprint 3 (26 giờ):* Lập trình tích hợp DeepSeek API cho trợ lý SeekerBot (chuẩn STAR), xây dựng kịch bản đối thoại phỏng vấn kỹ thuật và thuật toán tính điểm năng lực.
-  * *Sprint 4 (23 giờ):* Lập trình thuật toán phân loại tin tuyển dụng thông minh cho radar mạng xã hội, tối ưu hóa prompt và xử lý dữ liệu nguồn cấp tin.
-* **Võ Minh Khoa (Lập trình viên Fullstack / Fullstack Developer - Tổng định mức dự kiến: 80 giờ):**
-  * *Sprint 1 (11 giờ):* Thiết lập khung mã nguồn Next.js và NestJS, chuẩn hóa luồng giao tiếp Client - Server và cấu hình Git.
-  * *Sprint 2 (20 giờ):* Thiết kế danh mục API Endpoints, thiết kế bộ khung phác thảo bố cục giao diện trực quan (UI Wireframes) và các sơ đồ tuần tự Sequence Diagram.
-  * *Sprint 3 (25 giờ):* Lập trình giao diện tạo CV trực quan Next.js, xây dựng hệ thống API NestJS quản lý hồ sơ ứng viên và cài đặt cơ chế xác thực JWT Token.
-  * *Sprint 4 (24 giờ):* Lập trình giao diện trung tâm gửi CV và bảng việc làm, xây dựng dịch vụ tự động gửi email qua SMTP, thực hiện video demo.
-* **Đỗ Chí Cao (Database & QA Engineer - Tổng định mức dự kiến: 72 giờ):**
-  * *Sprint 1 (11 giờ):* Khảo sát mô hình cơ sở dữ liệu quan hệ PostgreSQL, kiểm tra các tiêu chí phi chức năng ban đầu và rà soát bài nộp.
-  * *Sprint 2 (16 giờ):* Thiết kế sơ đồ thực thể liên kết ERD, lược đồ bảng dữ liệu PostgreSQL, viết kịch bản khởi tạo CSDL tự động và đặc tả yêu cầu phi chức năng.
-  * *Sprint 3 (20 giờ):* Cấu hình và thiết lập cơ sở dữ liệu PostgreSQL trên môi trường phát triển, viết các câu lệnh truy vấn tối ưu, hỗ trợ kết nối dữ liệu.
-  * *Sprint 4 (25 giờ):* Chủ trì xây dựng kế hoạch kiểm thử, viết và chạy các bài kiểm thử tự động Jest, lập báo cáo kết quả kiểm thử và kiểm tra cơ sở dữ liệu PostgreSQL cục bộ.
+| **Sprint 1** *(Tuần 1 - 2)* | Khởi động, chọn đề tài & hoàn thiện proposal | 16h | 16h | 16h | 16h | **64h** |
+| **Sprint 2** *(Tuần 3 - 4)* | Đặc tả yêu cầu chi tiết & thiết kế kiến trúc/CSDL | 16h | 16h | 16h | 16h | **64h** |
+| **Sprint 3** *(Tuần 5 - 6)* | Cài đặt CV ATS, trợ lý SeekerBot & AI phỏng vấn | 16h | 16h | 16h | 16h | **64h** |
+| **Sprint 4** *(Tuần 7 - 8)* | Cài đặt săn tin mạng xã hội, kiểm thử & đóng gói Docker | 16h | 16h | 16h | 16h | **64h** |
+| **TỔNG CỘNG** | **Toàn bộ 8 tuần (4 Sprint)** | **64h** | **64h** | **64h** | **64h** | **256h** |
 
 ---
 
 ### 5.3. Kế hoạch Chi phí Cơ sở Hạ tầng & Dịch vụ Dự kiến
-
-Do đồ án vận hành và nghiệm thu trực tiếp trên môi trường máy cục bộ (Localhost) thông qua Docker Compose kết hợp các nền tảng miễn phí, nhóm tối ưu hóa ngân sách để không phát sinh chi phí tài chính trong suốt thời gian thực hiện:
-
-| STT | Khoản mục chi phí | Nhà cung cấp dịch vụ | Cấu hình / Gói dịch vụ sử dụng | Dự toán chi trả | Chi phí thị trường ước tính (khi thương mại hóa) |
-| :---: | :--- | :--- | :--- | :---: | :---: |
-| **1** | **Môi trường chạy Frontend** | Môi trường máy cục bộ | Chạy trực tiếp qua Node.js runtime (Localhost) | 0 VNĐ | ~ 480.000 VNĐ / tháng (nếu thuê Cloud) |
-| **2** | **Môi trường chạy Backend** | Môi trường máy cục bộ | Đóng gói Docker Container chạy trên máy tính cá nhân | 0 VNĐ | ~ 180.000 VNĐ / tháng (nếu thuê Cloud) |
-| **3** | **Cơ sở dữ liệu PostgreSQL** | Môi trường máy cục bộ | Cài đặt cục bộ hoặc khởi chạy qua Docker Compose | 0 VNĐ | ~ 240.000 VNĐ / tháng (nếu thuê Cloud) |
-| **4** | **Hạ tầng Tính toán AI FastAPI** | Nền tảng Kaggle | Gói tính toán GPU miễn phí (30 giờ/tuần), mở cổng API | 0 VNĐ | ~ 500.000 VNĐ / tháng (nếu thuê GPU Cloud) |
-| **5** | **AI LLM API** | DeepSeek Open Platform | Tài khoản nhà phát triển (DeepSeek API số dư thử nghiệm) | 0 VNĐ | ~ 5.000 VNĐ / 1.000.000 tokens |
-| **6** | **Mô hình AI trên Hugging Face** | Nền tảng Hugging Face | Tận dụng các mô hình AI mã nguồn mở trên Hugging Face | 0 VNĐ | ~ 200.000 VNĐ / tháng (nếu thuê API thương mại) |
-| **7** | **Gửi Thư điện tử (Email Dispatcher)** | Gmail SMTP | Hạn mức gửi thư miễn phí của tài khoản Google phục vụ demo | 0 VNĐ | ~ 100.000 VNĐ / tháng |
-| **8** | **Tên miền hoạt động (Domain)** | Môi trường cục bộ | Địa chỉ mạng nội bộ `localhost` (không cần tên miền Internet) | 0 VNĐ | ~ 250.000 VNĐ / năm (nếu mua Domain) |
-| **9** | **Quản trị dự án & Backlog** | Atlassian Jira | Gói Jira Software Cloud Free (Hỗ trợ tối đa 10 thành viên) | 0 VNĐ | Miễn phí |
-| **10** | **Quản lý mã nguồn & Phối hợp nhóm** | GitHub | Gói GitHub Free (Repositories, Pull Requests, Issue Tracker) | 0 VNĐ | Miễn phí |
-| | **TỔNG CỘNG CHI PHÍ DỰ KIẾN** | | | **0 VNĐ** | **Tiết kiệm ~ 1.720.000 VNĐ / tháng** |
-
-*Ghi chú về chi phí:*
-* **Chi phí thực tế thực hiện đồ án là 0 VNĐ:** Toàn bộ quá trình phát triển, kiểm thử và nghiệm thu đồ án trong 8 tuần không phát sinh bất kỳ khoản chi phí tài chính nào nhờ tận dụng hạ tầng máy tính cá nhân (chạy Docker Compose), gói tài nguyên tính toán GPU miễn phí của Kaggle, kho mô hình Hugging Face, số dư thử nghiệm DeepSeek và các gói dịch vụ miễn phí dành cho sinh viên.
-* **Cột chi phí thị trường:** Là số liệu tham khảo ước tính giá trị dịch vụ tương đương nếu hệ thống được triển khai trên nền tảng điện toán đám mây công cộng (Cloud Hosting) khi đưa vào vận hành thương mại thực tế.
-
----
+Hệ thống ưu tiên tận dụng hạ tầng sẵn có nhằm tối ưu chi phí:
+| STT | Khoản mục chi phí | Nhà cung cấp | Cấu hình / Gói dịch vụ sử dụng | Chi phí thực tế |
+| :---: | :--- | :--- | :--- | :---: |
+| **1** | **Môi trường chạy Frontend** | Máy tính cục bộ | Chạy trực tiếp qua Node.js runtime (Localhost) | 0 VNĐ |
+| **2** | **Môi trường chạy Backend** | Máy tính cục bộ | Đóng gói Docker Container chạy trên máy tính cá nhân | 0 VNĐ |
+| **3** | **Cơ sở dữ liệu PostgreSQL** | Máy tính cục bộ | Cài đặt cục bộ hoặc khởi chạy qua Docker Compose | 0 VNĐ |
+| **4** | **Hạ tầng Tính toán AI FastAPI** | Nền tảng Kaggle | Gói GPU miễn phí (30 giờ/tuần), mở cổng API | 0 VNĐ |
+| **5** | **AI LLM API** | DeepSeek Open Platform | Nạp thử nghiệm gọi API token | ~ 20.000 VNĐ |
+| **6** | **Mô hình AI mã nguồn mở** | Nền tảng Hugging Face | Tận dụng mô hình âm thanh và xử lý ngôn ngữ mở | 0 VNĐ |
+| **7** | **Tên miền hoạt động (Domain)** | Môi trường cục bộ | Địa chỉ mạng nội bộ `localhost` | 0 VNĐ |
+| **8** | **Quản trị dự án & Backlog** | Atlassian Jira | Gói Jira Software Cloud Free (tối đa 10 người) | 0 VNĐ |
+| **9** | **Quản lý mã nguồn & Phối hợp** | GitHub | Gói GitHub Free (Repositories, Pull Requests, Issues) | 0 VNĐ |
+| | **TỔNG CHI PHÍ THỰC TẾ** | | | **~ 20.000 VNĐ** |
