@@ -31,7 +31,7 @@ status: "Đề xuất đồ án đợt 1 (Project Proposal)"
 | STT | MSSV | Họ và Tên | % Đóng góp (Tối đa 100%) | Chữ ký |
 | :---: | :---: | :--- | :---: | :---: |
 | 1 | 24120194 | **Võ Minh Khoa** | 100% | <img src="./image/Khoa.jpg" height="40" alt="Chữ ký Võ Minh Khoa" /> |
-| 2 | 24120249 | **Võ Nguyễn Việt Hoàng** | 100% | <img src="./image/Hoàng.png" height="40" alt="Chữ ký Võ Nguyễn Việt Hoàng" /> |
+| 2 | 24120249 | **Võ Nguyễn Việt Hoàng** | 100% | <img src="./image/Hoang.png" height="40" alt="Chữ ký Võ Nguyễn Việt Hoàng" /> |
 | 3 | 24120270 | **Đỗ Chí Cao** | 100% | <img src="./image/Cao.png" height="40" alt="Chữ ký Đỗ Chí Cao" /> |
 | 4 | 24120290 | **Lê Tấn Dũng** | 100% | <img src="./image/Dũng.jpg" height="40" alt="Chữ ký Lê Tấn Dũng" /> |
 
@@ -75,17 +75,19 @@ Trong thời đại AI, sinh viên rất khó để tìm và xin được một 
 * **Tình huống 2 (Đối soát kỹ năng và săn tin tuyển dụng sớm):**
   Việt Hoàng muốn tìm cơ hội thực tập sớm tại các công ty công nghệ lớn nhưng do bận rộn bạn không thường xuyên kiểm tra bài đăng dẫn đến bị trôi bài trên mạng xã hội. Nhờ tính năng Job Tracking System, Hoàng nhận được thông báo ngay khi Fanpage của doanh nghiệp mở đợt tuyển sinh viên. Hoàng sao chép thông tin công việc (Job) vào hệ thống để kiểm tra độ phù hợp, hệ thống báo đạt 75% điểm tương thích và chỉ rõ Hoàng còn thiếu kiến thức về Docker. Nhờ đó, Hoàng biết chính xác cần bổ sung công nghệ gì để kịp hoàn thiện trước hạn nộp hồ sơ.
 
-#### 3.1.3. So sánh với các sản phẩm trên thị trường
+#### 3.1.3. So sánh các phân hệ với các sản phẩm trên thị trường
 
-| Đối thủ | Điểm mạnh | Hạn chế đối với sinh viên IT |
-| :--- | :--- | :--- |
-| **TopCV / VietnamWorks** | Cơ sở dữ liệu việc làm lớn, nhiều mẫu thiết kế CV đa dạng. | Mẫu CV nhiều cột đồ họa dễ bị máy quét ATS đọc lỗi, không chuyên sâu cho ngành IT, không có tính năng phỏng vấn thử nghiệm bằng giọng nói. |
-| **LeetCode / HackerRank** | Kho bài tập thuật toán phong phú, chấm điểm code tự động chính xác. | Chỉ tập trung vào giải thuật thuần túy, không hỗ trợ rèn luyện kỹ năng giao tiếp phản xạ khi phỏng vấn, không hỗ trợ tạo CV hay săn việc. |
-| **LinkedIn** | Mạng xã hội tuyển dụng toàn cầu với mạng lưới kết nối doanh nghiệp rộng lớn. | Thông tin quá loãng, không tự động bóc tách và phân tích khoảng cách kỹ năng (Skill Gap) theo từng Job, không lọc riêng các đợt mở đơn thực tập sớm cho sinh viên. |
+Do đây là dự án mới có tích hợp nhiều tính năng khác nhau nên chúng ta không nên so sánh cả một nền tảng dự án này so với các app khác. Cách thiết thực ở đây là chúng ta sẽ so sánh các tính năng nhỏ, dựa vào những tính năng của họ cải tiến lên và so sánh với những tính năng này thì sẽ thiết thực hơn.
+
+| Phân hệ / Đối thủ | Điểm mạnh | Hạn chế đối với sinh viên IT | Giải pháp từ HireUS Tools |
+| :--- | :--- | :--- | :--- |
+| **Tạo CV & Tối ưu ATS**<br>*(TopCV, Canva)* | Có dữ liệu việc làm lớn, kho mẫu thiết kế CV phong phú, thao tác nhanh. | Đa phần các mẫu thiết kế là cho nhiều thể loại user khác nhau như biên tập viên, nhiếp ảnh thiên về đồ họa không chỉ mỗi IT, thì họ có nhiều mẫu template khác nhau. Nhưng với sinh viên ít kinh nghiệm dễ chọn nhầm mẫu dẫn đến việc hệ thống ATS quét lỗi hoặc loại hồ sơ.| Đối với HireUS Tools chúng tôi sẽ cung cấp 100% mẫu CV chuẩn hóa ATS tối ưu riêng cho ngành IT (bố cục đơn cột, sạch sẽ), tích hợp trợ lý AI SeekerBot hướng dẫn viết lại mô tả dự án kỹ thuật theo chuẩn định lượng STAR. |
+| **Luyện phỏng vấn (Mock Interview)**<br>*(Interview Warmup, JustOneInterview)* | Cung cấp môi trường AI mô phỏng phỏng vấn trực tuyến, giúp người dùng làm quen với hình thức trả lời câu hỏi tuyển dụng. | Một trong những nhược điểm là app không hỗ trợ phỏng vấn bằng tiếng Việt, ngoài ra một số nền tảng chỉ cho nhập văn bản (text), nền tảng hỗ trợ giọng nói (voice) thì bị giới hạn thời lượng nghiêm ngặt (khoảng 20 phút/ngày ở bản miễn phí), câu hỏi mang tính khuôn mẫu chung chung, hoàn toàn không bám sát theo CV và dự án kỹ thuật thực tế của ứng viên. | Cung cấp giải pháp hỗ trợ phòng phỏng vấn giọng nói 1:1 thời gian thực bằng cả tiếng Việt và tiếng Anh, AI Tech Lead hỏi đáp linh hoạt đào sâu trực tiếp vào CV và dự án thực tế của người dùng, xuất báo cáo đánh giá chi tiết sau phỏng vấn. |
+| **Săn tin & Đối soát kỹ năng**<br>*(LinkedIn, VietnamWorks)* | Mạng lưới doanh nghiệp rộng khắp toàn cầu và trong nước, lượng tin tuyển dụng lớn và cập nhật liên tục. | Nhiều khi lên web mình có thể search được và filter ra rõ ràng. Nhưng lượng thông tin là quá nhiều ta khó có thể theo dõi và tổng hợp được, không có tính năng tự động bóc tách và phân tích khoảng cách kỹ năng (Skill Gap) trực tiếp giữa CV của bản thân với yêu cầu công việc (Job). Đặc biệt khi muốn follow những trang trên facebook các bài đăng mở đợt tuyển thực tập/fresher dễ bị trôi và lẫn tạp tin. | Tự động bóc tách JD và đối soát với CV để tính điểm tương thích (%), chỉ rõ các kỹ năng còn thiếu (Skill Gap) và định hướng tự học, hệ thống Job Tracking tự động cào tin Fanpage/LinkedIn, dùng AI lọc tin phong trào để kịp thời thông báo các đợt mở đơn Intern/Fresher. |
 
 #### 3.1.4. Điểm khác biệt của HireUS Tools
 
-Ngoài các tính năng trên, HireUS Tools tập trung tối ưu riêng cho sinh viên IT đi xin thực tập (Intern) và làm Fresher, đặc biệt là sinh viên năm 3 và năm 4, giúp nhóm đối tượng này có thể xin thực tập sớm nhất, đồng thời nhận được phản hồi và gợi ý cải thiện được cá nhân hóa theo hồ sơ của từng người. Nổi bật nhất là tính năng Voice Mock Interview, một tính năng hiếm có nền tảng nào cung cấp. Ngoài ra thay vì phải lên TopCV để chỉnh CV, sang LeetCode để luyện tập và vào LinkedIn để đọc tin tuyển dụng, sinh viên có thể thực hiện tất cả trên một nền tảng tích hợp duy nhất là HireUS Tools.
+Ngoài các tính năng trên, HireUS Tools tập trung tối ưu riêng cho sinh viên IT đi xin thực tập (Intern) và làm Fresher, đặc biệt là sinh viên năm 3 và năm 4, giúp nhóm đối tượng này có thể xin thực tập sớm nhất, đồng thời nhận được phản hồi và gợi ý cải thiện được cá nhân hóa theo hồ sơ của từng người. Nổi bật nhất là tính năng Voice Mock Interview, một giải pháp thực tế, hiếm có nền tảng nào có để hỗ trợ các bạn ứng viên Intern hay là Fresher.
 
 ### 3.2. Đặc tả kỹ thuật phần mềm
 

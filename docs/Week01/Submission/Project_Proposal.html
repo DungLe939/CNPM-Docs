@@ -415,19 +415,11 @@
     h1.main-title {
       font-size: 2.1rem;
       font-weight: 800;
-      line-height: 1.25;
+      line-height: 1.5;
       letter-spacing: -0.025em;
+      /* Solid text keeps Vietnamese diacritics visible across browsers. */
       color: var(--text-heading);
-      background: linear-gradient(135deg, #ffffff 40%, #7dd3fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       margin-bottom: 12px;
-    }
-
-    [data-theme="light"] h1.main-title {
-      background: linear-gradient(135deg, #0f172a 40%, #0369a1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .sub-title {
@@ -829,221 +821,221 @@
       }
     }
 
-      /* -------------------------------------------------------------
+    /* -------------------------------------------------------------
        OUTLINE FLOATING BUTTON & DRAWER (LEFT SIDE)
        ------------------------------------------------------------- */
-      h1,
-      h2,
-      h3,
-      h4,
-      h5 {
-        scroll-margin-top: 75px;
-      }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      scroll-margin-top: 75px;
+    }
 
+    .outline-wrapper {
+      position: fixed;
+      left: 20px;
+      top: 72px;
+      z-index: 120;
+    }
+
+    /* Floating Pill Button */
+    .outline-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-glow);
+      border-radius: 999px;
+      color: var(--accent-blue);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 10px rgba(56, 189, 248, 0.2);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+    }
+
+    .outline-btn:hover,
+    .outline-wrapper:hover .outline-btn,
+    .outline-wrapper.is-open .outline-btn {
+      background: var(--surface-card);
+      border-color: var(--accent-blue);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4), 0 0 14px rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      transform: translateY(-1px);
+    }
+
+    .outline-btn .btn-icon {
+      font-size: 0.95rem;
+      line-height: 1;
+    }
+
+    /* Invisible hover buffer so moving mouse between button and drawer is 100% smooth */
+    .outline-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 320px;
+      height: 12px;
+    }
+
+    /* Floating Drawer Panel */
+    .outline-drawer {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 320px;
+      max-height: calc(100vh - 120px);
+      background: rgba(11, 17, 30, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glow);
+      border-radius: 14px;
+      box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px) scale(0.97);
+      transform-origin: top left;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    [data-theme="light"] .outline-drawer {
+      background: rgba(255, 255, 255, 0.96);
+      border-color: #cbd5e1;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+    }
+
+    [data-theme="light"] .outline-btn {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: #cbd5e1;
+      color: #0284c7;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Show when wrapper hovered OR when opened/pinned */
+    .outline-wrapper:hover .outline-drawer,
+    .outline-wrapper.is-open .outline-drawer {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .outline-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.02);
+      flex-shrink: 0;
+    }
+
+    .outline-header-title {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+
+    .outline-list {
+      padding: 10px 8px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-main) transparent;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .outline-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .outline-list::-webkit-scrollbar-thumb {
+      background: var(--border-main);
+      border-radius: 4px;
+    }
+
+    .outline-list::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-blue);
+    }
+
+    .outline-item {
+      display: block;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      line-height: 1.4;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-left: 2px solid transparent;
+    }
+
+    .outline-item.lvl-2 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-top: 6px;
+    }
+
+    .outline-item.lvl-3 {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-main);
+      padding-left: 18px;
+    }
+
+    .outline-item.lvl-4 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding-left: 28px;
+    }
+
+    .outline-item.lvl-5 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-subtle);
+      padding-left: 38px;
+      font-style: italic;
+    }
+
+    .outline-item:hover {
+      background: var(--accent-cyan-bg);
+      color: var(--accent-blue);
+      border-left-color: var(--accent-blue);
+    }
+
+    .outline-item.is-active {
+      background: var(--accent-cyan-bg);
+      color: var(--accent-blue);
+      border-left-color: var(--accent-blue);
+      font-weight: 700;
+    }
+
+    @media print {
       .outline-wrapper {
-        position: fixed;
-        left: 20px;
-        top: 72px;
-        z-index: 120;
+        display: none !important;
       }
-
-      /* Floating Pill Button */
-      .outline-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 14px;
-        background: rgba(15, 23, 42, 0.9);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border: 1px solid var(--border-glow);
-        border-radius: 999px;
-        color: var(--accent-blue);
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        cursor: pointer;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 10px rgba(56, 189, 248, 0.2);
-        transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-        user-select: none;
-      }
-
-      .outline-btn:hover,
-      .outline-wrapper:hover .outline-btn,
-      .outline-wrapper.is-open .outline-btn {
-        background: var(--surface-card);
-        border-color: var(--accent-blue);
-        box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4), 0 0 14px rgba(56, 189, 248, 0.35);
-        color: #38bdf8;
-        transform: translateY(-1px);
-      }
-
-      .outline-btn .btn-icon {
-        font-size: 0.95rem;
-        line-height: 1;
-      }
-
-      /* Invisible hover buffer so moving mouse between button and drawer is 100% smooth */
-      .outline-wrapper::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 320px;
-        height: 12px;
-      }
-
-      /* Floating Drawer Panel */
-      .outline-drawer {
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 0;
-        width: 320px;
-        max-height: calc(100vh - 120px);
-        background: rgba(11, 17, 30, 0.95);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid var(--border-glow);
-        border-radius: 14px;
-        box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.15);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-6px) scale(0.97);
-        transform-origin: top left;
-        transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-        pointer-events: none;
-      }
-
-      [data-theme="light"] .outline-drawer {
-        background: rgba(255, 255, 255, 0.96);
-        border-color: #cbd5e1;
-        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
-      }
-
-      [data-theme="light"] .outline-btn {
-        background: rgba(255, 255, 255, 0.92);
-        border-color: #cbd5e1;
-        color: #0284c7;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      }
-
-      /* Show when wrapper hovered OR when opened/pinned */
-      .outline-wrapper:hover .outline-drawer,
-      .outline-wrapper.is-open .outline-drawer {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1);
-        pointer-events: auto;
-      }
-
-      .outline-header {
-        padding: 12px 16px;
-        border-bottom: 1px solid var(--border-subtle);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: rgba(255, 255, 255, 0.02);
-        flex-shrink: 0;
-      }
-
-      .outline-header-title {
-        font-size: 0.74rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        color: var(--accent-blue);
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-
-      .outline-list {
-        padding: 10px 8px;
-        overflow-y: auto;
-        scrollbar-width: thin;
-        scrollbar-color: var(--border-main) transparent;
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-
-      .outline-list::-webkit-scrollbar {
-        width: 4px;
-      }
-
-      .outline-list::-webkit-scrollbar-thumb {
-        background: var(--border-main);
-        border-radius: 4px;
-      }
-
-      .outline-list::-webkit-scrollbar-thumb:hover {
-        background: var(--accent-blue);
-      }
-
-      .outline-item {
-        display: block;
-        text-decoration: none;
-        padding: 5px 10px;
-        border-radius: 6px;
-        line-height: 1.4;
-        transition: all 0.15s ease;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        border-left: 2px solid transparent;
-      }
-
-      .outline-item.lvl-2 {
-        font-size: 0.82rem;
-        font-weight: 700;
-        color: var(--text-heading);
-        margin-top: 6px;
-      }
-
-      .outline-item.lvl-3 {
-        font-size: 0.76rem;
-        font-weight: 600;
-        color: var(--text-main);
-        padding-left: 18px;
-      }
-
-      .outline-item.lvl-4 {
-        font-size: 0.72rem;
-        font-weight: 500;
-        color: var(--text-muted);
-        padding-left: 28px;
-      }
-
-      .outline-item.lvl-5 {
-        font-size: 0.7rem;
-        font-weight: 500;
-        color: var(--text-subtle);
-        padding-left: 38px;
-        font-style: italic;
-      }
-
-      .outline-item:hover {
-        background: var(--accent-cyan-bg);
-        color: var(--accent-blue);
-        border-left-color: var(--accent-blue);
-      }
-
-      .outline-item.is-active {
-        background: var(--accent-cyan-bg);
-        color: var(--accent-blue);
-        border-left-color: var(--accent-blue);
-        font-weight: 700;
-      }
-
-      @media print {
-        .outline-wrapper {
-          display: none !important;
-        }
-      }
+    }
 
     /* Signatures & Diagrams */
     .signature-img {
@@ -1087,7 +1079,6 @@
       color: var(--text-muted);
       font-style: italic;
     }
-
   </style>
 </head>
 
@@ -1148,24 +1139,28 @@
           <div class="badge-dept">Khoa Công nghệ Thông tin &bull; Bộ môn Công nghệ Phần mềm</div>
         </div>
         <h1 class="main-title">NHẬP MÔN CÔNG NGHỆ PHẦN MỀM</h1>
-        <div class="sub-title">PROJECT PROPOSAL: NỀN TẢNG TỐI ƯU HỒ SƠ, MÔ PHỎNG PHỎNG VẤN KỸ THUẬT &amp; SĂN VIỆC LÀM CHO SINH VIÊN IT (HIREUS TOOLS)</div>
+        <div class="sub-title">PROJECT PROPOSAL: NỀN TẢNG TỐI ƯU HỒ SƠ, MÔ PHỎNG PHỎNG VẤN KỸ THUẬT &amp; SĂN VIỆC LÀM
+          CHO SINH VIÊN IT (HIREUS TOOLS)</div>
 
         <div class="meta-grid">
           <div class="meta-item">
             <span class="meta-label">Môn học</span>
-            <span class="meta-value">Nhập môn Công nghệ Phần mềm<br><small>Introduction to Software Engineering</small></span>
+            <span class="meta-value">Nhập môn Công nghệ Phần mềm<br><small>Introduction to Software
+                Engineering</small></span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Giảng viên hướng dẫn</span>
-            <span class="meta-value">Thầy Ngô Ngọc Đăng Khoa (GVTH)<br><small>Thầy Phạm Minh Tuấn (GVLT)</small></span>
+            <span class="meta-value">Thầy Ngô Ngọc Đăng Khoa (GVTH)<br>Thầy Phạm Minh Tuấn (GVLT)</span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Nhóm sinh viên thực hiện</span>
-            <span class="meta-value">Nhóm 02 (4 thành viên)<br><small>Võ Minh Khoa, Võ Nguyễn Việt Hoàng, Đỗ Chí Cao, Lê Tấn Dũng</small></span>
+            <span class="meta-value">Nhóm 02 (4 thành viên)<br><small>Võ Minh Khoa, Võ Nguyễn Việt Hoàng, Đỗ Chí Cao, Lê
+                Tấn Dũng</small></span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Mô hình &amp; Tiến độ</span>
-            <span class="meta-value">Scrum (Agile) &bull; 8 tuần (4 Sprint)<br><small>Phiên bản 1.0 &bull; Đề xuất đồ án đợt 1</small></span>
+            <span class="meta-value">Scrum (Agile) &bull; 8 tuần (4 Sprint)<br><small>Phiên bản 1.0 &bull; Đề xuất đồ án
+                đợt 1</small></span>
           </div>
         </div>
       </header>
@@ -1189,29 +1184,37 @@
                 <td style="text-align: center;">1</td>
                 <td style="text-align: center;"><code>24120194</code></td>
                 <td><strong>Võ Minh Khoa</strong></td>
-                <td style="text-align: center;"><span class="pill-hours" style="color: var(--accent-green);">100%</span></td>
-                <td style="text-align: center;"><img src="./image/Khoa.jpg" alt="Chữ ký Võ Minh Khoa" class="signature-img" /></td>
+                <td style="text-align: center;"><span class="pill-hours" style="color: var(--accent-green);">100%</span>
+                </td>
+                <td style="text-align: center;"><img src="./image/Khoa.jpg" alt="Chữ ký Võ Minh Khoa"
+                    class="signature-img" /></td>
               </tr>
               <tr>
                 <td style="text-align: center;">2</td>
                 <td style="text-align: center;"><code>24120249</code></td>
                 <td><strong>Võ Nguyễn Việt Hoàng</strong></td>
-                <td style="text-align: center;"><span class="pill-hours" style="color: var(--accent-green);">100%</span></td>
-                <td style="text-align: center;"><img src="./image/Hoàng.png" alt="Chữ ký Võ Nguyễn Việt Hoàng" class="signature-img" /></td>
+                <td style="text-align: center;"><span class="pill-hours" style="color: var(--accent-green);">100%</span>
+                </td>
+                <td style="text-align: center;"><img src="./image/Hoang.png" alt="Chữ ký Võ Nguyễn Việt Hoàng"
+                    class="signature-img" /></td>
               </tr>
               <tr>
                 <td style="text-align: center;">3</td>
                 <td style="text-align: center;"><code>24120270</code></td>
                 <td><strong>Đỗ Chí Cao</strong></td>
-                <td style="text-align: center;"><span class="pill-hours" style="color: var(--accent-green);">100%</span></td>
-                <td style="text-align: center;"><img src="./image/Cao.png" alt="Chữ ký Đỗ Chí Cao" class="signature-img" /></td>
+                <td style="text-align: center;"><span class="pill-hours" style="color: var(--accent-green);">100%</span>
+                </td>
+                <td style="text-align: center;"><img src="./image/Cao.png" alt="Chữ ký Đỗ Chí Cao"
+                    class="signature-img" /></td>
               </tr>
               <tr>
                 <td style="text-align: center;">4</td>
                 <td style="text-align: center;"><code>24120290</code></td>
                 <td><strong>Lê Tấn Dũng</strong></td>
-                <td style="text-align: center;"><span class="pill-hours" style="color: var(--accent-green);">100%</span></td>
-                <td style="text-align: center;"><img src="./image/Dũng.jpg" alt="Chữ ký Lê Tấn Dũng" class="signature-img" /></td>
+                <td style="text-align: center;"><span class="pill-hours" style="color: var(--accent-green);">100%</span>
+                </td>
+                <td style="text-align: center;"><img src="./image/Dũng.jpg" alt="Chữ ký Lê Tấn Dũng"
+                    class="signature-img" /></td>
               </tr>
             </tbody>
           </table>
@@ -1221,13 +1224,29 @@
       <!-- SECTION 2 -->
       <section id="sec-2">
         <h2>2. PHÁT BIỂU BÀI TOÁN SƠ LƯỢC</h2>
-        <p>Trong thời đại AI, sinh viên rất khó để tìm và xin được một công việc. Đặc biệt đối với ngành Công nghệ Thông tin khi AI lên ngôi, những bạn Intern hay Fresher trong mảng này thường phải cạnh tranh gay gắt và nhà tuyển dụng cũng đòi hỏi rất nhiều thứ ở ứng viên. Sau khi phân tích và làm rõ, nhóm em hiện thấy có 4 khó khăn mà các bạn sinh viên IT hay gặp phải:</p>
+        <p>Trong thời đại AI, sinh viên rất khó để tìm và xin được một công việc. Đặc biệt đối với ngành Công nghệ Thông
+          tin khi AI lên ngôi, những bạn Intern hay Fresher trong mảng này thường phải cạnh tranh gay gắt và nhà tuyển
+          dụng cũng đòi hỏi rất nhiều thứ ở ứng viên. Sau khi phân tích và làm rõ, nhóm em hiện thấy có 4 khó khăn mà
+          các bạn sinh viên IT hay gặp phải:</p>
 
         <ul>
-          <li><strong>Không biết viết CV và CV chưa đạt chuẩn:</strong> Đa số CV sinh viên viết theo mẫu tự do, thiếu số liệu định lượng về dự án và dễ bị hệ thống tự động lọc hồ sơ ATS (Applicant Tracking System) loại bỏ rớt khỏi vòng CV.</li>
-          <li><strong>Tâm lý thiếu tự tin khi tham gia phỏng vấn:</strong> Mặc dù nắm vững kiến thức lý thuyết, nhiều sinh viên vẫn thiếu kinh nghiệm thực tế và cơ hội luyện tập với các câu hỏi phỏng vấn chuyên sâu theo hình thức 1:1, dẫn đến khả năng phản xạ và trình bày câu trả lời còn hạn chế. Bên cạnh đó, tại một số doanh nghiệp, phỏng vấn được thực hiện bằng tiếng Anh, khiến sinh viên gặp khó khăn trong việc diễn đạt ý tưởng, trình bày kiến thức chuyên môn và thể hiện năng lực của bản thân một cách rõ ràng, thuyết phục.</li>
-          <li><strong>Khó tiếp cận thông tin tuyển dụng sớm:</strong> Nhiều sinh viên mong muốn được thực tập và làm việc tại các doanh nghiệp mục tiêu nhưng lại gặp khó khăn trong việc cập nhật thông tin tuyển dụng. Các cơ hội thực tập thường được đăng tải phân tán trên nhiều nền tảng như: LinkedIn, Facebook, ITViec,... khiến thông tin dễ bị trôi hoặc bị lẫn giữa các bài đăng khác. Điều này khiến sinh viên có thể bỏ lỡ những vị trí phù hợp, các đợt tuyển dụng quan trọng hoặc những chương trình thực tập mà bản thân đang quan tâm.</li>
-          <li><strong>Mơ hồ về độ phù hợp và khoảng cách kỹ năng so với thị trường việc làm:</strong> Khi các bạn sinh viên rải hàng trăm CV và bị từ chối sau các cuộc phỏng vấn có thể là một cú sốc và các bạn không biết nguyên nhân từ đâu mà mình thất bại. Trên hết là, các bạn không biết rõ mình đang thiếu hụt kiến thức gì cụ thể để chủ động tự học và bù đắp đúng trọng tâm từ đó cải thiện mình khi đi phỏng vấn.</li>
+          <li><strong>Không biết viết CV và CV chưa đạt chuẩn:</strong> Đa số CV sinh viên viết theo mẫu tự do, thiếu số
+            liệu định lượng về dự án và dễ bị hệ thống tự động lọc hồ sơ ATS (Applicant Tracking System) loại bỏ rớt
+            khỏi vòng CV.</li>
+          <li><strong>Tâm lý thiếu tự tin khi tham gia phỏng vấn:</strong> Mặc dù nắm vững kiến thức lý thuyết, nhiều
+            sinh viên vẫn thiếu kinh nghiệm thực tế và cơ hội luyện tập với các câu hỏi phỏng vấn chuyên sâu theo hình
+            thức 1:1, dẫn đến khả năng phản xạ và trình bày câu trả lời còn hạn chế. Bên cạnh đó, tại một số doanh
+            nghiệp, phỏng vấn được thực hiện bằng tiếng Anh, khiến sinh viên gặp khó khăn trong việc diễn đạt ý tưởng,
+            trình bày kiến thức chuyên môn và thể hiện năng lực của bản thân một cách rõ ràng, thuyết phục.</li>
+          <li><strong>Khó tiếp cận thông tin tuyển dụng sớm:</strong> Nhiều sinh viên mong muốn được thực tập và làm
+            việc tại các doanh nghiệp mục tiêu nhưng lại gặp khó khăn trong việc cập nhật thông tin tuyển dụng. Các cơ
+            hội thực tập thường được đăng tải phân tán trên nhiều nền tảng như: LinkedIn, Facebook, ITViec,... khiến
+            thông tin dễ bị trôi hoặc bị lẫn giữa các bài đăng khác. Điều này khiến sinh viên có thể bỏ lỡ những vị trí
+            phù hợp, các đợt tuyển dụng quan trọng hoặc những chương trình thực tập mà bản thân đang quan tâm.</li>
+          <li><strong>Mơ hồ về độ phù hợp và khoảng cách kỹ năng so với thị trường việc làm:</strong> Khi các bạn sinh
+            viên rải hàng trăm CV và bị từ chối sau các cuộc phỏng vấn có thể là một cú sốc và các bạn không biết nguyên
+            nhân từ đâu mà mình thất bại. Trên hết là, các bạn không biết rõ mình đang thiếu hụt kiến thức gì cụ thể để
+            chủ động tự học và bù đắp đúng trọng tâm từ đó cải thiện mình khi đi phỏng vấn.</li>
         </ul>
       </section>
 
@@ -1238,53 +1257,79 @@
         <h3>3.1. Ý tưởng &amp; Mô hình giải pháp</h3>
 
         <h4>3.1.1. Bốn phân hệ cốt lõi</h4>
-        <p>Để giải quyết trực diện 4 khó khăn thực tế đã nêu trên, nhóm đề xuất giải pháp hệ thống <strong>HireUS Tools</strong> gồm 4 phân hệ cốt lõi:</p>
+        <p>Để giải quyết trực diện 4 khó khăn thực tế đã nêu trên, nhóm đề xuất giải pháp hệ thống <strong>HireUS
+            Tools</strong> gồm 4 phân hệ cốt lõi:</p>
 
         <ol>
-          <li><strong>Phân hệ 1 - Xây dựng CV chuẩn ATS &amp; Trợ lý SeekerBot:</strong> Cung cấp công cụ tạo và chỉnh sửa CV trực tuyến với các mẫu thiết kế chuyên nghiệp, hỗ trợ tối ưu hóa bố cục và nội dung theo tiêu chuẩn ATS nhằm tăng khả năng vượt qua vòng sàng lọc hồ sơ. Tích hợp trợ lý AI SeekerBot để hướng dẫn người dùng xây dựng nội dung CV, cải thiện cách mô tả kỹ năng, kinh nghiệm và dự án, đồng thời đưa ra các đề xuất điều chỉnh phù hợp với vị trí ứng tuyển.</li>
-          <li><strong>Phân hệ 2 - Mô phỏng phỏng vấn Kỹ thuật Giọng nói (Voice Mock Interview):</strong> Thiết lập phòng phỏng vấn 1:1 tương tác giọng nói hai chiều thời gian thực với AI Tech Lead (hỗ trợ cả tiếng Việt và tiếng Anh), hỏi đáp linh hoạt theo ngữ cảnh và cung cấp báo cáo đánh giá chi tiết.</li>
-          <li><strong>Phân hệ 3 - Tổng hợp Việc làm &amp; Đối sánh Năng lực (Job Matching &amp; Skill Gap):</strong> Bóc tách yêu cầu công việc từ Job, đối chiếu với CV của bản thân để tính điểm tương thích (%), chỉ ra chính xác các kỹ năng còn thiếu và gợi ý định hướng tự học bổ sung.</li>
-          <li><strong>Phân hệ 4 - Săn tin tuyển dụng từ mạng xã hội (Job Tracking System):</strong> Định kỳ theo dõi các Fanpage, trang LinkedIn của các doanh nghiệp IT, tự động dùng AI sàng lọc tin phong trào để kịp thời thông báo các đợt mở đơn thực tập Intern và Fresher.</li>
+          <li><strong>Phân hệ 1 - Xây dựng CV chuẩn ATS &amp; Trợ lý SeekerBot:</strong> Cung cấp công cụ tạo và chỉnh
+            sửa CV trực tuyến với các mẫu thiết kế chuyên nghiệp, hỗ trợ tối ưu hóa bố cục và nội dung theo tiêu chuẩn
+            ATS nhằm tăng khả năng vượt qua vòng sàng lọc hồ sơ. Tích hợp trợ lý AI SeekerBot để hướng dẫn người dùng
+            xây dựng nội dung CV, cải thiện cách mô tả kỹ năng, kinh nghiệm và dự án, đồng thời đưa ra các đề xuất điều
+            chỉnh phù hợp với vị trí ứng tuyển.</li>
+          <li><strong>Phân hệ 2 - Mô phỏng phỏng vấn Kỹ thuật Giọng nói (Voice Mock Interview):</strong> Thiết lập phòng
+            phỏng vấn 1:1 tương tác giọng nói hai chiều thời gian thực với AI Tech Lead (hỗ trợ cả tiếng Việt và tiếng
+            Anh), hỏi đáp linh hoạt theo ngữ cảnh và cung cấp báo cáo đánh giá chi tiết.</li>
+          <li><strong>Phân hệ 3 - Tổng hợp Việc làm &amp; Đối sánh Năng lực (Job Matching &amp; Skill Gap):</strong> Bóc
+            tách yêu cầu công việc từ Job, đối chiếu với CV của bản thân để tính điểm tương thích (%), chỉ ra chính xác
+            các kỹ năng còn thiếu và gợi ý định hướng tự học bổ sung.</li>
+          <li><strong>Phân hệ 4 - Săn tin tuyển dụng từ mạng xã hội (Job Tracking System):</strong> Định kỳ theo dõi các
+            Fanpage, trang LinkedIn của các doanh nghiệp IT, tự động dùng AI sàng lọc tin phong trào để kịp thời thông
+            báo các đợt mở đơn thực tập Intern và Fresher.</li>
         </ol>
 
         <h4>3.1.2. Tình huống sử dụng thực tế</h4>
         <ul>
-          <li><strong>Tình huống 1 (Chuẩn hóa CV và luyện phỏng vấn kỹ thuật):</strong> Chí Cao là sinh viên năm 3 ngành Kỹ thuật Phần mềm đang chuẩn bị ứng tuyển vị trí thực tập sinh Backend. Cao nhập thông tin dự án vào HireUS Tools và được trợ lý AI SeekerBot gợi ý viết lại phần đóng góp theo phương pháp định lượng STAR, sau đó xuất ra tệp PDF chuẩn ATS. Tiếp theo, Cao vào phòng phỏng vấn ảo, chọn vị trí Backend Fresher để luyện phản xạ trả lời câu hỏi trực tiếp bằng giọng nói với AI Tech Lead và nhận báo cáo đánh giá các lỗ hổng kiến thức sau buổi phỏng vấn.</li>
-          <li><strong>Tình huống 2 (Đối soát kỹ năng và săn tin tuyển dụng sớm):</strong> Việt Hoàng muốn tìm cơ hội thực tập sớm tại các công ty công nghệ lớn nhưng do bận rộn bạn không thường xuyên kiểm tra bài đăng dẫn đến bị trôi bài trên mạng xã hội. Nhờ tính năng Job Tracking System, Hoàng nhận được thông báo ngay khi Fanpage của doanh nghiệp mở đợt tuyển sinh viên. Hoàng sao chép thông tin công việc (Job) vào hệ thống để kiểm tra độ phù hợp, hệ thống báo đạt 75% điểm tương thích và chỉ rõ Hoàng còn thiếu kiến thức về Docker. Nhờ đó, Hoàng biết chính xác cần bổ sung công nghệ gì để kịp hoàn thiện trước hạn nộp hồ sơ.</li>
+          <li><strong>Tình huống 1 (Chuẩn hóa CV và luyện phỏng vấn kỹ thuật):</strong> Chí Cao là sinh viên năm 3 ngành
+            Kỹ thuật Phần mềm đang chuẩn bị ứng tuyển vị trí thực tập sinh Backend. Cao nhập thông tin dự án vào HireUS
+            Tools và được trợ lý AI SeekerBot gợi ý viết lại phần đóng góp theo phương pháp định lượng STAR, sau đó xuất
+            ra tệp PDF chuẩn ATS. Tiếp theo, Cao vào phòng phỏng vấn ảo, chọn vị trí Backend Fresher để luyện phản xạ
+            trả lời câu hỏi trực tiếp bằng giọng nói với AI Tech Lead và nhận báo cáo đánh giá các lỗ hổng kiến thức sau
+            buổi phỏng vấn.</li>
+          <li><strong>Tình huống 2 (Đối soát kỹ năng và săn tin tuyển dụng sớm):</strong> Việt Hoàng muốn tìm cơ hội
+            thực tập sớm tại các công ty công nghệ lớn nhưng do bận rộn bạn không thường xuyên kiểm tra bài đăng dẫn đến
+            bị trôi bài trên mạng xã hội. Nhờ tính năng Job Tracking System, Hoàng nhận được thông báo ngay khi Fanpage
+            của doanh nghiệp mở đợt tuyển sinh viên. Hoàng sao chép thông tin công việc (Job) vào hệ thống để kiểm tra
+            độ phù hợp, hệ thống báo đạt 75% điểm tương thích và chỉ rõ Hoàng còn thiếu kiến thức về Docker. Nhờ đó,
+            Hoàng biết chính xác cần bổ sung công nghệ gì để kịp hoàn thiện trước hạn nộp hồ sơ.</li>
         </ul>
 
-        <h4>3.1.3. So sánh với các sản phẩm trên thị trường</h4>
+        <h4>3.1.3. So sánh các phân hệ với các sản phẩm trên thị trường</h4>
+        <p>Do đây là dự án mới có tích hợp nhiều tính năng khác nhau nên chúng ta không nên so sánh cả một nền tảng dự án này so với các app khác. Cách thiết thực ở đây là chúng ta sẽ so sánh các tính năng nhỏ, dựa vào những tính năng của họ cải tiến lên và so sánh với những tính năng này thì sẽ thiết thực hơn.</p>
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th style="width: 25%;">Đối thủ</th>
-                <th style="width: 35%;">Điểm mạnh</th>
-                <th style="width: 40%;">Hạn chế đối với sinh viên IT</th>
+                <th style="width: 20%;">Phân hệ / Đối thủ</th>
+                <th style="width: 24%;">Điểm mạnh</th>
+                <th style="width: 28%;">Hạn chế đối với sinh viên IT</th>
+                <th style="width: 28%;">Giải pháp từ HireUS Tools</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>TopCV / VietnamWorks</strong></td>
-                <td>Cơ sở dữ liệu việc làm lớn, nhiều mẫu thiết kế CV đa dạng.</td>
-                <td>Mẫu CV nhiều cột đồ họa dễ bị máy quét ATS đọc lỗi, không chuyên sâu cho ngành IT, không có tính năng phỏng vấn thử nghiệm bằng giọng nói.</td>
+                <td><strong>Tạo CV & Tối ưu ATS</strong><br><em>(TopCV, Canva)</em></td>
+                <td>Có dữ liệu việc làm lớn, kho mẫu thiết kế CV phong phú, thao tác nhanh.</td>
+                <td>Đa phần các mẫu thiết kế là cho nhiều thể loại user khác nhau như biên tập viên, nhiếp ảnh thiên về đồ họa không chỉ mỗi IT, thì họ có nhiều mẫu template khác nhau. Nhưng với sinh viên ít kinh nghiệm dễ chọn nhầm mẫu dẫn đến việc hệ thống ATS quét lỗi hoặc loại hồ sơ.</td>
+                <td>Đối với HireUS Tools chúng tôi sẽ cung cấp 100% mẫu CV chuẩn hóa ATS tối ưu riêng cho ngành IT (bố cục đơn cột, sạch sẽ), tích hợp trợ lý AI SeekerBot hướng dẫn viết lại mô tả dự án kỹ thuật theo chuẩn định lượng STAR.</td>
               </tr>
               <tr>
-                <td><strong>LeetCode / HackerRank</strong></td>
-                <td>Kho bài tập thuật toán phong phú, chấm điểm code tự động chính xác.</td>
-                <td>Chỉ tập trung vào giải thuật thuần túy, không hỗ trợ rèn luyện kỹ năng giao tiếp phản xạ khi phỏng vấn, không hỗ trợ tạo CV hay săn việc.</td>
+                <td><strong>Luyện phỏng vấn (Mock Interview)</strong><br><em>(Interview Warmup, JustOneInterview)</em></td>
+                <td>Cung cấp môi trường AI mô phỏng phỏng vấn trực tuyến, giúp người dùng làm quen với hình thức trả lời câu hỏi tuyển dụng.</td>
+                <td>Một trong những nhược điểm là app không hỗ trợ phỏng vấn bằng tiếng Việt, ngoài ra một số nền tảng chỉ cho nhập văn bản (text), nền tảng hỗ trợ giọng nói (voice) thì bị giới hạn thời lượng nghiêm ngặt (khoảng 20 phút/ngày ở bản miễn phí), câu hỏi mang tính khuôn mẫu chung chung, hoàn toàn không bám sát theo CV và dự án kỹ thuật thực tế của ứng viên.</td>
+                <td>Cung cấp giải pháp hỗ trợ phòng phỏng vấn giọng nói 1:1 thời gian thực bằng cả tiếng Việt và tiếng Anh, AI Tech Lead hỏi đáp linh hoạt đào sâu trực tiếp vào CV và dự án thực tế của người dùng, xuất báo cáo đánh giá chi tiết sau phỏng vấn.</td>
               </tr>
               <tr>
-                <td><strong>LinkedIn</strong></td>
-                <td>Mạng xã hội tuyển dụng toàn cầu với mạng lưới kết nối doanh nghiệp rộng lớn.</td>
-                <td>Thông tin quá loãng, không tự động bóc tách và phân tích khoảng cách kỹ năng (Skill Gap) theo từng Job, không lọc riêng các đợt mở đơn thực tập sớm cho sinh viên.</td>
+                <td><strong>Săn tin & Đối soát kỹ năng</strong><br><em>(LinkedIn, VietnamWorks)</em></td>
+                <td>Mạng lưới doanh nghiệp rộng khắp toàn cầu và trong nước, lượng tin tuyển dụng lớn và cập nhật liên tục.</td>
+                <td>Nhiều khi lên web mình có thể search được và filter ra rõ ràng. Nhưng lượng thông tin là quá nhiều ta khó có thể theo dõi và tổng hợp được, không có tính năng tự động bóc tách và phân tích khoảng cách kỹ năng (Skill Gap) trực tiếp giữa CV của bản thân với yêu cầu công việc (Job). Đặc biệt khi muốn follow những trang trên facebook các bài đăng mở đợt tuyển thực tập/fresher dễ bị trôi và lẫn tạp tin.</td>
+                <td>Tự động bóc tách JD và đối soát với CV để tính điểm tương thích (%), chỉ rõ các kỹ năng còn thiếu (Skill Gap) và định hướng tự học, hệ thống Job Tracking tự động cào tin Fanpage/LinkedIn, dùng AI lọc tin phong trào để kịp thời thông báo các đợt mở đơn Intern/Fresher.</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <h4>3.1.4. Điểm khác biệt của HireUS Tools</h4>
-        <p>Ngoài các tính năng trên, HireUS Tools tập trung tối ưu riêng cho sinh viên IT đi xin thực tập (Intern) và làm Fresher, đặc biệt là sinh viên năm 3 và năm 4, giúp nhóm đối tượng này có thể xin thực tập sớm nhất, đồng thời nhận được phản hồi và gợi ý cải thiện được cá nhân hóa theo hồ sơ của từng người. Nổi bật nhất là tính năng Voice Mock Interview, một tính năng hiếm có nền tảng nào cung cấp. Ngoài ra thay vì phải lên TopCV để chỉnh CV, sang LeetCode để luyện tập và vào LinkedIn để đọc tin tuyển dụng, sinh viên có thể thực hiện tất cả trên một nền tảng tích hợp duy nhất là HireUS Tools.</p>
+        <p>Ngoài các tính năng trên, HireUS Tools tập trung tối ưu riêng cho sinh viên IT đi xin thực tập (Intern) và làm Fresher, đặc biệt là sinh viên năm 3 và năm 4, giúp nhóm đối tượng này có thể xin thực tập sớm nhất, đồng thời nhận được phản hồi và gợi ý cải thiện được cá nhân hóa theo hồ sơ của từng người. Nổi bật nhất là tính năng Voice Mock Interview, một giải pháp thực tế, hiếm có nền tảng nào có để hỗ trợ các bạn ứng viên Intern hay là Fresher.</p>
 
         <h3>3.2. Đặc tả kỹ thuật phần mềm</h3>
 
@@ -1303,7 +1348,8 @@
                 <td><strong>Trình tạo CV ATS</strong></td>
               </tr>
               <tr>
-                <td>Là sinh viên IT, tôi muốn AI gợi ý viết lại mô tả dự án theo chuẩn STAR để làm nổi bật năng lực kỹ thuật.</td>
+                <td>Là sinh viên IT, tôi muốn AI gợi ý viết lại mô tả dự án theo chuẩn STAR để làm nổi bật năng lực kỹ
+                  thuật.</td>
                 <td><strong>Trợ lý SeekerBot</strong></td>
               </tr>
               <tr>
@@ -1311,23 +1357,28 @@
                 <td><strong>Phỏng vấn giọng nói</strong></td>
               </tr>
               <tr>
-                <td>Là sinh viên IT, tôi muốn nhận báo cáo đánh giá sau phỏng vấn để biết rõ lỗ hổng kiến thức cần ôn tập.</td>
+                <td>Là sinh viên IT, tôi muốn nhận báo cáo đánh giá sau phỏng vấn để biết rõ lỗ hổng kiến thức cần ôn
+                  tập.</td>
                 <td><strong>Báo cáo năng lực</strong></td>
               </tr>
               <tr>
-                <td>Là sinh viên IT, tôi muốn đối chiếu CV với tin tuyển dụng để biết mức độ phù hợp trước khi ứng tuyển.</td>
+                <td>Là sinh viên IT, tôi muốn đối chiếu CV với tin tuyển dụng để biết mức độ phù hợp trước khi ứng
+                  tuyển.</td>
                 <td><strong>Đối soát năng lực (Job Matching)</strong></td>
               </tr>
               <tr>
-                <td>Là sinh viên IT, tôi muốn biết các kỹ năng còn thiếu so với yêu cầu thị trường để có kế hoạch tự học bù đắp.</td>
+                <td>Là sinh viên IT, tôi muốn biết các kỹ năng còn thiếu so với yêu cầu thị trường để có kế hoạch tự học
+                  bù đắp.</td>
                 <td><strong>Phân tích khoảng cách kỹ năng</strong></td>
               </tr>
               <tr>
-                <td>Là sinh viên IT, tôi muốn theo dõi tin tuyển dụng từ Fanpage, LinkedIn doanh nghiệp để nắm bắt cơ hội thực tập sớm.</td>
+                <td>Là sinh viên IT, tôi muốn theo dõi tin tuyển dụng từ Fanpage, LinkedIn doanh nghiệp để nắm bắt cơ
+                  hội thực tập sớm.</td>
                 <td><strong>Theo dõi mạng xã hội (Job Tracking)</strong></td>
               </tr>
               <tr>
-                <td>Là sinh viên IT, tôi muốn hệ thống tự lọc bỏ tin phong trào nội bộ để chỉ nhận thông báo khi có đợt mở đơn thực sự.</td>
+                <td>Là sinh viên IT, tôi muốn hệ thống tự lọc bỏ tin phong trào nội bộ để chỉ nhận thông báo khi có đợt
+                  mở đơn thực sự.</td>
                 <td><strong>Lọc tin tuyển dụng bằng AI</strong></td>
               </tr>
               <tr>
@@ -1335,7 +1386,8 @@
                 <td><strong>Bảo mật &amp; Xác thực tài khoản</strong></td>
               </tr>
               <tr>
-                <td>Là người dùng, tôi muốn hệ thống phản hồi nhanh chóng và mượt mà trong các thao tác thông thường.</td>
+                <td>Là người dùng, tôi muốn hệ thống phản hồi nhanh chóng và mượt mà trong các thao tác thông thường.
+                </td>
                 <td><strong>Tối ưu trải nghiệm &amp; Phản hồi</strong></td>
               </tr>
             </tbody>
@@ -1350,11 +1402,22 @@
 
         <p>Kiến trúc phần mềm hay Tech Stack của nhóm được chọn với lý do như sau:</p>
         <ul>
-          <li><strong>Frontend (Next.js):</strong> Nhóm em chọn Next.js vì giao diện chạy nhanh, dùng được Web Audio API để thu âm giọng nói trực tiếp và xuất CV PDF chuẩn ATS ngay trên trình duyệt. Next.js cũng thuộc hệ sinh thái React nên tài liệu nhiều, dễ học và kịp tiến độ đồ án.</li>
-          <li><strong>Backend (NestJS):</strong> NestJS chia code theo module khá rõ ràng nên dễ bảo trì, và dễ chia việc theo từng phân hệ. NestJS dùng TypeScript giống Frontend nên cả nhóm chỉ cần học một ngôn ngữ, ngoài ra còn có sẵn Task Scheduling để chạy tác vụ cào tin định kỳ.</li>
-          <li><strong>Cơ sở dữ liệu (PostgreSQL &amp; Prisma ORM):</strong> PostgreSQL ổn định, miễn phí và phù hợp để lưu dữ liệu có liên kết với nhau như hồ sơ, CV và lịch sử phỏng vấn. Prisma giúp kiểm soát kiểu dữ liệu và tự tạo migration, nên khi nhiều bạn cùng sửa cấu trúc database sẽ ít bị lỗi hơn.</li>
-          <li><strong>Hạ tầng AI riêng (FastAPI trên Kaggle Cloud):</strong> Nhóm em tách phần AI nặng (mô hình âm thanh Hugging Face và LLM API) ra khỏi backend chính để hệ thống không bị nghẽn, và nếu phần AI gặp lỗi thì các chức năng còn lại vẫn chạy bình thường. FastAPI nhẹ, hợp với Python nên dễ chạy các mô hình AI, đồng thời nhóm em tận dụng GPU miễn phí của Kaggle để tiết kiệm chi phí.</li>
-          <li><strong>DeepSeek API &amp; Mạng xã hội:</strong> DeepSeek có giá rẻ, chất lượng tốt và hỗ trợ cả tiếng Việt lẫn tiếng Anh, phù hợp để tối ưu CV theo chuẩn STAR. Bên cạnh đó, hệ thống theo dõi Fanpage/LinkedIn của các công ty để báo sớm khi họ mở đơn thực tập.</li>
+          <li><strong>Frontend (Next.js):</strong> Nhóm em chọn Next.js vì giao diện chạy nhanh, dùng được Web Audio API
+            để thu âm giọng nói trực tiếp và xuất CV PDF chuẩn ATS ngay trên trình duyệt. Next.js cũng thuộc hệ sinh
+            thái React nên tài liệu nhiều, dễ học và kịp tiến độ đồ án.</li>
+          <li><strong>Backend (NestJS):</strong> NestJS chia code theo module khá rõ ràng nên dễ bảo trì, và dễ chia
+            việc theo từng phân hệ. NestJS dùng TypeScript giống Frontend nên cả nhóm chỉ cần học một ngôn ngữ, ngoài ra
+            còn có sẵn Task Scheduling để chạy tác vụ cào tin định kỳ.</li>
+          <li><strong>Cơ sở dữ liệu (PostgreSQL &amp; Prisma ORM):</strong> PostgreSQL ổn định, miễn phí và phù hợp để
+            lưu dữ liệu có liên kết với nhau như hồ sơ, CV và lịch sử phỏng vấn. Prisma giúp kiểm soát kiểu dữ liệu và
+            tự tạo migration, nên khi nhiều bạn cùng sửa cấu trúc database sẽ ít bị lỗi hơn.</li>
+          <li><strong>Hạ tầng AI riêng (FastAPI trên Kaggle Cloud):</strong> Nhóm em tách phần AI nặng (mô hình âm thanh
+            Hugging Face và LLM API) ra khỏi backend chính để hệ thống không bị nghẽn, và nếu phần AI gặp lỗi thì các
+            chức năng còn lại vẫn chạy bình thường. FastAPI nhẹ, hợp với Python nên dễ chạy các mô hình AI, đồng thời
+            nhóm em tận dụng GPU miễn phí của Kaggle để tiết kiệm chi phí.</li>
+          <li><strong>DeepSeek API &amp; Mạng xã hội:</strong> DeepSeek có giá rẻ, chất lượng tốt và hỗ trợ cả tiếng
+            Việt lẫn tiếng Anh, phù hợp để tối ưu CV theo chuẩn STAR. Bên cạnh đó, hệ thống theo dõi Fanpage/LinkedIn
+            của các công ty để báo sớm khi họ mở đơn thực tập.</li>
         </ul>
 
         <h3>3.3. Phần cứng &amp; Hạ tầng</h3>
@@ -1369,15 +1432,18 @@
             <tbody>
               <tr>
                 <td><strong>Phía Client (Người dùng)</strong></td>
-                <td>Máy tính cá nhân kết nối Internet, có microphone và loa/tai nghe (phục vụ phỏng vấn giọng nói), trình duyệt web hiện đại (Chrome, Edge, Safari).</td>
+                <td>Máy tính cá nhân kết nối Internet, có microphone và loa/tai nghe (phục vụ phỏng vấn giọng nói),
+                  trình duyệt web hiện đại (Chrome, Edge, Safari).</td>
               </tr>
               <tr>
                 <td><strong>Phía Server (Vận hành hệ thống)</strong></td>
-                <td>CPU 4 nhân, RAM 8 GB, 20 GB ổ đĩa trống (khởi chạy trọn gói trên máy tính cá nhân qua Docker Compose).</td>
+                <td>CPU 4 nhân, RAM 8 GB, 20 GB ổ đĩa trống (khởi chạy trọn gói trên máy tính cá nhân qua Docker
+                  Compose).</td>
               </tr>
               <tr>
                 <td><strong>Hạ tầng AI (Kaggle Cloud)</strong></td>
-                <td>Môi trường đám mây hỗ trợ GPU miễn phí (Kaggle Notebooks) phục vụ chạy mô hình giọng nói và xử lý AI.</td>
+                <td>Môi trường đám mây hỗ trợ GPU miễn phí (Kaggle Notebooks) phục vụ chạy mô hình giọng nói và xử lý
+                  AI.</td>
               </tr>
             </tbody>
           </table>
@@ -1387,7 +1453,8 @@
       <!-- SECTION 4 -->
       <section id="sec-4">
         <h2>4. KẾ HOẠCH PHÁT TRIỂN</h2>
-        <p>Dự án triển khai trong 8 tuần theo mô hình <strong>Scrum</strong> trên <strong>Jira</strong>, chia thành 4 chu kỳ Sprint (2 tuần/Sprint):</p>
+        <p>Dự án triển khai trong 8 tuần theo mô hình <strong>Scrum</strong> trên <strong>Jira</strong>, chia thành 4
+          chu kỳ Sprint (2 tuần/Sprint):</p>
 
         <div class="table-container">
           <table>
@@ -1419,7 +1486,8 @@
               </tr>
               <tr>
                 <td style="text-align: center;"><strong>Tuần 04</strong></td>
-                <td>Thiết kế Wireframe 4 màn hình, thiết kế lược đồ cơ sở dữ liệu PostgreSQL (ERD) và danh mục REST API.</td>
+                <td>Thiết kế Wireframe 4 màn hình, thiết kế lược đồ cơ sở dữ liệu PostgreSQL (ERD) và danh mục REST API.
+                </td>
                 <td>&bull; Hồ sơ thiết kế kiến trúc phần mềm.<br>&bull; Bản vẽ Wireframe &amp; kịch bản tạo CSDL.</td>
               </tr>
               <tr>
@@ -1430,19 +1498,23 @@
               </tr>
               <tr>
                 <td style="text-align: center;"><strong>Tuần 06</strong></td>
-                <td>Lập trình Phân hệ 2 (Phỏng vấn giọng nói AI hai chiều) và Phân hệ 3 (Đối soát Job &amp; Skill Gap).</td>
-                <td>&bull; Bản chạy thực nghiệm phỏng vấn giọng nói.<br>&bull; Bản chạy thực nghiệm so khớp hồ sơ và JD.</td>
+                <td>Lập trình Phân hệ 2 (Phỏng vấn giọng nói AI hai chiều) và Phân hệ 3 (Đối soát Job &amp; Skill Gap).
+                </td>
+                <td>&bull; Bản chạy thực nghiệm phỏng vấn giọng nói.<br>&bull; Bản chạy thực nghiệm so khớp hồ sơ và JD.
+                </td>
               </tr>
               <tr>
                 <td rowspan="2" style="text-align: center; vertical-align: middle;"><strong>Sprint 4</strong></td>
                 <td style="text-align: center;"><strong>Tuần 07</strong></td>
                 <td>Lập trình Phân hệ 4 (Săn tin tuyển dụng mạng xã hội), tối ưu API và viết Jest Unit Tests.</td>
-                <td>&bull; Bản chạy hệ thống quét tin tuyển dụng.<br>&bull; Bộ kiểm thử tự động Jest (Coverage &ge; 70%).</td>
+                <td>&bull; Bản chạy hệ thống quét tin tuyển dụng.<br>&bull; Bộ kiểm thử tự động Jest (Coverage &ge;
+                  70%).</td>
               </tr>
               <tr>
                 <td style="text-align: center;"><strong>Tuần 08</strong></td>
                 <td>Đóng gói Docker Compose chạy cục bộ, kiểm thử tích hợp, quay video demo và slide báo cáo.</td>
-                <td>&bull; Sản phẩm Web hoàn chỉnh chạy qua Docker.<br>&bull; Video demo, slide báo cáo &amp; tài liệu cài đặt.</td>
+                <td>&bull; Sản phẩm Web hoàn chỉnh chạy qua Docker.<br>&bull; Video demo, slide báo cáo &amp; tài liệu
+                  cài đặt.</td>
               </tr>
             </tbody>
           </table>
@@ -1454,7 +1526,8 @@
         <h2>5. KẾ HOẠCH NHÂN SỰ &amp; CHI PHÍ</h2>
 
         <h3>5.1. Kế hoạch Nhân sự &amp; Phân công Vai trò trong Nhóm</h3>
-        <p>Do dự án gồm 4 thành viên, mỗi thành viên đều có thế mạnh khác nhau nên các nhiệm vụ được phân công theo thế mạnh chuyên môn của từng thành viên.</p>
+        <p>Do dự án gồm 4 thành viên, mỗi thành viên đều có thế mạnh khác nhau nên các nhiệm vụ được phân công theo thế
+          mạnh chuyên môn của từng thành viên.</p>
 
         <div class="table-container">
           <table>
@@ -1501,7 +1574,8 @@
         </div>
 
         <h3>5.2. Phân bổ Công số (Man-Hours Allocation)</h3>
-        <p>Nhằm đảm bảo đúng tiến độ, nhóm đề xuất định mức <strong>8 giờ / người / tuần</strong>. Tổng công số toàn nhóm trong 8 tuần là <strong>256 người-giờ</strong> (64 giờ / thành viên):</p>
+        <p>Nhằm đảm bảo đúng tiến độ, nhóm đề xuất định mức <strong>8 giờ / người / tuần</strong>. Tổng công số toàn
+          nhóm trong 8 tuần là <strong>256 người-giờ</strong> (64 giờ / thành viên):</p>
 
         <div class="table-container">
           <table>
@@ -1560,7 +1634,8 @@
                 <td style="text-align: center; color: var(--accent-blue);">64h</td>
                 <td style="text-align: center; color: var(--accent-blue);">64h</td>
                 <td style="text-align: center; color: var(--accent-blue);">64h</td>
-                <td style="text-align: center; color: var(--accent-green); font-size: 1rem;"><span class="pill-hours" style="color: var(--accent-green); font-size: 0.95rem;">256h</span></td>
+                <td style="text-align: center; color: var(--accent-green); font-size: 1rem;"><span class="pill-hours"
+                    style="color: var(--accent-green); font-size: 0.95rem;">256h</span></td>
               </tr>
             </tbody>
           </table>
@@ -1614,7 +1689,8 @@
                 <td><strong>AI LLM API</strong></td>
                 <td>DeepSeek Open Platform</td>
                 <td>Nạp thử nghiệm gọi API token</td>
-                <td style="text-align: center;"><span class="pill-hours" style="color: var(--accent-amber); font-size: 0.82rem;">~ 20.000 VNĐ</span></td>
+                <td style="text-align: center;"><span class="pill-hours"
+                    style="color: var(--accent-amber); font-size: 0.82rem;">~ 20.000 VNĐ</span></td>
               </tr>
               <tr>
                 <td style="text-align: center;"><strong>6</strong></td>
@@ -1645,8 +1721,10 @@
                 <td style="text-align: center;"><span class="pill-free">0 VNĐ</span></td>
               </tr>
               <tr style="background: var(--surface-elevated); font-weight: 700;">
-                <td colspan="4" style="text-align: right; font-size: 0.95rem; color: var(--text-heading);">TỔNG CHI PHÍ THỰC TẾ:</td>
-                <td style="text-align: center; color: var(--accent-green); font-size: 1.05rem;"><span class="pill-hours" style="color: var(--accent-green); font-size: 0.95rem;">~ 20.000 VNĐ</span></td>
+                <td colspan="4" style="text-align: right; font-size: 0.95rem; color: var(--text-heading);">TỔNG CHI PHÍ
+                  THỰC TẾ:</td>
+                <td style="text-align: center; color: var(--accent-green); font-size: 1.05rem;"><span class="pill-hours"
+                    style="color: var(--accent-green); font-size: 0.95rem;">~ 20.000 VNĐ</span></td>
               </tr>
             </tbody>
           </table>
