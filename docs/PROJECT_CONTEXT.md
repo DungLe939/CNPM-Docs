@@ -1,51 +1,35 @@
-# TỔNG QUAN DỰ ÁN: NHẬP MÔN CÔNG NGHỆ PHẦN MỀM
+# Bối cảnh dự án HireUS Tools
 
-> **Môn học:** Nhập môn Công nghệ Phần mềm (Introduction to Software Engineering)  
-> **Đơn vị:** Khoa Công nghệ Thông tin - Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM  
-> **Giảng viên thực hành (GVTH):** Thầy Nguyễn Ngô Duy Khoa (`nndkhoa`)  
-> **Hình thức làm việc:** Đồ án nhóm (Team Project)  
-> **Thời gian:** Học kỳ 1, Năm học 2026 - 2027
+## Nguồn thông tin chuẩn
 
----
+[Project Proposal Markdown](./Week01/Submission/Project_Proposal.md) và [bản HTML](./Week01/Submission/Project_Proposal.html) là hai tài liệu người dùng xác nhận đã kiểm tra. Khi tài liệu phụ mâu thuẫn với Proposal, lấy Proposal làm căn cứ cho phạm vi và kế hoạch hiện tại. Nếu hai bản Proposal khác nhau, cần đối chiếu và xác nhận điểm khác biệt.
 
-## 1. Mục tiêu Đồ án
+Tài liệu do AI tạo trước đây, kể cả nội dung trong `.agents/`, không tự chứng minh tính chính xác của dữ kiện. Không suy diễn kế hoạch thành công việc đã hoàn thành, số liệu dự kiến thành kết quả đo, hoặc tài liệu tổng hợp thành quyết định của cuộc họp.
 
-- Thực hiện một sản phẩm phần mềm tương đối hoàn thiện theo quy trình công nghệ phần mềm bài bản (chọn mô hình **Waterfall** hoặc **Scrum**).
-- Hoàn thành và nộp đầy đủ các thành phẩm (Deliverables) của từng khâu trong chu kỳ phát triển phần mềm:
-  1. Đề xuất dự án (**Project Proposal**)
-  2. Phân tích yêu cầu phần mềm (**Requirements Analysis & Use Cases**)
-  3. Thiết kế kiến trúc & Cơ sở dữ liệu (**Software Architecture & Database Design**)
-  4. Cài đặt & Lập trình (**Implementation & Source Code**)
-  5. Kiểm thử phần mềm (**Software Testing & QA**)
-  6. Đóng gói, triển khai & Báo cáo tổng kết (**Deployment & Final Report**)
+## Thông tin môn học và nhóm
 
----
+- Môn: Nhập môn Công nghệ Phần mềm, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM.
+- GVTH: Thầy Ngô Ngọc Đăng Khoa. GVLT: Thầy Phạm Minh Tuấn.
+- Nhóm 02: Võ Minh Khoa, Võ Nguyễn Việt Hoàng, Đỗ Chí Cao, Lê Tấn Dũng.
+- Lê Tấn Dũng phụ trách trưởng nhóm/PM và kỹ sư AI.
+- Quy trình dự kiến: Scrum, 8 tuần, 4 sprint, mỗi sprint 2 tuần.
 
-## 2. Quy định Bắt buộc từ Giảng viên
+## Phạm vi và công nghệ
 
-1. **Định dạng bàn giao (Format):**
-   - Mọi bài nộp văn bản phải ở dạng **Markdown (`.md`)**.
-   - Kèm theo file **HTML visualization (`.html`)** được render trực tiếp từ file Markdown, có định kiểu CSS và bố cục layout phù hợp để hiển thị trực quan.
-   - *Vi phạm định dạng sẽ bị trừ điểm rất nặng.*
+HireUS Tools hỗ trợ sinh viên IT tìm việc Intern/Fresher qua 4 phân hệ: tạo CV và SeekerBot, phỏng vấn giọng nói, Job Matching & Skill Gap, Job Tracking.
 
-2. **Quy định về việc dùng AI & AI Writing:**
-   - Khuyến khích nhóm sinh nội dung bằng AI nhưng **bắt buộc phải kiểm tra lại toàn bộ kết quả**.
-   - **Loại bỏ triệt để dấu hiệu AI Writing:** Không sử dụng các mẫu câu sáo rỗng, tô vẽ, lan man, thiếu thực tế (ví dụ: *"trong kỷ nguyên số 4.0...", "đóng vai trò vô cùng quan trọng...", "đột phá mang tính cách mạng..."*).
-   - Văn phong báo cáo phải trực diện, ngắn gọn, súc tích và tập trung hoàn toàn vào kỹ thuật phần mềm và nghiệp vụ thực tế.
+Công nghệ dự kiến gồm Next.js, NestJS, PostgreSQL/Prisma, FastAPI trên Kaggle, DeepSeek API và mô hình âm thanh Hugging Face. Sản phẩm dự kiến đóng gói Docker Compose chạy cục bộ. Nhóm quản lý công việc trên Jira và mã nguồn trên GitHub.
 
-3. **Đúng trọng tâm yêu cầu:**
-   - Trả lời đúng và đủ các mục trong template của từng đợt nộp.
-   - Tránh bị AI "dắt mũi" dẫn đến nộp báo cáo khổng lồ, dàn trải, vượt xa yêu cầu của từng đợt nộp (ví dụ: ở tuần Proposal chỉ mô tả bài toán sơ lược khoảng 1 - 2 trang, không đi sâu vào chi tiết ca sử dụng).
+Công số dự kiến là 8 giờ/người/tuần, tổng 256 người-giờ trong 8 tuần. Phân công, cấu hình và chi phí chi tiết xem Proposal, mục 5.
 
----
+## Bài nộp và tài liệu
 
-## 3. Bản đồ Tài nguyên Dự án (Resource Map)
+Theo phần thông báo gốc được lưu trong [thông báo môn học](./Week01/Material/Thông_báo_1.md), bài nộp cần Markdown và HTML hiển thị cùng nội dung, kiểm tra kết quả AI và trình bày đúng trọng tâm. Thời gian mỗi đợt là 1–2 tuần từ khi giảng viên đăng yêu cầu, chưa đủ căn cứ xác định ngày nộp cụ thể.
 
-| Đường dẫn | Loại tài liệu | Mô tả |
-| :--- | :--- | :--- |
-| `Template#0-ProjectProposal-2022.docx` & `.pdf` | Template gốc | Biểu mẫu Proposal chuẩn của bộ môn do giảng viên cung cấp |
-| `docs/WEEKLY_TIMELINE.md` | Quản trị tiến độ | Nhật ký theo dõi hoạt động và nhiệm vụ của nhóm theo từng tuần |
-| `docs/Week01/Material/Thông_báo_1.md` | Thông báo | Thông báo và lưu ý chính thức từ thầy nndkhoa |
-| `docs/Week01/Problem_example/` | Tài liệu mẫu | Hai bài toán mẫu: Sàn đấu giá trực tuyến và App theo dõi sức khỏe |
-| `docs/Week01/Team_Decision/` | Quản lý nhóm | Biên bản họp (Meeting_01, Meeting_02) & Kế hoạch triển khai HireUS |
-| `.agents/skills/` | AI Skills | Bộ kỹ năng chuẩn hóa quy trình làm việc cho AI trong dự án |
+- [Tiến độ và kế hoạch](./WEEKLY_TIMELINE.md).
+- [Hồ sơ Proposal](./Week01/Submission/README.md).
+- [Template gốc](./Week01/Material/Template%230-ProjectProposal-2022.pdf).
+- [Kế hoạch tổng hợp từ Proposal](./Week01/Team_Decision/Material/HireUS_Implementation_Plan.md) và [HTML](./Week01/Team_Decision/Material/HireUS_Implementation_Plan.html).
+- [Biên bản 01](./Week01/Team_Decision/Meeting_01.md) và [biên bản 02](./Week01/Team_Decision/Meeting_02.md): bản ghi hiện có, chưa được xác minh lại từ ghi chép gốc trong lần rà soát này.
+
+Hiện thư mục này chứa tài liệu và công cụ hỗ trợ tài liệu. Việc có kế hoạch FE/BE không xác nhận rằng mã nguồn ứng dụng đã được triển khai.

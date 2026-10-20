@@ -1,58 +1,33 @@
-# NHẬT KÝ TIẾN ĐỘ DỰ ÁN THEO TUẦN (WEEKLY TIMELINE)
+# Tiến độ và kế hoạch dự án
 
-> Tài liệu này ghi nhận mục tiêu, công việc thực tế, trạng thái sản phẩm đầu ra (Deliverables) của nhóm sinh viên qua từng tuần học kỳ.
+> Cập nhật ngày 20/10/2026. Nguồn kế hoạch: [Proposal đã được người dùng kiểm tra](./Week01/Submission/Project_Proposal.md).
 
----
+## Trạng thái có căn cứ
 
-## 📅 Tuần 01 (Week 01): Khởi động Dự án & Chọn Đề tài
+- Đã có [Proposal Markdown](./Week01/Submission/Project_Proposal.md) và [HTML](./Week01/Submission/Project_Proposal.html), được người dùng xác nhận đã kiểm tra. Chưa có xác nhận đã nộp bài hoặc được giảng viên duyệt.
+- Có hai bản ghi họp ngày 12/10 và 14/10 trong [biên bản 01](./Week01/Team_Decision/Meeting_01.md) và [biên bản 02](./Week01/Team_Decision/Meeting_02.md). Nội dung lịch sử chưa được xác minh lại từ nguồn gốc.
+- Đã đồng bộ tài liệu tổng quan và [kế hoạch triển khai](./Week01/Team_Decision/Material/HireUS_Implementation_Plan.md) theo phạm vi 4 phân hệ của Proposal.
+- Chưa xác nhận trạng thái Jira, các repo FE/BE, tiến độ lập trình hoặc kiểm thử. Không đánh dấu các việc này đã hoàn thành chỉ dựa trên kế hoạch.
 
-- **Khoảng thời gian:** 12/10/2026 - 19/10/2026
-- **Trạng thái:** 🟡 Đang thực hiện
+## Kế hoạch theo Proposal
 
-### Mục tiêu tuần 1:
-- [x] Tiếp nhận thông báo đồ án và các quy định bắt buộc từ GVTH Thầy nndkhoa ([Thông_báo_1.md](./Week01/Material/Thông_báo_1.md)).
-- [x] Nghiên cứu biểu mẫu `Template#0 - Project Proposal` ([PDF](../Template#0-ProjectProposal-2022.pdf)).
-- [x] Đọc hiểu 2 bài toán mẫu của bộ môn:
-  - [Problem_example_01: Sàn đấu giá trực tuyến](./Week01/Problem_example/Problem_example_01.md)
-  - [Problem_example_02: Ứng dụng theo dõi sức khỏe](./Week01/Problem_example/Problem_example_02.md)
-- [x] Họp nhóm lần 1 (12/10/2026): thống nhất cấu trúc repo, quy trình Scrum/Jira, tech stack Next.js/NestJS/PostgreSQL ([Meeting_01.md](./Week01/Team_Decision/Meeting_01.md)).
-- [x] Họp nhóm lần 2 (14/10/2026): chốt ý tưởng đề tài HireUS & phân chia vai trò 4 thành viên ([Meeting_02.md](./Week01/Team_Decision/Meeting_02.md)).
-- [x] Lập bản Kế hoạch Triển khai Chi tiết ([HireUS_Implementation_Plan.md](./Week01/Team_Decision/Material/HireUS_Implementation_Plan.md)).
+Dự án triển khai trong 8 tuần theo mô hình **Scrum** trên **Jira**, chia thành 4 chu kỳ Sprint (2 tuần/Sprint):
 
-### Thành phẩm Tuần 01:
-- Biên bản họp nhóm: [Meeting_01.md](./Week01/Team_Decision/Meeting_01.md) & [Meeting_02.md](./Week01/Team_Decision/Meeting_02.md).
-- Kế hoạch triển khai chi tiết: [HireUS_Implementation_Plan.md](./Week01/Team_Decision/Material/HireUS_Implementation_Plan.md) & [.html](./Week01/Team_Decision/Material/HireUS_Implementation_Plan.html).
-- Hồ sơ nộp đợt 1 (Proposal): [Project_Proposal.md](./Week01/Submission/Project_Proposal.md) & [Project_Proposal.html](./Week01/Submission/Project_Proposal.html) (Đóng gói zip: [Hướng dẫn nộp bài](./Week01/Submission/README.md)).
+| Chu kỳ Sprint | Tuần | Công việc trọng tâm | Thành phẩm cụ thể đầu ra |
+| :---: | :---: | :--- | :--- |
+| **Sprint 1** | **Tuần 01** | Khảo sát nhu cầu, thống nhất ý tưởng, lập Jira Backlog và hoàn thiện hồ sơ đề xuất đồ án. | - Hồ sơ Project Proposal hoàn chỉnh.<br>- Biên bản làm việc nhóm & phân công. |
+| | **Tuần 02** | Tiếp nhận góp ý từ GV, tinh chỉnh Backlog, dựng khung mã nguồn mẫu Next.js & NestJS. | - Bảng Scrum Backlog trên Jira.<br>- Khung mã nguồn dự án trên GitHub. |
+| **Sprint 2** | **Tuần 03** | Lập Use Case chi tiết, vẽ Activity & Sequence Diagram cho 4 phân hệ. | - Hồ sơ đặc tả yêu cầu phần mềm. |
+| | **Tuần 04** | Thiết kế Wireframe 4 màn hình, thiết kế lược đồ cơ sở dữ liệu PostgreSQL (ERD) và danh mục REST API. | - Hồ sơ thiết kế kiến trúc phần mềm.<br>- Bản vẽ Wireframe & kịch bản tạo CSDL. |
+| **Sprint 3** | **Tuần 05** | Cài đặt Auth JWT, lập trình Phân hệ 1 (Tạo CV ATS & Trợ lý SeekerBot AI trên Kaggle). | - Module đăng ký/đăng nhập hoàn tất.<br>- Chức năng tạo CV ATS chạy thực nghiệm. |
+| | **Tuần 06** | Lập trình Phân hệ 2 (Phỏng vấn giọng nói AI hai chiều) và Phân hệ 3 (Đối soát Job & Skill Gap). | - Bản chạy thực nghiệm phỏng vấn giọng nói.<br>- Bản chạy thực nghiệm so khớp hồ sơ và JD. |
+| **Sprint 4** | **Tuần 07** | Lập trình Phân hệ 4 (Săn tin tuyển dụng mạng xã hội), tối ưu API và viết Jest Unit Tests. | - Bản chạy hệ thống quét tin tuyển dụng.<br>- Bộ kiểm thử tự động Jest (Coverage $\ge 70\%$). |
+| | **Tuần 08** | Đóng gói Docker Compose chạy cục bộ, kiểm thử tích hợp, quay video demo và slide báo cáo. | - Sản phẩm Web hoàn chỉnh chạy qua Docker.<br>- Video demo, slide báo cáo & tài liệu cài đặt. |
 
----
+## Tài liệu hiện có
 
-## 📅 Tuần 02 (Week 02): Hoàn thiện Project Proposal
+- Hồ sơ Proposal nằm tại `Week01/Submission/`, không phải `Week02/`.
+- [Thông báo môn học](./Week01/Material/Thông_báo_1.md) và [template PDF](./Week01/Material/Template%230-ProjectProposal-2022.pdf).
+- Hai bài toán tham khảo: [sàn đấu giá](./Week01/Problem_example/Problem_example_01_raw.md) và [theo dõi sức khỏe](./Week01/Problem_example/Problem_example_02_raw.md).
 
-- **Trạng thái:** ⚪ Chưa bắt đầu (Dự kiến)
-- **Hạn chót:** Tuần 2 kể từ ngày công bố đề bài
-
-### Mục tiêu tuần 2:
-- [ ] Soạn thảo tài liệu đề xuất dự án `docs/Week02/Project_Proposal.md` dựa theo khung 5 mục của biểu mẫu.
-- [ ] Mô tả nghiệp vụ bài toán sơ lược (1 - 2 trang, môi trường hoạt động, ràng buộc kỹ thuật).
-- [ ] Lập danh sách câu chuyện người dùng (User Stories) và kiến trúc mức cao.
-- [ ] Lập kế hoạch phát triển (Milestones/Sprints) và bảng nhân sự & chi phí.
-- [ ] Rà soát loại bỏ triệt để văn phong AI Writing.
-- [ ] Render xuất file `Project_Proposal.html` visualization nộp kèm file `.md`.
-
-### Thành phẩm Tuần 02:
-- Bộ đôi file nộp đợt 1: `Project_Proposal.md` và `Project_Proposal.html`.
-
----
-
-## 📅 Lộ trình Đồ án 8 tuần (Dự kiến theo Biên bản họp 01)
-
-| Tuần | Giai đoạn | Nội dung trọng tâm | Thành phẩm dự kiến |
-| :---: | :--- | :--- | :--- |
-| **Week 01** | Khởi động & Chọn đề tài | Lập team, thống nhất quy trình Scrum/Jira, tech stack, chốt đề tài | `Meeting_01.md` |
-| **Week 02** | Đề xuất dự án (Proposal) | Soạn thảo & hoàn thiện đề xuất dự án 5 phần theo mẫu bộ môn | `Project_Proposal.md` (.html) |
-| **Week 03** | Phân tích yêu cầu (Analysis) | Khảo sát nghiệp vụ, phân tích Use Cases, Activity/Sequence Diagrams | `Software_Requirements_Specification.md` |
-| **Week 04** | Thiết kế (Design) | Thiết kế kiến trúc hệ thống, UI/UX (Figma), thiết kế CSDL (ERD/Schema) | `Software_Design_Document.md` |
-| **Week 05 - 06** | Cài đặt & Lập trình (Sprint 1 & 2) | Lập trình Frontend (Next.js), Backend (NestJS), kết nối PostgreSQL | Mã nguồn trên GitHub (FE, BE) |
-| **Week 07** | Kiểm thử (Testing & QA) | Lập Test Plan, viết Unit/Integration Tests, kiểm thử giao diện & API | `Test_Report.md` |
-| **Week 08** | Triển khai & Báo cáo cuối kỳ | Deploy Web App lên Cloud, quay video demo và slide thuyết trình | Sản phẩm chạy thực tế & Slide báo cáo |
-
+Ngày nộp cụ thể và trạng thái từng tuần cần cập nhật từ thông báo hoặc kết quả thực tế của nhóm.

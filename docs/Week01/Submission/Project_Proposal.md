@@ -33,7 +33,7 @@ status: "Đề xuất đồ án đợt 1 (Project Proposal)"
 | 1 | 24120194 | **Võ Minh Khoa** | 100% | <img src="./image/Khoa.jpg" height="40" alt="Chữ ký Võ Minh Khoa" /> |
 | 2 | 24120249 | **Võ Nguyễn Việt Hoàng** | 100% | <img src="./image/Hoang.png" height="40" alt="Chữ ký Võ Nguyễn Việt Hoàng" /> |
 | 3 | 24120270 | **Đỗ Chí Cao** | 100% | <img src="./image/Cao.png" height="40" alt="Chữ ký Đỗ Chí Cao" /> |
-| 4 | 24120290 | **Lê Tấn Dũng** | 100% | <img src="./image/Dũng.jpg" height="40" alt="Chữ ký Lê Tấn Dũng" /> |
+| 4 | 24120290 | **Lê Tấn Dũng** | 100% | <img src="./image/Dung.jpg" height="40" alt="Chữ ký Lê Tấn Dũng" /> |
 
 ---
 

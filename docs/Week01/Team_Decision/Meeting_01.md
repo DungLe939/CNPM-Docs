@@ -9,6 +9,8 @@ status: "Đã hoàn thành"
 
 # BIÊN BẢN HỌP NHÓM SỐ 01
 
+> Ghi chú rà soát 20/10/2026: Đây là bản ghi hiện có, chưa được xác minh lại từ ghi chép gốc. Giữ nguyên nội dung lịch sử để đối chiếu, không dùng các trạng thái hoặc quyết định trong bản này làm căn cứ cho tiến độ hiện tại. Phạm vi và kế hoạch hiện tại theo [Proposal đã được người dùng kiểm tra](../Submission/Project_Proposal.md).
+
 | Thông tin cuộc họp | Chi tiết |
 | :--- | :--- |
 | **Đơn vị thực hiện** | Nhóm 02 |

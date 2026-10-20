@@ -1,55 +1,28 @@
-# HỒ SƠ BÀI NỘP ĐỢT 1: PROJECT PROPOSAL (P1)
+# Hồ sơ Project Proposal — Nhóm 02
 
-> **Môn học:** Nhập môn Công nghệ Phần mềm  
-> **GVTH:** Thầy Nguyễn Ngô Duy Khoa (`nndkhoa`)  
-> **Thời gian giao bài:** 12/10/2026  
-> **Đơn vị thực hiện:** Nhóm 02 (4 sinh viên - Trưởng nhóm: Lê Tấn Dũng)  
+[Project_Proposal.md](./Project_Proposal.md) và [Project_Proposal.html](./Project_Proposal.html) là bản người dùng đã kiểm tra, dùng làm nguồn chuẩn cho tài liệu phụ.
 
----
+GVTH: Thầy Ngô Ngọc Đăng Khoa. GVLT: Thầy Phạm Minh Tuấn.
 
-## 📦 1. Thành phần Hồ sơ Bài nộp trong Thư mục
+## Thành phần hồ sơ
 
-Thư mục này chuẩn bị sẵn **đầy đủ bộ đôi bắt buộc** theo quy chế của giảng viên:
+- Bản Markdown và bản HTML của Proposal.
+- Thư mục `image/` chứa ảnh chữ ký và sơ đồ được hai bản tài liệu tham chiếu. Cần giữ nguyên đường dẫn này khi sao chép hoặc đóng gói.
 
-| Tên tệp tin | Định dạng | Mô tả nội dung |
-| :--- | :---: | :--- |
-| **[`Project_Proposal.md`](./Project_Proposal.md)** | Markdown | Toàn văn bản đề xuất đồ án đợt 1 chuẩn 5 phần theo biểu mẫu bộ môn, đáp ứng đủ 6 tiêu chí *"Chọn Project Idea Nhanh"*, mô hình Scrum 8 tuần. |
-| **[`Project_Proposal.html`](./Project_Proposal.html)** | HTML Visualization | Bản trực quan hóa rendered từ file `.md`, có stylesheet CSS hiện đại, responsive, tích hợp render Mermaid diagrams trực tiếp. |
+## Đóng gói để chia sẻ hoặc nộp
 
----
-
-## 📌 2. Hướng dẫn Đóng gói & Đặt tên Tệp tin Nộp bài (Theo Lời Thầy Dặn)
-
-### Quy định của Giảng viên:
-1. **Thành phần nộp:** 01 file `.md` và 01 file `.html` visualization của chính file `.md`.
-2. **Hình thức nộp:** Đóng gói thành **01 tệp nén duy nhất định dạng `.zip`**.
-3. **Quy tắc đặt tên file `.zip`:**
-   ```text
-   Nhom02-MSSV1-MSSV2-MSSV3-MSSV4.zip
-   ```
-   *Ví dụ:* `Nhom02-24120001-24120002-24120003-24120004.zip`
-4. **Đại diện nộp:** **Chỉ 01 thành viên duy nhất nộp** đại diện cho cả nhóm (Trưởng nhóm: Lê Tấn Dũng).
-
----
-
-## ⚡ 3. Lệnh Terminal để Đóng gói Nhanh File ZIP
-
-Khi đã cập nhật đầy đủ MSSV thực tế vào file, bạn chỉ cần mở terminal tại thư mục này và chạy lệnh:
+Chạy lệnh sau từ thư mục `Submission` để đóng gói đủ tài liệu và ảnh:
 
 ```bash
-# Thay thế các MSSV bằng thông tin thực tế của nhóm:
-zip -j "Nhom02-MSSV1-MSSV2-MSSV3-MSSV4.zip" Project_Proposal.md Project_Proposal.html
+zip -r Nhom02-24120194-24120249-24120270-24120290.zip Project_Proposal.md Project_Proposal.html image/
 ```
 
-*(Tham số `-j` giúp nén trực tiếp 2 file mà không bị dính đường dẫn thư mục lồng nhau, rất tiện cho thầy mở chấm).*
+Tên ZIP trên dùng số nhóm và MSSV trong Proposal. Quy định bắt buộc về tên ZIP, người đại diện nộp và hạn nộp cần đối chiếu thông báo chính thức, chưa có căn cứ xác nhận từ hai file Proposal và phần thông báo gốc đang lưu.
 
----
+## Kiểm tra trước khi nộp
 
-## ✅ 4. Checklist Tự Kiểm tra Trước Khi Bấm Nộp
+- Mở bản HTML sau khi giải nén, kiểm tra sơ đồ và chữ ký.
+- Đối chiếu nội dung Markdown với HTML.
+- Kiểm tra yêu cầu đặt tên, hạn nộp và cách nộp trên hệ thống môn học.
 
-- [x] Đã xác định số thứ tự nhóm: **Nhóm 02**
-- [ ] Đã thay thế các placeholder `<MSSV1>`, `<MSSV2>`, `<MSSV3>`, `<MSSV4>` bằng MSSV thật chưa?
-- [ ] File `.zip` đã chứa đúng 02 file: `Project_Proposal.md` và `Project_Proposal.html` chưa?
-- [ ] Đã mở thử file `Project_Proposal.html` trên trình duyệt xem giao diện, bảng biểu và sơ đồ có hiển thị chuẩn đẹp chưa?
-- [ ] Tên file `.zip` đã đúng định dạng `Nhom02-MSSV1-MSSV2-MSSV3-MSSV4.zip` chưa?
-- [ ] Đã cử đúng 01 bạn (Trưởng nhóm) nộp lên hệ thống chưa?
+Việc hồ sơ đã tồn tại và được kiểm tra không đồng nghĩa đã nộp hoặc được giảng viên duyệt.

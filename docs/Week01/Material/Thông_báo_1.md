@@ -1,7 +1,7 @@
 ---
 title: "Thông báo Đồ án Môn học: Nhập môn Công nghệ Phần mềm"
 course: "Nhập môn Công nghệ Phần mềm (Introduction to Software Engineering)"
-instructor: "Thầy Nguyễn Ngô Duy Khoa (nndkhoa)"
+instructor: "Thầy Ngô Ngọc Đăng Khoa (nndkhoa)"
 date_created: "12/10/2026"
 deadline_note: "1 - 2 tuần kể từ ngày công bố yêu cầu từng đợt"
 document_type: "Quy định & Hướng dẫn Đồ án"
@@ -13,13 +13,15 @@ status: "Đang tiến hành"
 | Thông tin | Chi tiết |
 | :--- | :--- |
 | **Môn học** | Nhập môn Công nghệ Phần mềm |
-| **Giảng viên thực hành (GVTH)** | Thầy Nguyễn Ngô Duy Khoa (`nndkhoa`) |
+| **Giảng viên thực hành (GVTH)** | Thầy Ngô Ngọc Đăng Khoa (`nndkhoa`) |
 | **Ngày ghi nhận** | 12/10/2026 |
 | **Thời hạn mỗi đợt** | 1 - 2 tuần (tính từ ngày đăng yêu cầu chi tiết) |
 | **Hạng mục nộp gần nhất** | Đợt 1: **Project Proposal** (Kèm theo Template tham khảo) |
 | **Định dạng bàn giao** | File Markdown (`.md`) kèm HTML Visualization (`.html`) |
 
 ---
+
+> Tên GVTH ở phần tổng hợp được đồng bộ theo [Proposal](../Submission/Project_Proposal.md). Phần RAW cuối tài liệu được giữ nguyên, các mốc ngày trong metadata chưa được xác minh lại từ thông báo gốc.
 
 ## 1. Yêu cầu chung
 
