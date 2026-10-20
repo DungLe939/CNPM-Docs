@@ -1,75 +1,35 @@
 #!/usr/bin/env python3
-"""
-scripts/sync_drive.py
----------------------
-Công cụ tự động đồng bộ tài liệu từ Google Drive của nhóm về repository.
-Mặc định đồng bộ về: docs/Drive_Sync/
-
-Cách dùng:
-    python3 scripts/sync_drive.py          # Tự động quét và tải file mới
-    python3 scripts/sync_drive.py --pull   # Chạy git pull origin trước rồi mới sync Drive
-    python3 scripts/sync_drive.py --force  # Tải lại toàn bộ file bất kể đã tồn tại
-"""
-
-import sys
-import os
-import re
-import json
+"""Compare public Drive downloads with local files without overwriting local edits."""
 import argparse
-import subprocess
-import urllib.request
-import urllib.error
 import hashlib
-from datetime import datetime
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+import tempfile
+import urllib.request
 
+ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_FOLDER_ID = "12e0__KnGQOQayRmNEWwYPrq-0ErlqGph"
-DEFAULT_TARGET_DIR = os.path.join("docs", "Week01")
-USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-
-# ANSI Colors for terminal output
-GREEN = "\033[92m"
-YELLOW = "\033[93m"
-BLUE = "\033[94m"
-CYAN = "\033[96m"
-RED = "\033[91m"
-BOLD = "\033[1m"
-RESET = "\033[0m"
+USER_AGENT = "Mozilla/5.0"
 
 
-def run_git_pull():
-    """Tự động kéo commit mới nhất từ origin về trước khi đồng bộ."""
-    print(f"{BLUE}[1/2] Đang kiểm tra và đồng bộ Git từ GitHub (git pull origin)...{RESET}")
-    try:
-        # Lấy tên branch hiện tại
-        branch_res = subprocess.run(
-            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
-            capture_output=True, text=True, check=True
-        )
-        current_branch = branch_res.stdout.strip() or "main"
-        
-        pull_res = subprocess.run(
-            ["git", "pull", "origin", current_branch],
-            capture_output=True, text=True, check=True
-        )
-        print(f"{GREEN}✓ Git Pull thành công (Branch: {current_branch}):{RESET}")
-        for line in pull_res.stdout.strip().split("\n"):
-            print(f"  {line}")
-    except subprocess.CalledProcessError as e:
-        print(f"{YELLOW}⚠ Cảnh báo: git pull gặp vấn đề ({e.stderr.strip()}). Tiếp tục đồng bộ Drive...{RESET}")
-    except Exception as e:
-        print(f"{YELLOW}⚠ Không thể thực hiện git pull: {e}. Tiếp tục đồng bộ Drive...{RESET}")
+def run_git_pull(root):
+    if subprocess.check_output(["git", "status", "--porcelain"], cwd=root).strip():
+        raise RuntimeError("Working tree có thay đổi. Giữ nguyên local, chưa pull/sync.")
+    branch = subprocess.check_output(
+        ["git", "symbolic-ref", "--quiet", "--short", "HEAD"], cwd=root, text=True
+    ).strip()
+    subprocess.run(["git", "pull", "--ff-only", "origin", branch], cwd=root, check=True)
 
 
 def fetch_folder_html(folder_id):
-    """Lấy nội dung HTML của thư mục Google Drive."""
-    url = f"https://drive.google.com/drive/folders/{folder_id}"
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    try:
-        with urllib.request.urlopen(req, timeout=15) as response:
-            return response.read().decode("utf-8", errors="ignore")
-    except Exception as e:
-        print(f"{RED}✗ Lỗi khi truy cập Google Drive: {e}{RESET}")
-        return None
+    req = urllib.request.Request(
+        f"https://drive.google.com/drive/folders/{folder_id}", headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req, timeout=30) as response:
+        return response.read().decode("utf-8")
 
 
 def extract_files_from_html(html):
@@ -95,215 +55,178 @@ def extract_files_from_html(html):
     return files
 
 
-def download_file(file_name, file_id, dest_path):
-    """Tải file từ Google Drive và lưu vào dest_path."""
-    # Thử tải trực tiếp từ direct download endpoint
-    direct_url = f"https://drive.usercontent.google.com/download?id={file_id}&export=download"
-    req = urllib.request.Request(direct_url, headers={"User-Agent": USER_AGENT})
 
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            content = resp.read()
-            # Kiểm tra xem nội dung tải về có phải là trang HTML báo lỗi không
-            if len(content) < 1000 and b"<!DOCTYPE html>" in content and b"ServiceLogin" in content:
-                raise ValueError("Cần đăng nhập hoặc không có quyền truy cập trực tiếp")
-            
-            with open(dest_path, "wb") as f:
-                f.write(content)
-            return True, len(content)
-    except Exception:
-        # Nếu là Google Doc nội bộ (gdoc), thử export qua endpoint docs.google.com
-        ext = os.path.splitext(file_name)[1].lower()
-        export_format = "txt"
-        if ext == ".docx":
-            export_format = "docx"
-        elif ext == ".pdf":
-            export_format = "pdf"
-        elif ext == ".html":
-            export_format = "html"
+def valid_name(name):
+    if not name or name in {".", ".."} or any(c in name for c in "/\\\0"):
+        raise ValueError("Tên file nguồn không hợp lệ")
+    return name
 
-        export_url = f"https://docs.google.com/document/d/{file_id}/export?format={export_format}"
-        req_exp = urllib.request.Request(export_url, headers={"User-Agent": USER_AGENT})
+
+def validate_download(content, suffix):
+    if not content:
+        raise ValueError("File tải về trống")
+    head = content[:8192].lower()
+    if b"servicelogin" in head or b"accounts.google.com/v3/signin" in head:
+        raise ValueError("Drive yêu cầu đăng nhập")
+    looks_html = b"<!doctype html" in head or b"<html" in head
+    if looks_html and suffix not in {".html", ".htm"}:
+        raise ValueError("Nhận trang HTML thay vì tài liệu")
+    if suffix == ".pdf" and not content.startswith(b"%PDF-"):
+        raise ValueError("Nội dung không phải PDF")
+    if suffix == ".docx" and not content.startswith(b"PK"):
+        raise ValueError("Nội dung không phải DOCX")
+
+
+def download_file(name, file_id, temp_path):
+    suffix = Path(name).suffix.lower()
+    export_format = {".docx": "docx", ".pdf": "pdf", ".html": "html"}.get(suffix, "txt")
+    urls = [f"https://drive.usercontent.google.com/download?id={file_id}&export=download",
+            f"https://docs.google.com/document/d/{file_id}/export?format={export_format}"]
+    last_error = None
+    for url in urls:
         try:
-            with urllib.request.urlopen(req_exp, timeout=30) as resp:
-                content = resp.read()
-                with open(dest_path, "wb") as f:
-                    f.write(content)
-                return True, len(content)
-        except Exception as e2:
-            return False, str(e2)
+            request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(request, timeout=30) as response:
+                content = response.read()
+            validate_download(content, suffix)
+            Path(temp_path).write_bytes(content)
+            return
+        except Exception as exc:
+            last_error = exc
+    raise RuntimeError(f"Không tải được {name}: {last_error}")
 
 
-def load_manifest(manifest_path):
-    """Đọc file lưu vết manifest."""
-    if os.path.exists(manifest_path):
-        try:
-            with open(manifest_path, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            return {}
-    return {}
+def classify_destination(name, week_dir):
+    lower = name.lower()
+    # A template whose name includes 'Proposal' is still course material.
+    groups = [(('template', 'thong_bao', 'material', 'tai_lieu'), 'Material'),
+              (('meeting', 'bien_ban', 'hop_nhom'), 'Team_Decision'),
+              (('problem', 'example', 'bai_toan', 'de_bai'), 'Problem_example'),
+              (('hireus', 'plan', 'proposal', 'jobseeker', 'decision'), 'Team_Decision/Material')]
+    for keys, folder in groups:
+        if any(key in lower for key in keys):
+            return Path(week_dir) / folder
+    return Path(week_dir) / 'Unclassified'
 
 
-def save_manifest(manifest_path, manifest):
-    """Lưu manifest để theo dõi các file đã đồng bộ."""
+def file_hash(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def atomic_json(path, data):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=path.parent, delete=False) as f:
+        temp = Path(f.name)
+        json.dump(data, f, ensure_ascii=False, indent=2)
+        f.write('\n')
     try:
-        with open(manifest_path, "w", encoding="utf-8") as f:
-            json.dump(manifest, f, indent=2, ensure_ascii=False)
-    except Exception as e:
-        print(f"{YELLOW}⚠ Không thể lưu manifest: {e}{RESET}")
+        os.replace(temp, path)
+    finally:
+        temp.unlink(missing_ok=True)
 
 
-def get_file_hash(filepath):
-    """Tính SHA256 để kiểm tra trùng lặp."""
-    hasher = hashlib.sha256()
-    with open(filepath, "rb") as f:
-        while chunk := f.read(8192):
-            hasher.update(chunk)
-    return hasher.hexdigest()
-
-
-def classify_destination(file_name, target_week_dir):
-    """
-    Tự động phân loại file vào đúng thư mục con:
-    1. Team Decision:
-       - Biên bản họp (meeting, bien_ban) -> docs/WeekXX/Team_Decision/
-       - Kế hoạch triển khai, tài liệu nhóm (plan, proposal, jobseeker, decision)
-         -> docs/WeekXX/Team_Decision/Material/
-    2. Tài liệu học tập, đồ án, thông báo từ Thầy (material, thong_bao, template)
-       -> docs/WeekXX/Material/
-    3. Bài toán mẫu, đề bài (problem, example)
-       -> docs/WeekXX/Problem_example/
-    4. Mặc định -> target_week_dir
-    """
-    name_lower = file_name.lower()
-
-    # 1. Biên bản họp của nhóm -> Team_Decision
-    if any(k in name_lower for k in ["meeting", "bien_ban", "hop_nhom"]):
-        return os.path.join(target_week_dir, "Team_Decision")
-
-    # 2. Tài liệu, kế hoạch triển khai do nhóm tự làm -> Team_Decision/Material
-    if any(k in name_lower for k in ["hireus", "jobseeker", "plan", "proposal", "decision"]):
-        return os.path.join(target_week_dir, "Team_Decision", "Material")
-
-    # 3. Tài liệu, đồ án yêu cầu của Thầy -> Material
-    if any(k in name_lower for k in ["material", "thong_bao", "template", "tai_lieu", "slide", "guide", "huong_dan"]):
-        return os.path.join(target_week_dir, "Material")
-
-    # 4. Bài toán mẫu, đề bài
-    if any(k in name_lower for k in ["problem", "example", "bai_toan", "de_bai"]):
-        return os.path.join(target_week_dir, "Problem_example")
-
-    return target_week_dir
-
-
-def main():
-    parser = argparse.ArgumentParser(description="Đồng bộ tài liệu từ Google Drive của nhóm đồ án.")
-    parser.add_argument("--folder", default=DEFAULT_FOLDER_ID, help="Google Drive Folder ID")
-    parser.add_argument("--target", default=None, help="Thư mục đích lưu file trong repo (mặc định theo tuần)")
-    parser.add_argument("--week", default="Week01", help="Tên tuần muốn tổng hợp tài liệu (ví dụ: Week01, Week02, ...)")
-    parser.add_argument("--pull", action="store_true", help="Chạy git pull origin trước khi sync Drive")
-    parser.add_argument("--force", action="store_true", help="Bắt buộc tải lại toàn bộ file")
-    args = parser.parse_args()
-
-    if not args.target:
-        args.target = os.path.join("docs", args.week)
-
-    print(f"\n{BOLD}{CYAN}=== CÔNG CỤ ĐỒNG BỘ GOOGLE DRIVE (CNPM DOCS) ==={RESET}")
-    print(f"Folder ID : {args.folder}")
-    print(f"Lưu vào   : {args.target} (tự động phân loại subfolder)")
-    print("-" * 50)
-
-    # 1. Chạy git pull nếu được yêu cầu
-    if args.pull:
-        run_git_pull()
-        print("-" * 50)
-
-    # 2. Quản lý manifest lưu vết bên trong thư mục scripts (không gây rác thư mục docs)
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    manifest_path = os.path.join(script_dir, ".sync_manifest.json")
-    manifest = load_manifest(manifest_path)
-
-    # 3. Quét danh sách file trên Google Drive
-    step_label = "[2/2]" if args.pull else "[1/1]"
-    print(f"{BLUE}{step_label} Đang quét danh sách file trên Google Drive...{RESET}")
-    html = fetch_folder_html(args.folder)
-    if not html:
-        print(f"{RED}Không thể lấy dữ liệu từ Google Drive. Vui lòng kiểm tra kết nối mạng.{RESET}")
-        sys.exit(1)
-
-    files = extract_files_from_html(html)
-    if not files:
-        print(f"{YELLOW}Không tìm thấy file nào hoặc quyền truy cập folder chưa được mở công khai.{RESET}")
-        sys.exit(0)
-
-    print(f"{GREEN}✓ Tìm thấy {len(files)} file trên Google Drive:{RESET}")
-    for name, fid in files.items():
-        print(f"  • {name} (ID: {fid})")
-
-    print("-" * 50)
-    print(f"{BLUE}Bắt đầu phân loại và đồng bộ vào '{args.target}'...{RESET}\n")
-
-    synced_count = 0
-    skipped_count = 0
-    error_count = 0
-    updated_files = []
-
-    for name, fid in files.items():
-        # Phân loại tự động vào thư mục con phù hợp
-        dest_dir = classify_destination(name, args.target)
-        os.makedirs(dest_dir, exist_ok=True)
-        dest_path = os.path.join(dest_dir, name)
-        rel_dest = os.path.relpath(dest_path, ".")
-
-        file_info = manifest.get(fid, {})
-
-        # Kiểm tra xem file đã có sẵn chưa
-        if os.path.exists(dest_path) and not args.force:
-            current_hash = get_file_hash(dest_path)
-            if file_info.get("hash") == current_hash and file_info.get("name") == name:
-                print(f"  {YELLOW}⏩ Đã có (Bỏ qua):{RESET} {name} -> {rel_dest}")
-                skipped_count += 1
-                continue
-
-        # Tiến hành tải
-        print(f"  {CYAN}⬇ Đang tải:{RESET} {name} -> {rel_dest} ...", end=" ", flush=True)
-        success, res = download_file(name, fid, dest_path)
-        if success:
-            file_hash = get_file_hash(dest_path)
-            manifest[fid] = {
-                "name": name,
-                "file_id": fid,
-                "size_bytes": res,
-                "hash": file_hash,
-                "dest_path": rel_dest,
-                "synced_at": datetime.now().isoformat()
-            }
-            print(f"{GREEN}Xong ({res:,} bytes){RESET}")
-            synced_count += 1
-            updated_files.append((name, rel_dest))
+def sync_one(name, file_id, destination, baseline, incoming, root, downloader=download_file):
+    valid_name(name)
+    if not re.fullmatch(r'[a-zA-Z0-9_-]+', file_id):
+        raise ValueError('ID nguồn không hợp lệ')
+    root = Path(root).resolve()
+    dest = Path(destination)
+    if dest.is_symlink() or not dest.resolve().is_relative_to(root):
+        raise ValueError('Đích không được trỏ ra ngoài dự án hoặc qua symlink file')
+    dest = dest.resolve()
+    relative = dest.relative_to(root).as_posix()
+    original_hash = file_hash(dest) if dest.exists() else None
+    incoming = Path(incoming).resolve()
+    incoming.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(dir=incoming, delete=False) as f:
+        temp = Path(f.name)
+    try:
+        downloader(name, file_id, temp)
+        remote_hash = file_hash(temp)
+        current_hash = file_hash(dest) if dest.exists() else None
+        metadata = {'name': name, 'file_id': file_id, 'hash': remote_hash, 'dest_path': relative}
+        if current_hash != original_hash:
+            status = 'conflict'
+        elif current_hash == remote_hash:
+            return 'unchanged', metadata
+        elif 'Submission' in dest.relative_to(root).parts:
+            status = 'conflict'
+        elif baseline and baseline.get('dest_path') != relative:
+            status = 'conflict'
+        elif current_hash is None and not baseline:
+            status = 'updated'
+        elif current_hash is not None and baseline and current_hash == baseline.get('hash'):
+            status = 'updated'
         else:
-            print(f"{RED}Thất bại ({res}){RESET}")
-            error_count += 1
-
-    # Lưu lại manifest vào .agents/scripts/.sync_manifest.json
-    save_manifest(manifest_path, manifest)
-
-    print("\n" + "=" * 50)
-    print(f"{BOLD}KẾT QUẢ ĐỒNG BỘ:{RESET}")
-    print(f"  • Mới/Cập nhật: {GREEN}{synced_count}{RESET} file")
-    print(f"  • Đã có sẵn   : {YELLOW}{skipped_count}{RESET} file")
-    if error_count > 0:
-        print(f"  • Lỗi         : {RED}{error_count}{RESET} file")
-    print("=" * 50)
-
-    if updated_files:
-        print(f"\n{GREEN}{BOLD}Các file mới đã được phân loại vào đúng thư mục:{RESET}")
-        for f_name, f_path in updated_files:
-            print(f"  - [{f_name}]({f_path})")
-    else:
-        print(f"\n{CYAN}Tất cả tài liệu đều đã ở phiên bản mới nhất!{RESET}")
+            status = 'conflict'
+        if status == 'conflict':
+            saved = incoming / file_id / remote_hash / name
+            saved.parent.mkdir(parents=True, exist_ok=True)
+            os.replace(temp, saved)
+            print(f'  Bản chờ đối chiếu: {saved.relative_to(root)}')
+            return status, None
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        # Do not replace a file edited while the network request was in flight.
+        if dest.is_symlink() or not dest.resolve().is_relative_to(root):
+            raise ValueError('Đường dẫn đích đã thay đổi')
+        if (file_hash(dest) if dest.exists() else None) != original_hash:
+            raise RuntimeError('File local vừa thay đổi, dừng ghi')
+        os.replace(temp, dest)
+        return status, metadata
+    finally:
+        temp.unlink(missing_ok=True)
 
 
-if __name__ == "__main__":
-    main()
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--folder', default=DEFAULT_FOLDER_ID)
+    parser.add_argument('--week', default='Week01')
+    parser.add_argument('--target')
+    parser.add_argument('--pull', action='store_true')
+    args = parser.parse_args(argv)
+    if not re.fullmatch(r'Week[0-9]{2}', args.week):
+        parser.error('--week phải có dạng Week01')
+    if not re.fullmatch(r'[a-zA-Z0-9_-]+', args.folder):
+        parser.error('--folder phải là ID Drive')
+    target = (ROOT / (args.target or f'docs/{args.week}')).resolve()
+    if not target.is_relative_to(ROOT.resolve() / 'docs'):
+        parser.error('--target phải nằm trong docs/ của dự án')
+    manifest_path = ROOT / '.agents/scripts/.sync_manifest.json'
+    incoming = ROOT / '.agents/scripts/.sync_incoming'
+    try:
+        if args.pull:
+            run_git_pull(ROOT)
+        manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+        if not isinstance(manifest, dict):
+            raise ValueError('Manifest không hợp lệ')
+        files = extract_files_from_html(fetch_folder_html(args.folder))
+        if not files:
+            raise RuntimeError('Không nhận diện được file. Chưa xác nhận thư mục trống hay đã đồng bộ.')
+        counts = dict(updated=0, unchanged=0, conflict=0, error=0)
+        destinations = set()
+        for name, file_id in files.items():
+            try:
+                valid_name(name)
+                dest = classify_destination(name, target) / name
+                if dest in destinations:
+                    raise ValueError('Nhiều file nguồn trùng đích')
+                destinations.add(dest)
+                status, metadata = sync_one(name, file_id, dest, manifest.get(file_id), incoming, ROOT)
+                if metadata:
+                    manifest[file_id] = metadata
+                    atomic_json(manifest_path, manifest)
+                counts[status] += 1
+                print(f'{status}: {name}')
+            except Exception as exc:
+                counts['error'] += 1
+                print(f'error: {name}: {exc}', file=sys.stderr)
+        print('Kết quả các file nhận diện được: ' + ', '.join(f'{k}={v}' for k, v in counts.items()))
+        return 1 if counts['error'] else (2 if counts['conflict'] else 0)
+    except Exception as exc:
+        print(f'Dừng đồng bộ: {exc}', file=sys.stderr)
+        return 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())

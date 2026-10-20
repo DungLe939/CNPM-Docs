@@ -1,47 +1,18 @@
 ---
 name: project-navigator
-description: >-
-  Kích hoạt khi cần tra cứu cấu trúc dự án, tìm kiếm vị trí các tài liệu tuần,
-  kiểm tra tiến độ môn học, hoặc xác định ngữ cảnh môn Nhập môn Công nghệ Phần mềm.
+description: Tra cứu cấu trúc tài liệu, nguồn thông tin và tiến độ của đồ án HireUS Tools.
 ---
 
-# PROJECT NAVIGATOR: BẢN ĐỒ ĐỊNH VỊ DỰ ÁN
+# Điều hướng dự án
 
-Skill này giúp AI hiểu ngay cấu trúc tổ chức file và tiến độ hiện tại của đồ án mà không mất thời gian tìm kiếm hoặc hỏi lại người dùng.
+Đọc [quy tắc nguồn dữ liệu](../../rules/source-of-truth.md), sau đó [bối cảnh](../../../docs/PROJECT_CONTEXT.md) và [timeline](../../../docs/WEEKLY_TIMELINE.md). Với câu hỏi về phạm vi hay kế hoạch, đối chiếu [Proposal](../../../docs/Week01/Submission/Project_Proposal.md) đã kiểm tra.
 
-## 1. Nguồn dữ liệu cốt lõi (Single Source of Truth)
+## Vị trí hiện tại
 
-Trước khi thực hiện bất kỳ tác vụ nào liên quan đến môn học, AI luôn tham khảo 2 file sau:
-- [docs/PROJECT_CONTEXT.md](../../../docs/PROJECT_CONTEXT.md): Chứa toàn bộ thông tin môn học, giảng viên, mục tiêu đồ án và các quy định bắt buộc (format nộp bài, cấm AI writing sáo rỗng).
-- [docs/WEEKLY_TIMELINE.md](../../../docs/WEEKLY_TIMELINE.md): Ghi nhận chi tiết tuần hiện tại nhóm đang làm gì, thành phẩm cần nộp và kế hoạch các tuần tiếp theo.
+- `docs/Week01/Submission/`: Proposal Markdown/HTML và ảnh phụ thuộc.
+- `docs/Week01/Material/`: thông báo và `Template#0-ProjectProposal-2022.pdf`.
+- `docs/Week01/Problem_example/`: hai bài toán mẫu có hậu tố `_raw.md`.
+- `docs/Week01/Team_Decision/`: bản ghi họp, kế hoạch nằm trong `Material/` bên dưới.
+- `.agents/`: skills, rules và script hỗ trợ.
 
-## 2. Bản đồ Thư mục & Mục đích sử dụng
-
-```text
-Project/
-├── Template#0-ProjectProposal-2022.docx / .pdf  # Template Proposal chuẩn bộ môn
-├── docs/
-│   ├── PROJECT_CONTEXT.md      # Tổng quan dự án, môn học & quy định GV
-│   ├── WEEKLY_TIMELINE.md      # Nhật ký tiến độ từng tuần
-│   ├── Week01/                 # Tài liệu & hoạt động tuần 1
-│   │   ├── Material/           # Thông báo & tài liệu từ GVTH Thầy nndkhoa
-│   │   ├── Problem_example/    # Các bài toán đặc tả mẫu (Sàn đấu giá, Health monitor)
-│   │   └── Team_Decision/      # Quyết định, biên bản họp & tài liệu nhóm
-│   │       ├── Meeting_01.md & Meeting_02.md
-│   │       └── Material/       # Kế hoạch triển khai (HireUS_Implementation_Plan.md & .html)
-│   └── Week02/ (Sắp tới)       # Đợt nộp Proposal đợt 1
-└── .agents/
-    ├── README.md               # Mô tả tổng quan & danh mục tất cả skills, rules
-    ├── rules/                  # Quy tắc ứng xử bắt buộc (Drive-sync, Pre-commit workflow...)
-    ├── scripts/                # Scripts tự động hóa (sync_drive.py, sync.sh, pre_commit_check.sh)
-    └── skills/                 # Hệ thống kỹ năng hỗ trợ đồ án (drive-sync, project-navigator...)
-```
-
-## 3. Quy tắc Định vị & Đặt tên File
-
-Khi tạo file hoặc thư mục mới cho đồ án, luôn tuân thủ nguyên tắc:
-1. **Phân cấp theo tuần:** Đặt trong `docs/Week<XX>/` tương ứng với tuần học.
-2. **File thô vs File chuẩn hóa:** 
-   - Văn bản gốc chưa chỉnh sửa đặt hậu tố `_raw.md`.
-   - Tài liệu kỹ thuật chuẩn hóa đặt tên theo PascalCase hoặc kebab-case (`Project_Proposal.md`, `Software_Specification.md`).
-3. **Luôn cập nhật Timeline:** Bất cứ khi nào hoàn thành hoặc bắt đầu một đợt nộp, cập nhật ngay vào `docs/WEEKLY_TIMELINE.md`.
+Dùng `rg --files --hidden -g '!.git'` để kiểm tra cấu trúc thực tế khi cần. Không tạo `Week02/` hay chuyển hồ sơ chỉ vì bản hướng dẫn cũ từng dự kiến như vậy. Tên tuần là cách tổ chức tài liệu, không chứng minh tiến độ. Đọc dự án local không kích hoạt sync Drive.

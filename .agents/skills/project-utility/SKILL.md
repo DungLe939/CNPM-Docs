@@ -1,62 +1,16 @@
 ---
 name: project-utility
-description: >-
-  Kỹ năng đa năng (utility) cung cấp các quy tắc chung về liên kết đường dẫn tương đối,
-  chuẩn hóa đặt tên file, xử lý tài liệu Markdown, và các tiện ích vận hành đồ án.
+description: Chuẩn hóa đường dẫn, tài nguyên và bản Markdown/HTML khi chỉnh tài liệu dự án.
 ---
 
-# PROJECT UTILITY: QUY TẮC CHUNG & TIỆN ÍCH DỰ ÁN
+# Tiện ích tài liệu
 
-Skill này đóng vai trò là cẩm nang tiện ích và chuẩn mực thao tác chung cho mọi tác vụ trong đồ án môn học.
+Áp dụng [quy tắc nguồn dữ liệu](../../rules/source-of-truth.md).
 
----
-
-## 🌟 1. Quy tắc Vàng về Đường dẫn (Path Rule)
-
-> **"Nếu được, hãy sử dụng đường dẫn tương đối (relative path) nhiều nhất có thể."**
-
-- **Lý do:** Dự án được làm việc theo nhóm và đẩy lên GitHub. Đường dẫn tuyệt đối (`file:///Users/...` hoặc `C:\...`) sẽ lập tức bị lỗi khi đồng đội hoặc giảng viên mở trên máy khác.
-- **Quy tắc thực hành:**
-  - Trong tài liệu Markdown, luôn dùng relative link: `[text1.md](./Week01/text1.md)`, `[Template](../Template#0-ProjectProposal-2022.pdf)`.
-  - Trong mã nguồn / script: Luôn sử dụng đường dẫn tương đối tính từ thư mục chạy hoặc vị trí file script hiện tại.
-  - Tuyệt đối không hardcode thư mục cá nhân người dùng.
-
----
-
-## 2. Quy ước Đặt tên File & Thư mục (Naming Conventions)
-
-- **Thư mục tiến độ:** Luôn đặt theo định dạng `Week<XX>` (ví dụ: `Week01`, `Week02`, `Week03`).
-- **File tài liệu chính thức:** Đặt tên rõ ràng, viết bằng tiếng Anh hoặc tiếng Việt không dấu:
-  - PascalCase hoặc kebab-case: `Project_Proposal.md`, `Software_Specification.md`, `team-decision-01.md`.
-- **File dữ liệu thô:** Luôn kèm hậu tố `_raw.md` để phân biệt với tài liệu đã chuẩn hóa.
-- **Tránh ký tự đặc biệt:** Không đặt tên file chứa khoảng trắng vô nghĩa hoặc ký tự có dấu tiếng Việt trên hệ thống file để tránh lỗi khi sync Git.
-
----
-
-## 3. Tiêu chuẩn Trình bày Markdown & Bảng biểu
-
-- **Tiêu đề phân cấp:** Sử dụng đúng thứ tự `h1 (#)` $\rightarrow$ `h2 (##)` $\rightarrow$ `h3 (###)`, không nhảy cóc cấp độ.
-- **Bảng biểu (GFM Tables):**
-  - Luôn có dòng tiêu đề và phân cách viền (`| :--- | :---: |`).
-  - Dữ liệu chữ căn trái (`:---`), số liệu / ngày tháng / trạng thái căn giữa (`:---:`).
-- **Trích dẫn & Ghi chú:** Dùng blockquote `>` hoặc alert blocks để làm nổi bật lưu ý quan trọng từ giảng viên.
-
----
-
-## 4. Tự động Đồng bộ Ngữ cảnh (Sync Context)
-
-Khi tạo mới một bài nộp hoặc hoàn thành một mốc công việc:
-1. Kiểm tra và cập nhật trạng thái tương ứng trong file `docs/WEEKLY_TIMELINE.md`.
-2. Đảm bảo file mới được tham chiếu bằng đường dẫn tương đối từ tài liệu tuần hoặc tài liệu tổng quan.
-
----
-
-## 5. Quy chuẩn Liên kết Kép (Dual-Linking: Local Relative Link + Cloud Source Link)
-
-> **"Tài liệu nội bộ trích dẫn file có nguồn gốc từ đám mây (Google Drive, Notion, Figma...) bắt buộc phải cung cấp song song cả đường dẫn tương đối nội bộ và liên kết nguồn trực tuyến."**
-
-- **Mục đích:** Đảm bảo vừa duyệt được offline trong Git repo, vừa cung cấp nguồn cloud chính thống để đối soát hoặc cho giảng viên chấm điểm trực tiếp.
-- **Cấu trúc chuẩn:**
-  * `[Tên_tài_liệu.md](./đường_dẫn_tương_đối.md) ⏐ [Bản gốc Google Drive](https://drive.google.com/file/d/.../view)`
-  * Ví dụ: `[HireUS_Implementation_Plan.md](./HireUS_Implementation_Plan.md) ⏐ [Xem trên Google Drive](https://drive.google.com/file/d/1s8uYv3yBGpx7TyCsTtIVSbNTrC8LbDbY/view)`
-- **Áp dụng:** Mọi biên bản họp, tài liệu phân tích hoặc báo cáo tuần khi nhắc đến sản phẩm/tài liệu đồng bộ từ Drive phải tuân thủ định dạng này.
+- Liên kết nội bộ dùng đường dẫn tương đối tính từ file chứa link. Mã hóa `#` trong tên file thành `%23`. Giữ nguyên tên file hiện có trừ khi cần đổi, cập nhật mọi tham chiếu khi đổi tên.
+- File mới đặt theo tuần và mục đích thực tế. Không dời file đã duyệt chỉ để khớp sơ đồ thư mục cũ.
+- Nếu có nguồn cloud xác định, dẫn cả bản local và link nguồn khi hữu ích. Không bịa link Drive hoặc dùng ID ví dụ.
+- Sửa nội dung chung thì đồng bộ Markdown/HTML. Phân biệt thay đổi nội dung với CSS, kiểm tra ảnh, bảng và sơ đồ. Nếu chưa có renderer chung, giữ bố cục hiện có và đối chiếu hai bản, không tự thiết kế lại.
+- Đóng ZIP phải giữ cấu trúc các ảnh và tài nguyên local được tham chiếu. Tên ZIP và cách nộp theo yêu cầu có nguồn.
+- Dùng `python3 .agents/scripts/check_docs.py` để kiểm tra file đang làm việc, hoặc `--staged` để kiểm tra nội dung trong Git index. Công cụ kiểm tra link và cảnh báo chênh lệch, không chứng minh dữ kiện đúng hay giao diện hiển thị đúng.
+- Timeline chỉ ghi thay đổi kế hoạch hoặc tiến độ có căn cứ. Khi commit, theo [quy trình commit](../../rules/pre-commit-workflow.md).
